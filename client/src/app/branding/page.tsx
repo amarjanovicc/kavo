@@ -3,6 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import ContactSection from '@/components/ContactSection';
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -161,6 +163,10 @@ const IstrazivanjePage: React.FC = () => {
           Istraživanje je možda korak koji se ne vidi odmah izvana, ali ono je ono što daje čvrste temelje svemu što radimo poslije – od strategije do samog dizajna i razvoja.
         </p>
       </motion.section>
+      
+      
+            <ContactSection></ContactSection>
+      
     </main>
   );
 };

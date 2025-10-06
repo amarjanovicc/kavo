@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import ContactSection from '@/components/ContactSection';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -169,7 +170,8 @@ const DevelopmentPage: React.FC = () => {
         </div>
       </section>
 
-
+          <ContactSection></ContactSection>
+    
       {/* Dodatna slika na dno - 80% širine iz dna stranice */}
       <div className="w-4/5 mx-auto relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
         <Image

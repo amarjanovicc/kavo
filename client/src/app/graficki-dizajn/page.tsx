@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import ContactSection from '@/components/ContactSection';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -138,6 +139,8 @@ const GrafickiDizajnPage: React.FC = () => {
           Naša misija nije samo izrada web stranice, nego i dugoročna suradnja. Uz nas imate partnera koji će pratiti vaš digitalni razvoj i pomagati vam da uvijek budete korak ispred konkurencije.
         </p>
       </motion.section>
+            <ContactSection></ContactSection>
+      
     </main>
   );
 };

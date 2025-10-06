@@ -149,7 +149,7 @@ const WebDizajnPage: React.FC = () => {
       <ContactSection></ContactSection>
 
       {/* Dodatna slika na dno - 80% širine iz dna stranice */}
-      <div className="w-4/5 mx-auto relative h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px]">
+      <div className="w-4/5 mx-auto relative h-[150px] sm:h-[300px] md:h-[300px] lg:h-[200px]">
         <Image
           src="/dizajn/WebDizajn4.png"
           alt="Finalna ilustracija"

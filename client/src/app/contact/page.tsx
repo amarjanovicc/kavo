@@ -46,7 +46,7 @@ export default function ContactPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState("");
+  const [submitMessage] = useState("");
 
   const toggleMulti = (field: "helpWith", value: string) => {
     setForm((prev) => ({
@@ -55,48 +55,6 @@ export default function ContactPage() {
         ? prev[field].filter((v) => v !== value)
         : [...prev[field], value],
     }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Osnovne provjere
-    if (!form.name || !form.company || !form.email) {
-      setSubmitMessage("Molimo unesite sva obavezna polja.");
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitMessage("");
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
-
-      if (response.ok) {
-        setSubmitMessage("Hvala vam! Vaša poruka je uspješno poslana. Kontaktirat ćemo vas uskoro.");
-        setForm({
-          name: "",
-          company: "",
-          email: "",
-          projectDetails: "",
-          foundBy: "",
-          helpWith: [],
-          budget: "",
-        });
-      } else {
-        throw new Error('Greška pri slanju');
-      }
-    } catch {
-      setSubmitMessage("Dogodila se greška. Molimo pokušajte kasnije ili nas kontaktirajte direktno na hi@kavo.studio");
-    } finally {
-      setIsSubmitting(false);
-    }
   };
 
   return (
@@ -110,15 +68,15 @@ export default function ContactPage() {
           className="text-center space-y-6"
         >
           <h1 className="text-2xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight text-yellow-400 uppercase leading-none">
-  Razgovarajmo
-</h1>
+            Razgovarajmo
+          </h1>
 
-          {/* Dekorativna linija */}
+          {/* Dekorativna linija - changed from gradient to solid */}
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto max-w-xs"
+            className="h-px bg-yellow-400 mx-auto max-w-xs"
           />
         </motion.div>
 
@@ -130,7 +88,8 @@ export default function ContactPage() {
           className="flex justify-center"
         >
           <div className="relative max-w-2xl text-center">
-            <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-yellow-400 to-transparent rounded-full hidden md:block" />
+            {/* Changed from gradient to solid line */}
+            <div className="absolute -left-4 top-0 w-1 h-full bg-yellow-400 hidden md:block" />
             <p className="text-yellow-400/90 text-base md:text-lg leading-relaxed font-light">
               <Typewriter
                 text="Bilo da tek skicirate ideju za svoj novi projekt ili jednostavno želite porazgovarati o digitalnim mogućnostima – sjajno! Tu smo da pretvorimo vaše misli u stvarnu, funkcionalnu i modernu web stranicu."
@@ -155,13 +114,15 @@ export default function ContactPage() {
           </motion.div>
         )}
 
-        {/* Forma - profesionalno oblikovana */}
+        {/* Forma - profesionalno oblikovana - UPDATED WITH FORMSPREE */}
         <motion.form
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          onSubmit={handleSubmit}
+          action="https://formspree.io/f/mzzjvlbn"
+          method="POST"
           className="space-y-10 md:space-y-12"
+          onSubmit={() => setIsSubmitting(true)}
         >
           {/* Ime i tvrtka - premium design */}
           <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
@@ -174,6 +135,7 @@ export default function ContactPage() {
               </label>
               <input
                 type="text"
+                name="name"
                 placeholder="Unesite svoje puno ime"
                 className="w-full bg-white/5 border border-gray-600/50 rounded-lg px-4 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm"
                 value={form.name}
@@ -191,6 +153,7 @@ export default function ContactPage() {
               </label>
               <input
                 type="text"
+                name="company"
                 placeholder="Unesite naziv vaše tvrtke"
                 className="w-full bg-white/5 border border-gray-600/50 rounded-lg px-4 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm"
                 value={form.company}
@@ -210,6 +173,7 @@ export default function ContactPage() {
             </label>
             <input
               type="email"
+              name="email"
               placeholder="ime@vasa-tvrtka.hr"
               className="w-full bg-white/5 border border-gray-600/50 rounded-lg px-4 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm"
               value={form.email}
@@ -239,6 +203,8 @@ export default function ContactPage() {
                 </motion.button>
               ))}
             </div>
+            {/* Hidden input to store the selected option */}
+            <input type="hidden" name="foundBy" value={form.foundBy} />
           </div>
 
           {/* Usluge */}
@@ -270,6 +236,8 @@ export default function ContactPage() {
                 </motion.button>
               ))}
             </div>
+            {/* Hidden input to store the selected services */}
+            <input type="hidden" name="services" value={form.helpWith.join(", ")} />
           </div>
 
           {/* Budžet */}
@@ -293,6 +261,8 @@ export default function ContactPage() {
                 </motion.button>
               ))}
             </div>
+            {/* Hidden input to store the selected budget */}
+            <input type="hidden" name="budget" value={form.budget} />
           </div>
 
           {/* Detalji projekta */}
@@ -304,6 +274,7 @@ export default function ContactPage() {
               Opišite svoj projekt
             </label>
             <textarea
+              name="message"
               placeholder="Opišite svoj projekt, ciljeve, specifične potrebe..."
               className="w-full bg-white/5 border border-gray-600/50 rounded-lg px-4 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm resize-none"
               rows={5}
@@ -317,6 +288,7 @@ export default function ContactPage() {
             <label className="flex items-start gap-3 text-sm text-gray-400 leading-relaxed cursor-pointer group">
               <input
                 type="checkbox"
+                name="consent"
                 className="mt-1 accent-yellow-400 scale-110 cursor-pointer"
                 required
               />
