@@ -3,6 +3,8 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
+import { portfolioSchema } from '@/lib/schema';
 
 type Project = {
   id: string;
@@ -10,7 +12,7 @@ type Project = {
   image: string;
   color: string;
   link: string;
-  tags: string[]; // Added tags array
+  tags: string[]; 
 };
 
 // Updated project data with more relevant tags
@@ -21,7 +23,7 @@ const projects: Project[] = [
     image: '/projects/1.png', 
     color: '#3A486F', 
     link: '/projekti/laptop',
-    tags: ['Web dizajn', 'Responsive', 'Hotelijerstvo'] // Added relevant hotel industry tag
+    tags: ['Web dizajn', 'Responsive', 'Hotelijerstvo']
   },
   { 
     id: '2', 
@@ -29,47 +31,47 @@ const projects: Project[] = [
     image: '/projects/2.png', 
     color: '#222222', 
     link: '/projekti/lantern',
-    tags: ['Branding', 'Logo', 'Fitness']  // Added fitness-related tag
+    tags: ['Branding', 'Visual identity', 'Logo design']  // Added fitness-related tag
   },
   { 
     id: '3', 
-    title: 'Brochure', 
+    title: 'MARA', 
     image: '/projects/3.png', 
     color: '#CDCBC4', 
     link: '/projekti/brochure',
-    tags: ['Print', 'Grafički dizajn', 'Katalog']  // Added catalog tag
+    tags: ['Catalogue', 'Print', 'Graphic design']  // Added catalog tag
   },
   { 
     id: '4', 
-    title: 'Procake', 
+    title: 'Mapetrol', 
     image: '/projects/4.png', 
     color: '#B1B1B1', 
     link: '/projekti/packaging',
-    tags: ['Ambalaža', 'Prehrambeni proizvod', 'Dizajn']  // Added food product tag
+    tags: ['Product design', '3D models', 'Mockups', 'Label design']  // Added food product tag
   },
   { 
     id: '5', 
-    title: 'Product', 
+    title: 'Procake', 
     image: '/projects/5.png', 
     color: '#E9E9E9', 
     link: '/projekti/product',
-    tags: ['Product dizajn', '3D', 'Vizualizacija']  // Added visualization tag
+    tags: ['Branding', '3D models', 'Packaging', 'Label design']  // Added visualization tag
   },
   { 
     id: '6', 
-    title: 'Web Shop', 
+    title: 'Moto Shop', 
     image: '/projects/6.png', 
     color: '#FFFFFF', 
     link: '/projekti/website',
-    tags: ['Web dizajn', 'E-commerce', 'Responsive', 'Online prodaja']  // Updated for web shop
+    tags: ['Web design', 'Responsive', 'Web shop', 'E-commerce']  // Updated for web shop
   },
   { 
     id: '7', 
-    title: 'Baltazar anketa', 
+    title: 'Baltazar', 
     image: '/projects/7.png', 
     color: '#4AAE31', 
     link: '/projekti/app-game',
-    tags: ['App dizajn', 'UX/UI', 'Anketa', 'Korisničko iskustvo']  // Added survey-specific tags
+    tags: ['mail send', 'UX/UI', 'Survey', 'User experience']  // Added survey-specific tags
   },
   { 
     id: '8', 
@@ -77,27 +79,40 @@ const projects: Project[] = [
     image: '/projects/8.png', 
     color: '#F2A900', 
     link: '/projekti/phone',
-    tags: ['UX/UI', 'Digital marketing', 'Poslovna platforma']  // Added marketing-specific tags
+    tags: ['mail', 'Digital marketing', 'Business platform']  // Added marketing-specific tags
   },
   { 
     id: '9', 
-    title: 'Wending', 
+    title: 'Mapetrol', 
     image: '/projects/9.png', 
     color: '#F1E6F2', 
     link: '/projekti/gogi',
-    tags: ['Branding', 'Logo dizajn', 'Vizualni identitet']  // Added visual identity tag
+    tags: ['3D moddeling', 'Livery design', 'Visualization']  // Added visual identity tag
   },
   { 
     id: '10', 
-    title: 'Band', 
+    title: 'DV STUDIO GOGI', 
     image: '/projects/10.png', 
     color: '#B964CF', 
     link: '/projekti/band',
-    tags: ['Glazbeni dizajn', 'Promocija', 'Vizualni identitet']  // Added music-specific tags
+    tags: ['Web design', 'Branding', 'UI/UX design', 'Logo design']  // Added music-specific tags
   },
 ];
 
 const ProjectsSection: React.FC = () => {
+  const enhancedAltTexts: Record<string, string> = {
+    '1': 'Web dizajn za Hotel Heritage - responsive hotelska web stranica s booking sistemom',
+    '2': 'Ronin gym branding i vizualni identitet za fitness centar',
+    '3': 'Dizajn kataloga MARA - tiskani materijali visokog standarda',
+    '4': 'Mapetrol dizajn ambalaže i etiketa za prehrambene proizvode',
+    '5': 'Procake 3D vizualizacija i dizajn ambalaže',
+    '6': 'Web trgovina Moto Shop - e-commerce rješenje s responsive dizajnom',
+    '7': 'Baltazar UX/UI dizajn za anketnu platformu',
+    '8': 'Marketing platforma za poslovne korisnike - digitalna rješenja',
+    '9': 'Mapetrol 3D vizualizacija vozila s brendiranim omotom',
+    '10': 'DV STUDIO GOGI - web stranica i branding za glazbeni studio'
+  };
+
   return (
     <section className="bg-[#080D10] py-12 sm:py-16 px-3 sm:px-4 md:px-6">
       <div className="max-w-[1200px] mx-auto">
@@ -110,7 +125,13 @@ const ProjectsSection: React.FC = () => {
           <div className="item-laptop">
             <Link href={projects[0].link} className="project-item" style={{ backgroundColor: projects[0].color }}>
               <div className="image-container">
-                <Image src={projects[0].image} alt={projects[0].title} fill priority className="object-contain" />
+                <Image 
+                  src={projects[0].image} 
+                  alt={enhancedAltTexts[projects[0].id]} 
+                  fill 
+                  priority 
+                  className="object-contain" 
+                />
               </div>
               {/* Hover overlay */}
               <div className="hover-overlay">
@@ -127,7 +148,13 @@ const ProjectsSection: React.FC = () => {
           <div className="item-lantern">
             <Link href={projects[1].link} className="project-item" style={{ backgroundColor: projects[1].color }}>
               <div className="image-container">
-                <Image src={projects[1].image} alt={projects[1].title} fill priority className="object-contain" />
+                <Image 
+                  src={projects[1].image} 
+                  alt={enhancedAltTexts[projects[1].id]} 
+                  fill 
+                  priority 
+                  className="object-contain" 
+                />
               </div>
               {/* Hover overlay */}
               <div className="hover-overlay">
@@ -144,7 +171,13 @@ const ProjectsSection: React.FC = () => {
           <div className="item-brochure">
             <Link href={projects[2].link} className="project-item" style={{ backgroundColor: projects[2].color }}>
               <div className="image-container">
-                <Image src={projects[2].image} alt={projects[2].title} fill priority className="object-contain" />
+                <Image 
+                  src={projects[2].image} 
+                  alt={enhancedAltTexts[projects[2].id]} 
+                  fill 
+                  priority 
+                  className="object-contain" 
+                />
               </div>
               {/* Hover overlay */}
               <div className="hover-overlay">
@@ -162,7 +195,12 @@ const ProjectsSection: React.FC = () => {
           <div className="item-packaging">
             <Link href={projects[3].link} className="project-item" style={{ backgroundColor: projects[3].color }}>
               <div className="image-container">
-                <Image src={projects[3].image} alt={projects[3].title} fill className="object-contain" />
+                <Image 
+                  src={projects[3].image} 
+                  alt={enhancedAltTexts[projects[3].id]} 
+                  fill 
+                  className="object-contain" 
+                />
               </div>
               {/* Hover overlay */}
               <div className="hover-overlay">
@@ -179,7 +217,12 @@ const ProjectsSection: React.FC = () => {
           <div className="item-product">
             <Link href={projects[4].link} className="project-item" style={{ backgroundColor: projects[4].color }}>
               <div className="image-container">
-                <Image src={projects[4].image} alt={projects[4].title} fill className="object-contain" />
+                <Image 
+                  src={projects[4].image} 
+                  alt={enhancedAltTexts[projects[4].id]} 
+                  fill 
+                  className="object-contain" 
+                />
               </div>
               {/* Hover overlay */}
               <div className="hover-overlay">
@@ -196,7 +239,12 @@ const ProjectsSection: React.FC = () => {
           <div className="item-website">
             <Link href={projects[5].link} className="project-item" style={{ backgroundColor: projects[5].color }}>
               <div className="image-container">
-                <Image src={projects[5].image} alt={projects[5].title} fill className="object-contain" />
+                <Image 
+                  src={projects[5].image} 
+                  alt={enhancedAltTexts[projects[5].id]} 
+                  fill 
+                  className="object-contain" 
+                />
               </div>
               {/* Hover overlay */}
               <div className="hover-overlay">
@@ -214,7 +262,11 @@ const ProjectsSection: React.FC = () => {
           <div className="item-appgame">
             <Link href={projects[6].link} className="project-item" style={{ backgroundColor: projects[6].color }}>
               <div className="image-container">
-                <Image src={projects[6].image} alt={projects[6].title} fill className="object-contain" />
+                <Image 
+                  src={projects[6].image} 
+                  alt={enhancedAltTexts[projects[6].id]} 
+                  fill className="object-contain" 
+                />
               </div>
               {/* Hover overlay */}
               <div className="hover-overlay">
@@ -232,7 +284,11 @@ const ProjectsSection: React.FC = () => {
           <div className="item-phone">
             <Link href={projects[7].link} className="project-item" style={{ backgroundColor: projects[7].color }}>
               <div className="image-container">
-                <Image src={projects[7].image} alt={projects[7].title} fill className="object-contain" />
+                <Image 
+                  src={projects[7].image} 
+                  alt={enhancedAltTexts[projects[7].id]} 
+                  fill className="object-contain" 
+                />
               </div>
               {/* Hover overlay */}
               <div className="hover-overlay">
@@ -249,7 +305,11 @@ const ProjectsSection: React.FC = () => {
           <div className="item-gogi">
             <Link href={projects[8].link} className="project-item" style={{ backgroundColor: projects[8].color }}>
               <div className="image-container">
-                <Image src={projects[8].image} alt={projects[8].title} fill className="object-contain" />
+                <Image 
+                  src={projects[8].image} 
+                  alt={enhancedAltTexts[projects[8].id]} 
+                  fill className="object-contain" 
+                />
               </div>
               {/* Hover overlay */}
               <div className="hover-overlay">
@@ -266,7 +326,11 @@ const ProjectsSection: React.FC = () => {
           <div className="item-band">
             <Link href={projects[9].link} className="project-item" style={{ backgroundColor: projects[9].color }}>
               <div className="image-container">
-                <Image src={projects[9].image} alt={projects[9].title} fill className="object-contain" />
+                <Image 
+                  src={projects[9].image} 
+                  alt={enhancedAltTexts[projects[9].id]} 
+                  fill className="object-contain" 
+                />
               </div>
               {/* Hover overlay */}
               <div className="hover-overlay">
@@ -281,6 +345,14 @@ const ProjectsSection: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <Script
+        id="portfolio-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(portfolioSchema)
+        }}
+      />
 
       <style jsx global>{`
         /* Base Grid Layout */

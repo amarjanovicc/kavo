@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Block potential duplicate content
+Disallow: /en/assets/
+Disallow: /en/fonts/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://kavo.studio/sitemap.xml
+
+# Host
+Host: https://kavo.studio
