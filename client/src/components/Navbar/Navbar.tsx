@@ -18,7 +18,7 @@ const links = [
       { id: "001", title: "BRANDING", link: "/branding" },
       { id: "002", title: "GRAFIČKI DIZAJN", link: "/graficki-dizajn" },
       { id: "003", title: "WEB DIZAJN", link: "/web-dizajn" },
-      { id: "004", title: "WEB DEVELOPMENT", link: "/development" },
+      { id: "004", title: "WEB DEVELOPMENT", link: "/web-development" },
     ] 
   },
   { href: '/#portfolio', label: 'Portfolio' },
@@ -222,7 +222,7 @@ const Navbar: React.FC = () => {
   }, [pathname]);
 
   // Determine if we're on a service page
-  const isServicePage = ['/branding', '/graficki-dizajn', '/web-dizajn', '/development'].includes(pathname);
+  const isServicePage = ['/branding', '/graficki-dizajn', '/web-dizajn', '/web-development'].includes(pathname);
 
   // Odredi logo i boju teksta
   let logoSrc = '/logo/kavo-logo.png';

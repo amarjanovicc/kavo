@@ -32,8 +32,7 @@ const DevelopmentPage: React.FC = () => {
         variants={fadeInUp}
         className="uppercase text-sm md:text-base font-semibold mb-4 w-full text-center px-4 md:px-8 leading-[127.3%] tracking-[0.5px]"
       >
-        PROGRAMIRANJE I RAZVOJ STRANICE POČINJE TEK KADA ZAVRŠIMO S DIZAJNOM. PRETVARAMO VIZUAL U FUNKCIONALNU STRANICU KOJA SAVRŠENO RADI NA SVIM UREĐAJIMA I PREGLEDNICIMA.
-      </motion.p>
+Nakon što završimo s dizajnom, prelazimo na kodiranje. Pretvaramo vizual u stranicu koja savršeno radi na svim uređajima i preglednicima.      </motion.p>
 
       {/* Border */}
       <div className="w-4/5 h-[1px] bg-[#080D10] mx-auto mb-8 mt-8"></div>
@@ -64,8 +63,7 @@ const DevelopmentPage: React.FC = () => {
               BRZINA I SIGURNOST
             </h2>
             <p className="text-[clamp(1rem,2.2vw,1.5rem)] leading-[127.3%] tracking-[0.5px]">
-              Brza stranica znači zadovoljan posjetitelj, a sigurna stranica znači miran vlasnik. Zato pazimo da se vaša stranica učitava u sekundi i da je zaštićena najboljim praksama. To znači manje čekanja za korisnike i više povjerenja u vaš brend.
-            </p>
+Brza stranica znači zadovoljan posjetitelj, a sigurna stranica znači miran vlasnik. Zato pazimo da se vaša stranica učitava u sekundi i da je zaštićena najboljim praksama. To znači manje čekanja za korisnike i više povjerenja u vaš brend.            </p>
           </div>
         </motion.div>
       </section>
@@ -85,8 +83,7 @@ const DevelopmentPage: React.FC = () => {
               FLEKSIBILNOST
             </h2>
             <p className="text-[clamp(1rem,2.2vw,1.5rem)] leading-[127.3%] tracking-[0.5px]">
-              Svaka tvrtka ima različite ciljeve, zato nudimo opcije razvoja koje odgovaraju vašem budžetu i vremenskom okviru. Ako trebate gotovu stranicu brzo i povoljno, koristimo provjerene predloške. Ako želite jedinstveno rješenje i potpunu kontrolu – razvijamo stranicu potpuno od nule, prilagođenu baš vama.
-            </p>
+Svaka tvrtka ima različite ciljeve, zato nudimo opcije razvoja koje odgovaraju vašem budžetu i vremenskom okviru. Ako trebate gotovu stranicu brzo i povoljno, koristimo provjerene predloške. Ako želite jedinstveno rješenje i potpunu kontrolu – razvijamo stranicu potpuno od nule, prilagođenu baš vama. U oba slučaja dobit ćete funkcionalnu i modernu web stranicu spremnu za rast.            </p>
           </div>
         </motion.div>
 
@@ -132,8 +129,7 @@ const DevelopmentPage: React.FC = () => {
               TESTIRANJE
             </h2>
             <p className="text-[clamp(1rem,2.2vw,1.5rem)] leading-[127.3%] tracking-[0.5px]">
-              Nakon programiranja provodimo detaljno testiranje kako bismo provjerili radi li sve ispravno na različitim uređajima i preglednicima. Posebnu pažnju posvećujemo brzini učitavanja i SEO optimizaciji, jer želimo da vaša stranica bude što bolje rangirana na Googleu.
-            </p>
+Nakon programiranja provodimo detaljno testiranje kako bismo provjerili radi li sve ispravno na različitim uređajima i preglednicima. Posebnu pažnju posvećujemo brzini učitavanja i SEO optimizaciji, jer želimo da vaša stranica bude što bolje rangirana na Googleu.            </p>
           </div>
         </motion.div>
       </section>
@@ -153,8 +149,7 @@ const DevelopmentPage: React.FC = () => {
               POKRETANJE I PODRŠKA
             </h2>
             <p className="text-[clamp(1rem,2.2vw,1.5rem)] leading-[127.3%] tracking-[0.5px]">
-              Kada je stranica spremna, pomažemo vam oko postavljanja na hosting i povezivanja s domenom, a po potrebi radimo i obuku kako biste samostalno mogli upravljati sadržajem.
-            </p>
+Kada je stranica spremna, pomažemo vam oko postavljanja na hosting i povezivanja s domenom, a po potrebi radimo i obuku kako biste samostalno mogli upravljati sadržajem.            </p>
           </div>
         </motion.div>
 

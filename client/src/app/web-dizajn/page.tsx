@@ -33,8 +33,7 @@ const WebDizajnPage: React.FC = () => {
         variants={fadeInUp}
         className="uppercase text-sm md:text-base font-semibold mb-4 w-full text-center px-4 md:px-8 leading-[127.3%] tracking-[0.5px]"
       >
-        TRŽIŠTE JE PUNO STRANICA KOJE LIJEPO IZGLEDAJU, ALI KOLIKE SU KORISTI OD NJIH AKO NEMATE POSJETITELJE? NAŠI DIZAJNOVI KOMBINIRAJU ESTETIKU S FUNKCIONALNOSTI.
-      </motion.p>
+Web dizajn nije samo lijep izgled – to je način da ispričate priču o svom brendu i ostavite dobar prvi dojam kod posjetitelja.      </motion.p>
 
       {/* Border */}
       <div className="w-4/5 h-[1px] bg-[#080D10] mx-auto mb-8 mt-8"></div>
@@ -45,7 +44,7 @@ const WebDizajnPage: React.FC = () => {
         {/* Slika */}
         <div className="flex-1 flex justify-center mb-6 md:mb-0">
           <Image
-            src="/dizajn/WebDizajn1.png"
+            src="/WebDizajn/WebDizajn1.png"
             alt="Ideja ilustracija"
             width={500}
             height={530}
@@ -63,8 +62,7 @@ const WebDizajnPage: React.FC = () => {
         >
           <div className="bg-white rounded-xl shadow-lg p-10 text-[#080D10]">
             <p className="text-[clamp(1rem,2.2vw,1.5rem)] leading-[127.3%] tracking-[0.5px]">
-              Naš cilj je da vaša stranica ispriča priču vašeg brenda kroz vizualne elemente koji povezuju s vašom publikom. Biramo boje, tipografiju i rasporede koji najbolje predstavljaju vaše vrijednosti, ali uvijek pazimo da sve ostane jasno i lako za korištenje. Svaki element ima svoju svrhu u privlačenju i zadržavanju pozornosti posjetitelja.
-            </p>
+Naš cilj je da vaša stranica bude jednostavna za korištenje i ugodna za pregledavanje. Biramo boje, tipografiju i vizualne elemente koji najbolje predstavljaju vas, ali uvijek razmišljamo i o tome kako će se posjetitelji kretati kroz stranicu. Želimo da im sve bude jasno, logično i lako dostupno.            </p>
           </div>
         </motion.div>
       </section>
@@ -83,15 +81,14 @@ const WebDizajnPage: React.FC = () => {
           <div className="bg-white rounded-xl shadow-lg p-10 text-[#080D10]">
             <h2 className="text-[clamp(1.5rem,4vw,3rem)] font-bold uppercase mb-4">RESPONSIVNOST</h2>
             <p className="text-[clamp(1rem,2.2vw,1.5rem)] leading-[127.3%] tracking-[0.5px]">
-              Većina ljudi danas pretražuje internet putem mobitela, pa je važno da stranica izgleda odlično na svakom ekranu. Zato radimo responsivan dizajn – onaj koji se automatski prilagođava mobitelu, tabletu ili računalu. Tako vaši klijenti uvijek dobivaju najbolje iskustvo, bez obzira odakle dolaze.
-            </p>
+Većina ljudi danas pretražuje internet putem mobitela, pa je važno da stranica izgleda odlično na svakom ekranu. Zato radimo responsivan dizajn – onaj koji se automatski prilagođava mobitelu, tabletu ili računalu. Tako vaši klijenti uvijek dobivaju najbolje iskustvo, bez obzira odakle dolaze.            </p>
           </div>
         </motion.div>
 
         {/* Slika */}
         <div className="flex-1 flex justify-center">
           <Image
-            src="/dizajn/WebDizajn2.png"
+            src="/WebDizajn/WebDizajn2.png"
             alt="Klijent ilustracija"
             width={500}
             height={530}
@@ -125,8 +122,7 @@ const WebDizajnPage: React.FC = () => {
           <div className="bg-white rounded-xl shadow-lg p-10 text-[#080D10]">
             <h2 className="text-[clamp(1.5rem,4vw,3rem)] font-bold uppercase mb-4">ZA LJUDE I TRAŽILICE</h2>
             <p className="text-[clamp(1rem,2.2vw,1.5rem)] leading-[127.3%] tracking-[0.5px]">
-              Dobar dizajn nije samo za ljude – voli ga i Google. Kada je stranica pregledna, brza i jednostavna za korištenje, to pomaže i boljem rangiranju na tražilicama. Zato pazimo da vaša stranica bude i lijepa i funkcionalna, ali i optimizirana tako da vas potencijalni klijenti lakše pronađu.
-            </p>
+Dobar dizajn nije samo za ljude – voli ga i Google. Kada je stranica pregledna, brza i jednostavna za korištenje, to pomaže i boljem rangiranju na tražilicama. zato pazimo da vaša stranica bude i lijepa i funkcionalna, ali i optimizirana tako da vas potencijalni klijenti lakše pronađu.            </p>
           </div>
         </motion.div>
       </section>
@@ -141,8 +137,7 @@ const WebDizajnPage: React.FC = () => {
         <div className="relative p-10 text-[#080D10] bg-[#FFBD00] rounded-lg">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">DIZAJN KOJI DONOSI REZULTATE</h2>
           <p>
-            Na kraju, web dizajn za nas nije samo stvar vizualnog dojma. On ima zadatak pomoći vam da ostvarite svoje ciljeve – bilo da želite privući nove klijente, prodati proizvod ili jednostavno predstaviti svoj brend na najbolji način. Naš zadatak je stvoriti dizajn koji će raditi za vas, a ne samo lijepo izgledati.
-          </p>
+Na kraju, web dizajn za nas nije samo stvar vizualnog dojma. On ima zadatak pomoći vam da ostvarite svoje ciljeve – bilo da želite privući nove klijente, prodati proizvod ili jednostavno predstaviti svoj brend na najbolji način. Naš zadatak je stvoriti dizajn koji će raditi za vas, a ne samo lijepo izgledati.          </p>
         </div>
       </motion.footer>
 

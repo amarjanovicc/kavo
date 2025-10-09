@@ -3,17 +3,16 @@
 import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import ContactSection from '@/components/ContactSection';
-
+import ContactSection from "@/components/ContactSection";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
 };
 
-const IstrazivanjePage: React.FC = () => {
+const BrandingPage: React.FC = () => {
   return (
-    <main className="bg-[#FFBD00] text-[#080D10] min-h-screen pt-20 md:pt-32 flex flex-col items-center px-4 md:px-8 lg:px-16">
+    <main className="bg-[#FFBD00] text-[#080D10] min-h-screen pt-20 md:pt-32 flex flex-col items-center px-6 md:px-12 lg:px-20">
       {/* Naslov */}
       <motion.h1
         initial="hidden"
@@ -31,13 +30,21 @@ const IstrazivanjePage: React.FC = () => {
         whileInView="visible"
         viewport={{ once: false }}
         variants={fadeInUp}
-        className="uppercase text-xs md:text-sm font-semibold mb-16 max-w-md text-center leading-tight tracking-wide"
+        className="uppercase text-xs md:text-sm font-semibold mb-6 max-w-md text-center leading-tight tracking-wide"
       >
-        PRIJE NEGO ŠTO KRENEMO U DIZAJN I RAZVOJ, PRVO ZASTANEMO I NAPRAVIMO ONO NAJVAŽNIJE – ISTRAŽIMO.
-      </motion.p>
+Brending je više od logotipa, to je osjećaj koji ostavljate na ljude. To je priča, vrijednosti i dojam koji vaš brend gradi kod kupaca. Dobro postavljen brending stvara povjerenje, prepoznatljivost i lojalnost.      </motion.p>
+
+      {/* Horizontalna linija */}
+      <motion.hr
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false }}
+        variants={fadeInUp}
+        className="w-full max-w-5xl border-[#080D10] border-opacity-50 mb-16"
+      />
 
       <div className="w-full max-w-7xl space-y-16 md:space-y-20">
-        {/* 1. Istraživanje - Tekst lijevo, slika desno */}
+        {/* 1. Prepoznatljivost i identitet */}
         <section className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
           <div className="flex-1">
             <motion.div
@@ -45,17 +52,20 @@ const IstrazivanjePage: React.FC = () => {
               whileInView="visible"
               viewport={{ once: false }}
               variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg"
+              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-left"
             >
+              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
+                PREPOZNATLJIVOST I IDENTITET
+              </h3>
               <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                Istraživanje nam omogućuje da razumijemo vaše tržište, vaše idealne klijente i konkurenciju. To je faza koja postavlja čvrste temelje za sve što dolazi kasnije.
+                JAK BREND ZNAČI DA SE TVOJ PROIZVOD ILI USLUGA ISTIČE U MASI. PAZIMO DA TVOJA PRIČA I VIZUALNI IDENTITET BUDU JASNI, KONZISTENTNI I LAKO PREPOZNATLJIVI. TO ZNAČI VIŠE POVJERENJA I LOJALNOSTI KOD TVOJIH KUPACA.
               </p>
             </motion.div>
           </div>
           <div className="flex-1 flex justify-center lg:justify-end">
             <Image
-              src="/istrazivanje/Istrazivanje1.png"
-              alt="Istraživanje ilustracija"
+              src="/branding/Branding1.png"
+              alt="Prepoznatljivost i identitet ilustracija"
               width={400}
               height={400}
               className="w-full max-w-sm lg:max-w-md h-auto"
@@ -63,7 +73,7 @@ const IstrazivanjePage: React.FC = () => {
           </div>
         </section>
 
-        {/* 2. Idealni klijenti - Slika lijevo, tekst desno */}
+        {/* 2. Strategija i fleksibilnost */}
         <section className="flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-16">
           <div className="flex-1">
             <motion.div
@@ -71,20 +81,20 @@ const IstrazivanjePage: React.FC = () => {
               whileInView="visible"
               viewport={{ once: false }}
               variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg"
+              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-right"
             >
               <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                IDEALNI KLIJENTI
+                STRATEGIJA I FLEKSIBILNOST
               </h3>
               <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                U ovoj fazi pokušavamo shvatiti tko su tvoji idealni klijenti, koje karakteristike imaju, kojim se poslom bave i kakve vrijednosti zastupaju. Tek kada to dobro razumijemo, možemo pronaći rješenja koja odgovaraju njihovim stvarnim potrebama i ciljevima.
+                SVAKI BREND IMA SVOJU PRIČU I CILJEVE. ZATO NUDIMO RJEŠENJA PRILAGOĐENA BAŠ VAMA, OD MANJIH DORADA I OSVJEŽAVANJA VIZUALNOG IDENTITETA DO KOMPLETNE STRATEGIJE I IZGRADNJE BREND OD NULE. MOŽETE BIRATI: BRZU I JEDNOSTAVNU NADOGRADNJU POSTOJEĆEG IDENTITETA ILI POTPUNO CUSTOM RJEŠENJE KOJE AUTENTIČNO PRIKAZUJE TKO STE.
               </p>
             </motion.div>
           </div>
           <div className="flex-1 flex justify-center lg:justify-start">
             <Image
-              src="/istrazivanje/Istrazivanje2.png"
-              alt="Idealni klijenti ilustracija"
+              src="/branding/Branding2.png"
+              alt="Strategija i fleksibilnost ilustracija"
               width={400}
               height={400}
               className="w-full max-w-sm lg:max-w-md h-auto"
@@ -92,7 +102,7 @@ const IstrazivanjePage: React.FC = () => {
           </div>
         </section>
 
-        {/* 3. Konkurencija - Tekst lijevo, slika desno */}
+        {/* 3. Što nam je potrebno od vas */}
         <section className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
           <div className="flex-1">
             <motion.div
@@ -100,20 +110,20 @@ const IstrazivanjePage: React.FC = () => {
               whileInView="visible"
               viewport={{ once: false }}
               variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg"
+              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-left"
             >
               <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                KONKURENCIJA
+                ŠTO NAM JE POTREBNO OD VAS
               </h3>
               <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                Istražujemo tko su Vaši glavni konkurenti, što nude i kako se predstavljaju. Analiziramo njihove web stranice, ponude i recenzije kako bismo otkrili što rade dobro i gdje postoje prilike da se vaš brend istakne.
+                DA BISMO NAPRAVILI BREND KOJI STVARNO PREDSTAVLJA VAS, TREBAMO RAZUMJETI: <br /> - KAKAV OSJEĆAJ ŽELITE DA VAŠ VIZUALNI IDENTITET OSTAVI <br /> - KOJU PRIČU VAŠ BREND PRENOSI <br /> - TKO SU VAŠI CILJNI KUPCI I KAKVI SU VAŠI CILJEVI <br /> ŠTO NAM VIŠE INFORMACIJA DATE, TO ĆE VAŠ BREND BITI AUTENTIČNIJI I SNAŽNIJI.
               </p>
             </motion.div>
           </div>
           <div className="flex-1 flex justify-center lg:justify-end">
             <Image
-              src="/istrazivanje/Istrazivanje3.png"
-              alt="Konkurencija ilustracija"
+              src="/branding/Branding3.png"
+              alt="Što nam je potrebno od vas ilustracija"
               width={400}
               height={400}
               className="w-full max-w-sm lg:max-w-md h-auto"
@@ -121,7 +131,7 @@ const IstrazivanjePage: React.FC = () => {
           </div>
         </section>
 
-        {/* 4. Strategija - Slika lijevo, tekst desno */}
+        {/* 4. Implementacija */}
         <section className="flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-16 mb-16">
           <div className="flex-1">
             <motion.div
@@ -129,20 +139,20 @@ const IstrazivanjePage: React.FC = () => {
               whileInView="visible"
               viewport={{ once: false }}
               variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg"
+              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-right"
             >
               <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                STRATEGIJA
+                IMPLEMENTACIJA
               </h3>
               <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                Na kraju povezujemo sve prikupljene informacije i oblikujemo jasne smjernice za Vašu buduću web stranicu. To znači da ćemo točno znati što treba naglasiti, kako se pozicionirati i na koji način kreirati Web stranicu koja će zaista privući pažnju.
+                KADA JE BREND SPREMAN, POKAZUJEMO KAKO SAMOSTALNO ODRŽAVATI DOSLJEDNOST BREND. NAŠ CILJ JE DA VAŠ BREND RASTE ZAJEDNO S VAMA.
               </p>
             </motion.div>
           </div>
           <div className="flex-1 flex justify-center lg:justify-start">
             <Image
-              src="/istrazivanje/Istrazivanje4.png"
-              alt="Strategija ilustracija"
+              src="/branding/Branding4.png"
+              alt="Implementacija ilustracija"
               width={400}
               height={400}
               className="w-full max-w-sm lg:max-w-md h-auto"
@@ -151,24 +161,10 @@ const IstrazivanjePage: React.FC = () => {
         </section>
       </div>
 
-      {/* Zasebni tekst u sredini */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false }}
-        variants={fadeInUp}
-        className="max-w-4xl mx-auto text-center px-4 mb-16 mt-8"
-      >
-        <p className="text-[clamp(1rem,2vw,1.25rem)] leading-relaxed text-[#080D10] font-medium">
-          Istraživanje je možda korak koji se ne vidi odmah izvana, ali ono je ono što daje čvrste temelje svemu što radimo poslije – od strategije do samog dizajna i razvoja.
-        </p>
-      </motion.section>
-      
-      
-            <ContactSection></ContactSection>
-      
+      {/* Contact Section */}
+      <ContactSection />
     </main>
   );
 };
 
-export default IstrazivanjePage;
+export default BrandingPage;

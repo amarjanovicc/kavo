@@ -7,7 +7,7 @@ const services = [
   { id: "001", title: "BRANDING", link: "/branding" },
   { id: "002", title: "GRAFIČKI DIZAJN", link: "/graficki-dizajn" },
   { id: "003", title: "WEB DIZAJN", link: "/web-dizajn" },
-  { id: "004", title: "WEB DEVELOPMENT", link: "/development" },
+  { id: "004", title: "WEB DEVELOPMENT", link: "/web-development" },
 ];
 
 const ServicesSection: React.FC = () => {

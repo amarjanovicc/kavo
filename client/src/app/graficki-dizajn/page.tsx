@@ -13,21 +13,42 @@ const fadeInUp = {
 const GrafickiDizajnPage: React.FC = () => {
   return (
     <main className="bg-[#FFBD00] text-[#080D10] min-h-screen pt-20 md:pt-32 flex flex-col items-center px-4 md:px-8 lg:px-16">
-      {/* Naslov */}
-      <motion.h1
+      {/* Naslov - Exact layout as in the image */}
+      <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false }}
         variants={fadeInUp}
-        className="text-[clamp(3rem,8vw,8rem)] font-extrabold mb-6 tracking-tight text-center"
+        className="text-center mb-6 w-full"
       >
-        GRAFIČKI DIZAJN
-      </motion.h1>
+        <h1 className="text-[clamp(2.5rem,8vw,7rem)] font-black leading-[0.9] tracking-tight">
+          GRAFIČKI
+          <br />
+          DIZAJN
+        </h1>
+      </motion.div>
 
-      
+      {/* Podnaslov */}
+      <motion.p
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false }}
+        variants={fadeInUp}
+        className="uppercase text-xs md:text-sm font-semibold mb-6 max-w-md text-center leading-tight tracking-wide"
+      >
+Grafički dizajn pretvara ideje u vizualnu priču. On daje oblik vašem brendu kroz letke, bannere, kataloge, digitalne i print materijale. Dobar dizajn ne samo da izgleda lijepo, već jasno prenosi poruku i ističe vas pred konkurencijom.      </motion.p>
+
+      {/* Horizontalna linija */}
+      <motion.hr
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false }}
+        variants={fadeInUp}
+        className="w-full max-w-5xl border-[#080D10] border-opacity-50 mb-16"
+      />
 
       <div className="w-full max-w-7xl space-y-16 md:space-y-20">
-        {/* 1. Istraživanje - Tekst lijevo, slika desno */}
+        {/* 1. Vizualna privlačnost - Tekst lijevo, slika desno */}
         <section className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
           <div className="flex-1">
             <motion.div
@@ -35,19 +56,19 @@ const GrafickiDizajnPage: React.FC = () => {
               whileInView="visible"
               viewport={{ once: false }}
               variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg"
+              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-left"
             >
               <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                STALNA PODRŠKA
+                VIZUALNA PRIVLAČNOST
               </h3>
               <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                Redovito pratimo performanse, ažuriramo sustave i pazimo na sigurnost podataka. To znači da ne morate razmišljati o tehničkim detaljima – mi smo tu da rješavamo probleme prije nego što ih vi ili vaši klijenti uopće primijetite.
+                DOBAR DIZAJN ODMAH PRIVLAČI POGLED I OSTAVLJA DOJAM. PAZIMO DA SVAKA VAŠA GRAFIKA BUDE MODERNA, ČISTA I PRILAGOĐENA VAŠOJ CILJANOJ PUBLICI. TO ZNAČI VIŠE KLIKOVA, VEĆU PAŽNJU I BOLJU KOMUNIKACIJU.
               </p>
             </motion.div>
           </div>
           <div className="flex-1 flex justify-center lg:justify-end">
             <Image
-              src="/odrzavanje/Odrzavanje1.png"
+              src="/GrafickiDizajn/GrafickiDizajn1.png"
               alt="Grafički dizajn ilustracija"
               width={400}
               height={400}
@@ -56,7 +77,8 @@ const GrafickiDizajnPage: React.FC = () => {
           </div>
         </section>
 
-        {/* 2. Idealni klijenti - Slika lijevo, tekst desno */}
+        {/* Rest of the component remains the same */}
+        {/* 2. Fleksibilnost i kreativnost - Slika lijevo, tekst desno */}
         <section className="flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-16">
           <div className="flex-1">
             <motion.div
@@ -64,19 +86,19 @@ const GrafickiDizajnPage: React.FC = () => {
               whileInView="visible"
               viewport={{ once: false }}
               variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg"
+              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-right"
             >
               <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                SVJEŽ SADRŽAJ
+                FLEKSIBILNOST I KREATIVNOST
               </h3>
               <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                Web stranica živi samo ako se redovito obnavlja. Po potrebi unosimo nove sadržaje, fotografije i vijesti, kako bi vaši posjetitelji uvijek pronašli nešto aktualno i vrijedno pažnje.
+                SVAKI PROJEKT JE DRUGAČIJI. ZATO NUDIMO DIZAJN RJEŠENJA ZA LETKE, KATALOGE, BANNERE, DRUŠTVENE MREŽE, MAJICE, PAKIRANJA I JOŠ PUNO VIŠE. MOŽEMO NAPRAVITI JEDNOSTAVNIJA I BRZA RJEŠENJA ILI POTPUNO UNIKATNE DIZAJNE OD NULE – SVE OVISI O VAŠIM CILJEVIMA I POTREBAMA.
               </p>
             </motion.div>
           </div>
           <div className="flex-1 flex justify-center lg:justify-start">
             <Image
-              src="/odrzavanje/Odrzavanje2.png"
+              src="/GrafickiDizajn/GrafickiDizajn2.png"
               alt="Kreativni dizajn ilustracija"
               width={400}
               height={400}
@@ -85,7 +107,7 @@ const GrafickiDizajnPage: React.FC = () => {
           </div>
         </section>
 
-        {/* 3. Konkurencija - Tekst lijevo, slika desno */}
+        {/* 3. Što nam je potrebno od vas - Tekst lijevo, slika desno */}
         <section className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
           <div className="flex-1">
             <motion.div
@@ -93,19 +115,19 @@ const GrafickiDizajnPage: React.FC = () => {
               whileInView="visible"
               viewport={{ once: false }}
               variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg"
+              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-left"
             >
               <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                DIGITALNI RAST
+                ŠTO NAM JE POTREBNO OD VAS
               </h3>
               <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                Održavanje ne staje na webu – pomažemo vam i u širem digitalnom nastupu. Nudimo vođenje društvenih mreža, kreiranje i upravljanje kampanjama, email marketing i druge usluge koje zajedno s vašom web stranicom čine snažan online nastup.
+                DA BI DIZAJN BIO ŠTO UČINKOVITIJI, TREBAMO ZNATI: <br /> - ŠTO VAŠ POSTOJEĆI VIZUALNI IDENTITET TRENUTNO KOMUNICIRA, <br /> - ŽELITE LI DA DIZAJN NAGLAŠAVA BREND, PROIZVOD ILI NEKU TREĆU VRIJEDNOST, <br /> - GDJE ĆE SE DIZAJNI KORISTITI (DIGITAL, PRINT, ILI OBOJE)... <br /> ŠTO JASNIJE ZNAMO KONTEKST, TO BOLJE MOŽEMO POGODITI DIZAJN KOJI KOMUNICIRA PRAVU PORUKU.
               </p>
             </motion.div>
           </div>
           <div className="flex-1 flex justify-center lg:justify-end">
             <Image
-              src="/odrzavanje/Odrzavanje3.png"
+              src="/GrafickiDizajn/GrafickiDizajn3.png"
               alt="Brendiranje ilustracija"
               width={400}
               height={400}
@@ -114,36 +136,40 @@ const GrafickiDizajnPage: React.FC = () => {
           </div>
         </section>
 
-        {/* 4. Samo slika */}
-        <section className="w-full flex justify-center items-center my-20">
-          <div className="w-full max-w-3xl aspect-[589/623] relative">
+        {/* 4. Isporuka - Slika lijevo, tekst desno */}
+        <section className="flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-16 mb-16">
+          <div className="flex-1">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false }}
+              variants={fadeInUp}
+              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-right"
+            >
+              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
+                ISPORUKA
+              </h3>
+              <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
+                GOTOVE DIZAJNE PREDAJEMO U SVIM FORMATIMA KOJI SU VAM POTREBNI, OD DIGITALNIH DO PRINTA. TIME STE ODMAH SPREMNI KORISTITI MATERIJALE NA SVIM KANALIMA BEZ DODATNIH PRILAGODBI.
+              </p>
+            </motion.div>
+          </div>
+          <div className="flex-1 flex justify-center lg:justify-start">
             <Image
-              src="/odrzavanje/Odrzavanje4.png"
-              alt="Finalni dizajn ilustracija"
-              fill
-              className="object-contain"
+              src="/GrafickiDizajn/GrafickiDizajn4.png"
+              alt="Isporuka ilustracija"
+              width={400}
+              height={400}
+              className="w-full max-w-sm lg:max-w-md h-auto"
             />
           </div>
         </section>
       </div>
 
-      {/* Zasebni tekst u sredini */}
-      <motion.section
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false }}
-        variants={fadeInUp}
-        className="max-w-4xl mx-auto text-center px-4 mb-16 mt-8"
-      >
-        <p className="text-[clamp(1rem,2vw,1.25rem)] leading-relaxed text-[#080D10] font-medium">
-          Naša misija nije samo izrada web stranice, nego i dugoročna suradnja. Uz nas imate partnera koji će pratiti vaš digitalni razvoj i pomagati vam da uvijek budete korak ispred konkurencije.
-        </p>
-      </motion.section>
-            <ContactSection></ContactSection>
-      
+      {/* Contact Section */}
+      <ContactSection />
     </main>
   );
 };
 
 export default GrafickiDizajnPage;
- 
