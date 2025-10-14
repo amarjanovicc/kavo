@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import Script from 'next/script';
 import { portfolioSchema } from '@/lib/schema';
 
@@ -123,7 +122,7 @@ const ProjectsSection: React.FC = () => {
         <div className="projects-container">
           {/* First row */}
           <div className="item-laptop">
-            <Link href={projects[0].link} className="project-item" style={{ backgroundColor: projects[0].color }}>
+            <div className="project-item" style={{ backgroundColor: projects[0].color }}>
               <div className="image-container">
                 <Image 
                   src={projects[0].image} 
@@ -142,11 +141,11 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
           
           <div className="item-lantern">
-            <Link href={projects[1].link} className="project-item" style={{ backgroundColor: projects[1].color }}>
+            <div className="project-item" style={{ backgroundColor: projects[1].color }}>
               <div className="image-container">
                 <Image 
                   src={projects[1].image} 
@@ -165,11 +164,11 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
           
           <div className="item-brochure">
-            <Link href={projects[2].link} className="project-item" style={{ backgroundColor: projects[2].color }}>
+            <div className="project-item" style={{ backgroundColor: projects[2].color }}>
               <div className="image-container">
                 <Image 
                   src={projects[2].image} 
@@ -188,12 +187,12 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
           
           {/* Second row */}
           <div className="item-packaging">
-            <Link href={projects[3].link} className="project-item" style={{ backgroundColor: projects[3].color }}>
+            <div className="project-item" style={{ backgroundColor: projects[3].color }}>
               <div className="image-container">
                 <Image 
                   src={projects[3].image} 
@@ -211,11 +210,11 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
           
           <div className="item-product">
-            <Link href={projects[4].link} className="project-item" style={{ backgroundColor: projects[4].color }}>
+            <div className="project-item" style={{ backgroundColor: projects[4].color }}>
               <div className="image-container">
                 <Image 
                   src={projects[4].image} 
@@ -233,11 +232,11 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
           
           <div className="item-website">
-            <Link href={projects[5].link} className="project-item" style={{ backgroundColor: projects[5].color }}>
+            <div className="project-item" style={{ backgroundColor: projects[5].color }}>
               <div className="image-container">
                 <Image 
                   src={projects[5].image} 
@@ -255,12 +254,12 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
           
           {/* Third row */}
           <div className="item-appgame">
-            <Link href={projects[6].link} className="project-item" style={{ backgroundColor: projects[6].color }}>
+            <div className="project-item" style={{ backgroundColor: projects[6].color }}>
               <div className="image-container">
                 <Image 
                   src={projects[6].image} 
@@ -277,12 +276,12 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
           
           {/* Fourth row */}
           <div className="item-phone">
-            <Link href={projects[7].link} className="project-item" style={{ backgroundColor: projects[7].color }}>
+            <div className="project-item" style={{ backgroundColor: projects[7].color }}>
               <div className="image-container">
                 <Image 
                   src={projects[7].image} 
@@ -299,11 +298,11 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
           
           <div className="item-gogi">
-            <Link href={projects[8].link} className="project-item" style={{ backgroundColor: projects[8].color }}>
+            <div className="project-item" style={{ backgroundColor: projects[8].color }}>
               <div className="image-container">
                 <Image 
                   src={projects[8].image} 
@@ -320,11 +319,11 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
           
           <div className="item-band">
-            <Link href={projects[9].link} className="project-item" style={{ backgroundColor: projects[9].color }}>
+            <div className="project-item" style={{ backgroundColor: projects[9].color }}>
               <div className="image-container">
                 <Image 
                   src={projects[9].image} 
@@ -341,7 +340,7 @@ const ProjectsSection: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </Link>
+            </div>
           </div>
         </div>
       </div>

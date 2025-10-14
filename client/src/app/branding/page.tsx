@@ -12,14 +12,14 @@ const fadeInUp = {
 
 const BrandingPage: React.FC = () => {
   return (
-    <main className="bg-[#FFBD00] text-[#080D10] min-h-screen pt-20 md:pt-32 flex flex-col items-center px-6 md:px-12 lg:px-20">
+    <main className="bg-[#FFBD00] text-[#080D10] min-h-screen pt-28 md:pt-36 flex flex-col items-center px-4 md:px-8 lg:px-16">
       {/* Naslov */}
       <motion.h1
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false }}
         variants={fadeInUp}
-        className="text-[clamp(3rem,8vw,8rem)] font-extrabold mb-6 tracking-tight text-center"
+        className="text-[clamp(2.5rem,6vw,6rem)] font-extrabold mb-6 tracking-tight text-center"
       >
         BRANDING
       </motion.h1>
@@ -30,9 +30,12 @@ const BrandingPage: React.FC = () => {
         whileInView="visible"
         viewport={{ once: false }}
         variants={fadeInUp}
-        className="uppercase text-xs md:text-sm font-semibold mb-6 max-w-md text-center leading-tight tracking-wide"
+        className="text-base md:text-lg font-semibold mb-6 max-w-2xl text-center px-4 leading-relaxed"
       >
-Brending je više od logotipa, to je osjećaj koji ostavljate na ljude. To je priča, vrijednosti i dojam koji vaš brend gradi kod kupaca. Dobro postavljen brending stvara povjerenje, prepoznatljivost i lojalnost.      </motion.p>
+        Brending je više od logotipa, to je osjećaj koji ostavljate na ljude. To je
+        priča, vrijednosti i dojam koji vaš brend gradi kod kupaca. Dobro postavljen
+        brending stvara povjerenje, prepoznatljivost i lojalnost.
+      </motion.p>
 
       {/* Horizontalna linija */}
       <motion.hr
@@ -43,125 +46,138 @@ Brending je više od logotipa, to je osjećaj koji ostavljate na ljude. To je pr
         className="w-full max-w-5xl border-[#080D10] border-opacity-50 mb-16"
       />
 
-      <div className="w-full max-w-7xl space-y-16 md:space-y-20">
-        {/* 1. Prepoznatljivost i identitet */}
-        <section className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
-          <div className="flex-1">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false }}
-              variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-left"
-            >
-              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                PREPOZNATLJIVOST I IDENTITET
-              </h3>
-              <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                JAK BREND ZNAČI DA SE TVOJ PROIZVOD ILI USLUGA ISTIČE U MASI. PAZIMO DA TVOJA PRIČA I VIZUALNI IDENTITET BUDU JASNI, KONZISTENTNI I LAKO PREPOZNATLJIVI. TO ZNAČI VIŠE POVJERENJA I LOJALNOSTI KOD TVOJIH KUPACA.
+      <div className="w-full max-w-7xl space-y-16 md:space-y-24">
+        {/* 1. Sekcija - text on the left side */}
+        <section className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={fadeInUp}
+            className="flex-1"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-10">
+              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4 text-[#080D10] text-left">
+                Prepoznatljivost i identitet
+              </h2>
+              <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-left">
+                Jak brend znači da se tvoj proizvod ili usluga ističe u masi. Pazimo
+                da tvoja priča i vizualni identitet budu jasni, konzistentni i lako
+                prepoznatljivi. To znači više povjerenja i lojalnosti kod tvojih
+                kupaca.
               </p>
-            </motion.div>
-          </div>
-          <div className="flex-1 flex justify-center lg:justify-end">
+            </div>
+          </motion.div>
+          <div className="flex-1 flex justify-center">
             <Image
               src="/branding/Branding1.png"
               alt="Prepoznatljivost i identitet ilustracija"
-              width={400}
-              height={400}
-              className="w-full max-w-sm lg:max-w-md h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-lg h-auto"
             />
           </div>
         </section>
 
-        {/* 2. Strategija i fleksibilnost */}
-        <section className="flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-16">
-          <div className="flex-1">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false }}
-              variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-right"
-            >
-              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                STRATEGIJA I FLEKSIBILNOST
-              </h3>
-              <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                SVAKI BREND IMA SVOJU PRIČU I CILJEVE. ZATO NUDIMO RJEŠENJA PRILAGOĐENA BAŠ VAMA, OD MANJIH DORADA I OSVJEŽAVANJA VIZUALNOG IDENTITETA DO KOMPLETNE STRATEGIJE I IZGRADNJE BREND OD NULE. MOŽETE BIRATI: BRZU I JEDNOSTAVNU NADOGRADNJU POSTOJEĆEG IDENTITETA ILI POTPUNO CUSTOM RJEŠENJE KOJE AUTENTIČNO PRIKAZUJE TKO STE.
+        {/* 2. Sekcija - text on the right side */}
+        <section className="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 lg:gap-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={fadeInUp}
+            className="flex-1"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-10">
+              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4 text-[#080D10] text-right">
+                Strategija i fleksibilnost
+              </h2>
+              <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-right">
+                Svaki brend ima svoju priču i ciljeve. Zato nudimo rješenja
+                prilagođena baš vama, od manjih dorada i osvježavanja vizualnog
+                identiteta do kompletne strategije i izgradnje brend od nule.
+                Možete birati: brzu i jednostavnu nadogradnju postojećeg identiteta
+                ili potpuno custom rješenje koje autentično prikazuje tko ste.
               </p>
-            </motion.div>
-          </div>
-          <div className="flex-1 flex justify-center lg:justify-start">
+            </div>
+          </motion.div>
+          <div className="flex-1 flex justify-center">
             <Image
               src="/branding/Branding2.png"
               alt="Strategija i fleksibilnost ilustracija"
-              width={400}
-              height={400}
-              className="w-full max-w-sm lg:max-w-md h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-lg h-auto"
             />
           </div>
         </section>
 
-        {/* 3. Što nam je potrebno od vas */}
-        <section className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
-          <div className="flex-1">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false }}
-              variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-left"
-            >
-              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                ŠTO NAM JE POTREBNO OD VAS
-              </h3>
-              <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                DA BISMO NAPRAVILI BREND KOJI STVARNO PREDSTAVLJA VAS, TREBAMO RAZUMJETI: <br /> - KAKAV OSJEĆAJ ŽELITE DA VAŠ VIZUALNI IDENTITET OSTAVI <br /> - KOJU PRIČU VAŠ BREND PRENOSI <br /> - TKO SU VAŠI CILJNI KUPCI I KAKVI SU VAŠI CILJEVI <br /> ŠTO NAM VIŠE INFORMACIJA DATE, TO ĆE VAŠ BREND BITI AUTENTIČNIJI I SNAŽNIJI.
+        {/* 3. Sekcija - text on the left side */}
+        <section className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={fadeInUp}
+            className="flex-1"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-10">
+              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4 text-[#080D10] text-left">
+                Što nam je potrebno od vas
+              </h2>
+              <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-left">
+                Da bismo napravili brend koji stvarno predstavlja vas, trebamo
+                razumjeti: <br />
+                - Kakav osjećaj želite da vaš vizualni identitet ostavi <br />
+                - Koju priču vaš brend prenosi <br />
+                - Tko su vaši ciljni kupci i kakvi su vaši ciljevi <br />
+                Što nam više informacija date, to će vaš brend biti autentičniji i
+                snažniji.
               </p>
-            </motion.div>
-          </div>
-          <div className="flex-1 flex justify-center lg:justify-end">
+            </div>
+          </motion.div>
+          <div className="flex-1 flex justify-center">
             <Image
               src="/branding/Branding3.png"
               alt="Što nam je potrebno od vas ilustracija"
-              width={400}
-              height={400}
-              className="w-full max-w-sm lg:max-w-md h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-lg h-auto"
             />
           </div>
         </section>
 
-        {/* 4. Implementacija */}
-        <section className="flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-16 mb-16">
-          <div className="flex-1">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false }}
-              variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-right"
-            >
-              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                IMPLEMENTACIJA
-              </h3>
-              <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                KADA JE BREND SPREMAN, POKAZUJEMO KAKO SAMOSTALNO ODRŽAVATI DOSLJEDNOST BREND. NAŠ CILJ JE DA VAŠ BREND RASTE ZAJEDNO S VAMA.
+        {/* 4. Sekcija - text on the right side */}
+        <section className="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 lg:gap-16 mb-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={fadeInUp}
+            className="flex-1"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-10">
+              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4 text-[#080D10] text-right">
+                Implementacija
+              </h2>
+              <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-right">
+                Kada je brend spreman, pokazujemo kako samostalno održavati
+                dosljednost brend. Naš cilj je da vaš brend raste zajedno s vama.
               </p>
-            </motion.div>
-          </div>
-          <div className="flex-1 flex justify-center lg:justify-start">
+            </div>
+          </motion.div>
+          <div className="flex-1 flex justify-center">
             <Image
               src="/branding/Branding4.png"
               alt="Implementacija ilustracija"
-              width={400}
-              height={400}
-              className="w-full max-w-sm lg:max-w-md h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-lg h-auto"
             />
           </div>
         </section>
       </div>
 
-      {/* Contact Section */}
       <ContactSection />
     </main>
   );

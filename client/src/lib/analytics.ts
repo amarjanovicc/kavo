@@ -13,7 +13,6 @@ export function trackEvent(
     event_category: category,
     event_label: label,
     value: value ?? null,
-    send_to: 'G-SE67JEGG2P',
   });
 }
 

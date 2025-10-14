@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const services = [
-  { id: "001", title: "BRANDING", link: "/branding" },
-  { id: "002", title: "GRAFIČKI DIZAJN", link: "/graficki-dizajn" },
-  { id: "003", title: "WEB DIZAJN", link: "/web-dizajn" },
-  { id: "004", title: "WEB DEVELOPMENT", link: "/web-development" },
+  { id: "001", title: "Branding", link: "/branding" },
+  { id: "002", title: "Grafički dizajn", link: "/graficki-dizajn" },
+  { id: "003", title: "Web dizajn", link: "/web-dizajn" },
+  { id: "004", title: "Web development", link: "/web-development" },
 ];
 
 const ServicesSection: React.FC = () => {
@@ -25,13 +25,13 @@ const ServicesSection: React.FC = () => {
         <h2 className="text-[clamp(2.5rem,8vw,7rem)] font-extrabold text-[#FFBD00] text-center mb-6 sm:mb-8 tracking-tight w-full">
           ŠTO RADIMO
         </h2>
-        <p className="text-center max-w-full text-[clamp(0.85rem,2vw,1rem)] uppercase tracking-widest mb-14 sm:mb-20 text-[#EBECE7]">
+        <p className="text-center max-w-full text-[clamp(0.85rem,2vw,1rem)] tracking-widest mb-14 sm:mb-20 text-[#EBECE7]">
           Vjerujemo da poduzeća ne bi trebala samo postojati – već ostaviti dojam.
         </p>
       </div>
 
       <div className="flex flex-col max-w-5xl mx-auto">
-        {services.map((service, index) => (
+        {services.map((service, ) => (
           <div
             key={service.id}
             className={`
@@ -76,38 +76,7 @@ const ServicesSection: React.FC = () => {
                 }
               `}
             >
-              ({service.id})
-            </span>
-
-            <h3
-              className={`
-                relative z-10 text-[clamp(1.2rem,4vw,2.5rem)] sm:text-[clamp(1.6rem,4vw,2.5rem)] font-bold flex-1 mx-4 sm:mx-8
-                transition-all duration-500 ease-out
-                text-center 
-                ${index === 0 ? 'lg:text-left' : 
-                  index === 1 ? 'lg:text-right' : 
-                  index === 2 ? 'lg:text-center' : 
-                  'lg:text-center'}
-                ${focusedId === service.id 
-                  ? 'transform translate-y-[-2px] text-[#080D10]' 
-                  : 'group-hover:transform group-hover:translate-y-[-2px] group-hover:text-[#080D10]'
-                }
-              `}
-            >
-              {service.title}
-            </h3>
-
-            <span
-              className={`
-                relative z-10 text-xs sm:text-sm md:text-base uppercase tracking-wide flex-shrink-0
-                transition-all duration-300 text-right
-                ${focusedId === service.id 
-                  ? 'text-[#080D10] font-bold transform scale-110' 
-                  : 'group-hover:text-[#080D10] group-hover:font-semibold group-hover:scale-105'
-                }
-              `}
-            >
-              Istraži
+              ()
             </span>
 
             <div 
@@ -123,8 +92,6 @@ const ServicesSection: React.FC = () => {
           </div>
         ))}
       </div>
-
- 
     </section>
   );
 };

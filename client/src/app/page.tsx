@@ -25,7 +25,7 @@ export default function HomePage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebPage',
-            name: 'Kavo | Kreativna agencija za dizajn i tehnologiju',
+            name: 'Kavo | Kreativna agencija za izradu web stranica, grafički dizajn i digitalni marketing',
             description: 'Kavo je kreativna agencija specijalizirana za grafički dizajn, branding, web razvoj i digitalni marketing. Stvaramo jedinstvene vizualne identitete.',
             url: 'https://kavo.studio',
             mainEntity: {

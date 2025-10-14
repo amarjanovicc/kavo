@@ -3,7 +3,6 @@ import { ReactNode } from 'react';
 import Navbar from '@/components/Navbar/Navbar';
 import Footer from '@/components/Footer/Footer';
 import { AnimationProvider } from '@/context/AnimationContext';
-import { organizationSchema } from '@/lib/schema';
 import Script from 'next/script';
 import Analytics from '@/components/Analytics';
 import { metadata } from './metadata';
@@ -31,7 +30,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Script
           id="organization-schema"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify({}) }}
           strategy="afterInteractive"
         />
       </body>

@@ -46,7 +46,7 @@ export default function ContactPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage] = useState("");
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const toggleMulti = (field: "helpWith", value: string) => {
     setForm((prev) => ({
@@ -56,6 +56,63 @@ export default function ContactPage() {
         : [...prev[field], value],
     }));
   };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      const response = await fetch("https://formspree.io/f/mzzjvlbn", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+      
+      if (response.ok) {
+        setSubmitMessage("Hvala vam! Vaša poruka je poslana. Javit ćemo vam se uskoro.");
+        setForm({
+          name: "",
+          company: "",
+          email: "",
+          projectDetails: "",
+          foundBy: "",
+          helpWith: [],
+          budget: "",
+        });
+      } else {
+        setSubmitMessage("Došlo je do greške. Molimo pokušajte ponovo.");
+      }
+    } catch (error) {
+      setSubmitMessage("Došlo je do greške. Molimo pokušajte ponovo.");
+    }
+    
+    setIsSubmitting(false);
+  };
+
+  const services = [
+    {
+      id: "branding",
+      title: "Branding",
+      description: "Izgradnja identiteta vašeg brenda - logo, boje, slogani i kompletna vizualna strategija"
+    },
+    {
+      id: "graphic-design",
+      title: "Grafički dizajn",
+      description: "Letci, plakati, katalogi, društvene mreže i svi print/digitalni materijali"
+    },
+    {
+      id: "web-design",
+      title: "Web dizajn",
+      description: "Dizajn modernih i funkcionalnih web stranica koje privlače i zadržavaju posjetitelje"
+    },
+    {
+      id: "web-development",
+      title: "Web development",
+      description: "Izrada web stranice - od jednostavnih do kompleksnih aplikacija"
+    }
+  ];
 
   return (
     <section className="w-full bg-[#080D10] text-white min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-24 md:py-32">
@@ -114,15 +171,13 @@ export default function ContactPage() {
           </motion.div>
         )}
 
-        {/* Forma - profesionalno oblikovana - UPDATED WITH FORMSPREE */}
+        {/* Forma - profesionalno oblikovana */}
         <motion.form
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          action="https://formspree.io/f/mzzjvlbn"
-          method="POST"
+          onSubmit={handleSubmit}
           className="space-y-10 md:space-y-12"
-          onSubmit={() => setIsSubmitting(true)}
         >
           {/* Ime i tvrtka - premium design */}
           <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
@@ -213,26 +268,26 @@ export default function ContactPage() {
               S čime vam možemo pomoći? 
               <span className="text-sm text-gray-400 font-normal ml-2">(Možete odabrati više opcija)</span>
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              { [
-                "Dizajn nove web stranice",
-                "Izrada web stranice", 
-                "Redizajn postojeće stranice",
-                "Održavanje web stranice"
-              ].map((opt) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {services.map((service) => (
                 <motion.button
-                  key={opt}
+                  key={service.id}
                   type="button"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => toggleMulti("helpWith", opt)}
-                  className={`px-4 py-4 rounded-lg font-medium border-2 transition-all duration-300 text-sm text-left ${
-                    form.helpWith.includes(opt)
+                  onClick={() => toggleMulti("helpWith", service.title)}
+                  className={`p-4 rounded-lg border-2 transition-all duration-300 text-left ${
+                    form.helpWith.includes(service.title)
                       ? "bg-yellow-400 text-[#080D10] border-yellow-400 shadow-lg shadow-yellow-400/25"
                       : "bg-white/5 border-gray-600/50 text-white hover:border-yellow-400/50 hover:bg-white/10"
                   }`}
                 >
-                  {opt}
+                  <div className="font-semibold text-sm mb-1">{service.title}</div>
+                  <div className={`text-xs leading-relaxed ${
+                    form.helpWith.includes(service.title) ? "text-[#080D10]/80" : "text-gray-400"
+                  }`}>
+                    {service.description}
+                  </div>
                 </motion.button>
               ))}
             </div>

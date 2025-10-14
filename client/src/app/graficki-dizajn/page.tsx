@@ -12,21 +12,17 @@ const fadeInUp = {
 
 const GrafickiDizajnPage: React.FC = () => {
   return (
-    <main className="bg-[#FFBD00] text-[#080D10] min-h-screen pt-20 md:pt-32 flex flex-col items-center px-4 md:px-8 lg:px-16">
-      {/* Naslov - Exact layout as in the image */}
-      <motion.div
+    <main className="bg-[#FFBD00] text-[#080D10] min-h-screen pt-28 md:pt-36 flex flex-col items-center px-4 md:px-8 lg:px-16">
+      {/* Naslov */}
+      <motion.h1
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false }}
         variants={fadeInUp}
-        className="text-center mb-6 w-full"
+        className="text-[clamp(2.5rem,6vw,6rem)] font-extrabold mb-6 tracking-tight text-center"
       >
-        <h1 className="text-[clamp(2.5rem,8vw,7rem)] font-black leading-[0.9] tracking-tight">
-          GRAFIČKI
-          <br />
-          DIZAJN
-        </h1>
-      </motion.div>
+        GRAFIČKI DIZAJN
+      </motion.h1>
 
       {/* Podnaslov */}
       <motion.p
@@ -34,9 +30,10 @@ const GrafickiDizajnPage: React.FC = () => {
         whileInView="visible"
         viewport={{ once: false }}
         variants={fadeInUp}
-        className="uppercase text-xs md:text-sm font-semibold mb-6 max-w-md text-center leading-tight tracking-wide"
+        className="text-base md:text-lg font-semibold mb-6 max-w-2xl text-center px-4 leading-relaxed"
       >
-Grafički dizajn pretvara ideje u vizualnu priču. On daje oblik vašem brendu kroz letke, bannere, kataloge, digitalne i print materijale. Dobar dizajn ne samo da izgleda lijepo, već jasno prenosi poruku i ističe vas pred konkurencijom.      </motion.p>
+        Grafički dizajn pretvara ideje u vizualnu priču. On daje oblik vašem brendu kroz letke, bannere, kataloge, digitalne i print materijale. Dobar dizajn ne samo da izgleda lijepo, već jasno prenosi poruku i ističe vas pred konkurencijom.
+      </motion.p>
 
       {/* Horizontalna linija */}
       <motion.hr
@@ -47,126 +44,128 @@ Grafički dizajn pretvara ideje u vizualnu priču. On daje oblik vašem brendu k
         className="w-full max-w-5xl border-[#080D10] border-opacity-50 mb-16"
       />
 
-      <div className="w-full max-w-7xl space-y-16 md:space-y-20">
-        {/* 1. Vizualna privlačnost - Tekst lijevo, slika desno */}
-        <section className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
-          <div className="flex-1">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false }}
-              variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-left"
-            >
-              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                VIZUALNA PRIVLAČNOST
-              </h3>
-              <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                DOBAR DIZAJN ODMAH PRIVLAČI POGLED I OSTAVLJA DOJAM. PAZIMO DA SVAKA VAŠA GRAFIKA BUDE MODERNA, ČISTA I PRILAGOĐENA VAŠOJ CILJANOJ PUBLICI. TO ZNAČI VIŠE KLIKOVA, VEĆU PAŽNJU I BOLJU KOMUNIKACIJU.
+      <div className="w-full max-w-7xl space-y-16 md:space-y-24">
+        {/* 1. Sekcija - text on the left side */}
+        <section className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={fadeInUp}
+            className="flex-1"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-10">
+              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4 text-[#080D10] text-left">
+                Vizualna privlačnost
+              </h2>
+              <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-left">
+                Dobar dizajn odmah privlači pogled i ostavlja dojam. Pazimo da svaka vaša grafika bude moderna, čista i prilagođena vašoj ciljanoj publici. To znači više klikova, veću pažnju i bolju komunikaciju.
               </p>
-            </motion.div>
-          </div>
-          <div className="flex-1 flex justify-center lg:justify-end">
+            </div>
+          </motion.div>
+          <div className="flex-1 flex justify-center">
             <Image
               src="/GrafickiDizajn/GrafickiDizajn1.png"
               alt="Grafički dizajn ilustracija"
-              width={400}
-              height={400}
-              className="w-full max-w-sm lg:max-w-md h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-lg h-auto"
             />
           </div>
         </section>
 
-        {/* Rest of the component remains the same */}
-        {/* 2. Fleksibilnost i kreativnost - Slika lijevo, tekst desno */}
-        <section className="flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-16">
-          <div className="flex-1">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false }}
-              variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-right"
-            >
-              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                FLEKSIBILNOST I KREATIVNOST
-              </h3>
-              <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                SVAKI PROJEKT JE DRUGAČIJI. ZATO NUDIMO DIZAJN RJEŠENJA ZA LETKE, KATALOGE, BANNERE, DRUŠTVENE MREŽE, MAJICE, PAKIRANJA I JOŠ PUNO VIŠE. MOŽEMO NAPRAVITI JEDNOSTAVNIJA I BRZA RJEŠENJA ILI POTPUNO UNIKATNE DIZAJNE OD NULE – SVE OVISI O VAŠIM CILJEVIMA I POTREBAMA.
+        {/* 2. Sekcija - text on the right side */}
+        <section className="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 lg:gap-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={fadeInUp}
+            className="flex-1"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-10">
+              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4 text-[#080D10] text-right">
+                Fleksibilnost i kreativnost
+              </h2>
+              <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-right">
+                Svaki projekt je drugačiji. Zato nudimo dizajn rješenja za letke, kataloge, bannere, društvene mreže, majice, pakiranja i još puno više. Možemo napraviti jednostavnija i brza rješenja ili potpuno unikatne dizajne od nule – sve ovisi o vašim ciljevima i potrebama.
               </p>
-            </motion.div>
-          </div>
-          <div className="flex-1 flex justify-center lg:justify-start">
+            </div>
+          </motion.div>
+          <div className="flex-1 flex justify-center">
             <Image
               src="/GrafickiDizajn/GrafickiDizajn2.png"
               alt="Kreativni dizajn ilustracija"
-              width={400}
-              height={400}
-              className="w-full max-w-sm lg:max-w-md h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-lg h-auto"
             />
           </div>
         </section>
 
-        {/* 3. Što nam je potrebno od vas - Tekst lijevo, slika desno */}
-        <section className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16">
-          <div className="flex-1">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false }}
-              variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-left"
-            >
-              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                ŠTO NAM JE POTREBNO OD VAS
-              </h3>
-              <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                DA BI DIZAJN BIO ŠTO UČINKOVITIJI, TREBAMO ZNATI: <br /> - ŠTO VAŠ POSTOJEĆI VIZUALNI IDENTITET TRENUTNO KOMUNICIRA, <br /> - ŽELITE LI DA DIZAJN NAGLAŠAVA BREND, PROIZVOD ILI NEKU TREĆU VRIJEDNOST, <br /> - GDJE ĆE SE DIZAJNI KORISTITI (DIGITAL, PRINT, ILI OBOJE)... <br /> ŠTO JASNIJE ZNAMO KONTEKST, TO BOLJE MOŽEMO POGODITI DIZAJN KOJI KOMUNICIRA PRAVU PORUKU.
+        {/* 3. Sekcija - text on the left side */}
+        <section className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12 lg:gap-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={fadeInUp}
+            className="flex-1"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-10">
+              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4 text-[#080D10] text-left">
+                Što nam je potrebno od vas
+              </h2>
+              <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-left">
+                Da bi dizajn bio što učinkovitiji, trebamo znati: <br />
+                - Što vaš postojeći vizualni identitet trenutno komunicira <br />
+                - Želite li da dizajn naglašava brend, proizvod ili neku treću vrijednost <br />
+                - Gdje će se dizajni koristiti (digital, print, ili oboje) <br />
+                Što jasnije znamo kontekst, to bolje možemo pogoditi dizajn koji komunicira pravu poruku.
               </p>
-            </motion.div>
-          </div>
-          <div className="flex-1 flex justify-center lg:justify-end">
+            </div>
+          </motion.div>
+          <div className="flex-1 flex justify-center">
             <Image
               src="/GrafickiDizajn/GrafickiDizajn3.png"
               alt="Brendiranje ilustracija"
-              width={400}
-              height={400}
-              className="w-full max-w-sm lg:max-w-md h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-lg h-auto"
             />
           </div>
         </section>
 
-        {/* 4. Isporuka - Slika lijevo, tekst desno */}
-        <section className="flex flex-col lg:flex-row-reverse items-center justify-between gap-8 lg:gap-16 mb-16">
-          <div className="flex-1">
-            <motion.div
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false }}
-              variants={fadeInUp}
-              className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg text-right"
-            >
-              <h3 className="text-[clamp(1rem,2vw,1.5rem)] font-bold uppercase mb-3 text-[#080D10]">
-                ISPORUKA
-              </h3>
-              <p className="text-[clamp(0.875rem,1.5vw,1.125rem)] leading-relaxed text-[#080D10] font-medium">
-                GOTOVE DIZAJNE PREDAJEMO U SVIM FORMATIMA KOJI SU VAM POTREBNI, OD DIGITALNIH DO PRINTA. TIME STE ODMAH SPREMNI KORISTITI MATERIJALE NA SVIM KANALIMA BEZ DODATNIH PRILAGODBI.
+        {/* 4. Sekcija - text on the right side */}
+        <section className="flex flex-col md:flex-row-reverse items-center justify-between gap-8 md:gap-12 lg:gap-16 mb-16">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false }}
+            variants={fadeInUp}
+            className="flex-1"
+          >
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-10">
+              <h2 className="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-4 text-[#080D10] text-right">
+                Isporuka
+              </h2>
+              <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-right">
+                Gotove dizajne predajemo u svim formatima koji su vam potrebni, od digitalnih do printa. Time ste odmah spremni koristiti materijale na svim kanalima bez dodatnih prilagodbi.
               </p>
-            </motion.div>
-          </div>
-          <div className="flex-1 flex justify-center lg:justify-start">
+            </div>
+          </motion.div>
+          <div className="flex-1 flex justify-center">
             <Image
               src="/GrafickiDizajn/GrafickiDizajn4.png"
               alt="Isporuka ilustracija"
-              width={400}
-              height={400}
-              className="w-full max-w-sm lg:max-w-md h-auto"
+              width={500}
+              height={500}
+              className="w-full max-w-lg h-auto"
             />
           </div>
         </section>
       </div>
 
-      {/* Contact Section */}
       <ContactSection />
     </main>
   );
