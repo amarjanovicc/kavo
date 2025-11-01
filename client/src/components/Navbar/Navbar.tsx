@@ -22,7 +22,7 @@ const links = [
     ] 
   },
   { href: '/#portfolio', label: 'Portfolio' },
-  { href: '/#contact', label: 'Kontakt' },
+  { href: '/contact', label: 'Kontakt' },
 ];
 
 const Navbar: React.FC = () => {

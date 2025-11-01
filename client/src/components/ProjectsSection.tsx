@@ -67,15 +67,15 @@ const projects: Project[] = [
   { 
     id: '7', 
     title: 'Baltazar', 
-    image: '/projects/7.png', 
-    color: '#4AAE31', 
+    image: '/projects/adam1.png', 
+    color: '#4a9235', 
     link: '/projekti/app-game',
     tags: ['mail send', 'UX/UI', 'Survey', 'User experience']  // Added survey-specific tags
   },
   { 
     id: '8', 
     title: 'Marketing platform', 
-    image: '/projects/8.png', 
+    image: '/projects/adam2.png', 
     color: '#F2A900', 
     link: '/projekti/phone',
     tags: ['mail', 'Digital marketing', 'Business platform']  // Added marketing-specific tags
@@ -393,6 +393,11 @@ const ProjectsSection: React.FC = () => {
           max-height: none !important;
           margin: 0 !important;
           transition: transform 0.5s ease;
+        }
+        /* Fix for project with id 7 (item-appgame) - keep image contained and centered */
+        .item-appgame .image-container img {
+          object-fit: contain !important;
+          object-position: center !important;
         }
         
         /* Hover overlay styles - IMPROVED ANIMATION */

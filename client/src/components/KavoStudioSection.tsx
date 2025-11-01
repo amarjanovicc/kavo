@@ -158,7 +158,7 @@ const KavoStudioSection: React.FC = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
               >
-                <h3 className="sr-only">O nama</h3>
+                <h3 className="text-sm font-semibold text-[#FFBD00] uppercase tracking-wider mb-4">O nama</h3>
                 <Typewriter 
                   text={agencyDescription}
                   delay={1000}
@@ -228,7 +228,7 @@ const KavoStudioSection: React.FC = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.9 }}
               >
-                <h3 className="sr-only">Naša misija</h3>
+                <h3 className="text-sm font-semibold text-[#FFBD00] uppercase tracking-wider mb-4">Naša misija</h3>
                 <Typewriter 
                   text={missionText}
                   delay={4000}
@@ -252,7 +252,7 @@ const KavoStudioSection: React.FC = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 1.2 }}
               >
-                <h3 className="sr-only">Naš pristup</h3>
+                <h3 className="text-sm font-semibold text-[#FFBD00] uppercase tracking-wider mb-4">Naš pristup</h3>
                 <Typewriter 
                   text={approachText}
                   delay={7000}
