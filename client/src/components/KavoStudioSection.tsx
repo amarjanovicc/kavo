@@ -42,8 +42,8 @@ const KavoStudioSection: React.FC = () => {
   const kavoRef = useRef<HTMLSpanElement>(null);
   
   // Pre-render the complete text for search engines
-  const agencyDescription = "Agencija koju vode troje mladih kreativaca, vizionara i radoholičara. Pomažemo poduzećima i startupovima da budu vidljivi online. Ne radimo samo web stranice – mi ih dizajniramo, razvijamo, održavamo i oglašavamo, tako da se vi možete fokusirati na svoje klijente.";
-  const missionText = "Naša misija je biti pouzdan partner koji poduzećima i startupovima omogućuje da se istaknu na tržištu i povećaju promet publikom.";
+  const agencyDescription = "Osobni projekt troje mladih kreativaca, vizionara i radoholičara. Kavo nije registrirana tvrtka i ne prodaje usluge – ovo je naš portfolio i prostor za učenje, gdje dizajniramo i razvijamo web stranice iz ljubavi prema poslu.";
+  const missionText = "Naša misija je stalno učiti, eksperimentirati i pokazati što znamo kroz vlastite projekte.";
   const approachText = "Usuđujemo se biti drugačiji. Dok svijet često slijedi gotove obrasce, mi tražimo ono što vaš brend čini posebnim i pretvaramo to u digitalno iskustvo koje ljudi pamte.";
   
   return (
@@ -57,7 +57,7 @@ const KavoStudioSection: React.FC = () => {
             '@context': 'https://schema.org',
             '@type': 'Organization',
             'name': 'Kavo Studio',
-            'description': 'Kreativna agencija specijalizirana za grafički dizajn, branding, web razvoj i digitalni marketing.',
+            'description': 'Osobni, nekomercijalni projekt i portfolio – grafički dizajn, branding i web development.',
             'image': 'https://kavo.studio/logo.png',
             'url': 'https://kavo.studio',
             'sameAs': [
@@ -95,15 +95,15 @@ const KavoStudioSection: React.FC = () => {
       >
         {/* Hidden SEO text for crawlers that's visually hidden but available to screen readers */}
         <div className="sr-only">
-          <h2>O Kavo Studiju - Kreativna agencija iz Varaždina</h2>
+          <h2>O Kavo Studiju – osobni projekt iz Varaždina</h2>
           <p><strong>Tko smo:</strong> {agencyDescription}</p>
           <p><strong>Naša misija:</strong> {missionText}</p>
           <p><strong>Naš pristup:</strong> {approachText}</p>
           <dl>
             <dt>Lokacija</dt>
             <dd>Varaždin, Hrvatska</dd>
-            <dt>Usluge</dt>
-            <dd>Grafički dizajn, Branding, Web razvoj, Digitalni marketing</dd>
+            <dt>Područja rada</dt>
+            <dd>Grafički dizajn, Branding, Web development</dd>
             <dt>Osnovan</dt>
             <dd>2023</dd>
           </dl>

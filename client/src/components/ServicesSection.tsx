@@ -26,7 +26,7 @@ const ServicesSection: React.FC = () => {
           ŠTO RADIMO
         </h2>
         <p className="text-center max-w-full text-[clamp(0.85rem,2vw,1rem)] tracking-widest mb-14 sm:mb-20 text-[#EBECE7]">
-          Vjerujemo da poduzeća ne bi trebala samo postojati – već ostaviti dojam.
+          Vjerujemo da dobar dizajn ne treba samo postojati – treba ostaviti dojam.
         </p>
       </div>
 

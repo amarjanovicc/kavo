@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kavo.studio'),
-  title: 'Kavo | Kreativna agencija za dizajn i tehnologiju',
-  description: 'Kavo je kreativna agencija iz Hrvatske specijalizirana za grafički dizajn, branding, web razvoj i digitalni marketing. Stvaramo jedinstvene vizualne identitete koji donose rezultate.',
-  keywords: ['kreativna agencija', 'grafički dizajn', 'web razvoj', 'branding', 'digitalni marketing', 'vizualni identitet', 'hrvatska agencija', 'varaždin'],
+  title: 'Kavo | Osobni projekt – dizajn i web development',
+  description: 'Kavo je osobni, nekomercijalni projekt i portfolio iz Hrvatske – grafički dizajn, branding i web development.',
+  keywords: ['portfolio', 'osobni projekt', 'grafički dizajn', 'web development', 'web dizajn', 'branding', 'vizualni identitet'],
   applicationName: 'Kavo Studio',
   authors: [{ name: 'Kavo Studio', url: 'https://kavo.studio' }],
   generator: 'Next.js',
@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: 'website',
-    title: 'Kavo | Kreativna agencija za dizajn i tehnologiju',
-    description: 'Kavo je kreativna agencija specijalizirana za grafički dizajn, branding, web razvoj i digitalni marketing. Pretvaramo ideje u uspješne brendove.',
+    title: 'Kavo | Osobni projekt – dizajn i web development',
+    description: 'Kavo je osobni, nekomercijalni projekt i portfolio – grafički dizajn, branding i web development.',
     url: 'https://kavo.studio',
     siteName: 'Kavo',
     locale: 'hr_HR',
@@ -27,17 +27,17 @@ export const metadata: Metadata = {
         url: 'https://kavo.studio/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Kavo Kreativna Agencija',
+        alt: 'Kavo – osobni projekt',
         type: 'image/jpeg',
       }
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kavo | Kreativna agencija za dizajn i tehnologiju',
-    description: 'Kavo je kreativna agencija specijalizirana za grafički dizajn, branding, web razvoj i digitalni marketing.',
+    title: 'Kavo | Osobni projekt – dizajn i web development',
+    description: 'Kavo je osobni, nekomercijalni projekt i portfolio – grafički dizajn, branding i web development.',
     creator: '@kavostudio',
-    images: [{ url: 'https://kavo.studio/twitter-image.jpg', alt: 'Kavo Studio - Kreativna agencija' }],
+    images: [{ url: 'https://kavo.studio/twitter-image.jpg', alt: 'Kavo Studio – osobni projekt' }],
   },
   robots: {
     index: true,
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
       'application/rss+xml': 'https://kavo.studio/feed.xml', // If you have a feed
     }
   },
-  category: 'design, technology, marketing',
+  category: 'design, technology, portfolio',
   verification: {
     google: 'google-site-verification=svztvY5pDFwaqjDFnWd-8jOxxv40rvkJBvR0mUbT0Ko',
     other: {

@@ -93,11 +93,10 @@ const BrandingPage: React.FC = () => {
                 Strategija i fleksibilnost
               </h2>
               <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-right">
-                Svaki brend ima svoju priču i ciljeve. Zato nudimo rješenja
-                prilagođena baš vama, od manjih dorada i osvježavanja vizualnog
-                identiteta do kompletne strategije i izgradnje brend od nule.
-                Možete birati: brzu i jednostavnu nadogradnju postojećeg identiteta
-                ili potpuno custom rješenje koje autentično prikazuje tko ste.
+                Svaki brend ima svoju priču i ciljeve. Zato se u radu bavimo
+                svime, od manjih dorada i osvježavanja vizualnog identiteta do
+                kompletne strategije i izgradnje brenda od nule – ponekad kroz
+                brzu nadogradnju, a ponekad kroz potpuno custom rješenje.
               </p>
             </div>
           </motion.div>
@@ -162,7 +161,7 @@ const BrandingPage: React.FC = () => {
               </h2>
               <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-right">
                 Kada je brend spreman, pokazujemo kako samostalno održavati
-                dosljednost brend. Naš cilj je da vaš brend raste zajedno s vama.
+                dosljednost brenda – da brend može rasti i nakon što je projekt gotov.
               </p>
             </div>
           </motion.div>

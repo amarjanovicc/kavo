@@ -88,7 +88,7 @@ const DevelopmentPage: React.FC = () => {
                 Fleksibilnost
               </h2>
               <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10]">
-                Svaka tvrtka ima različite ciljeve, zato nudimo opcije razvoja koje odgovaraju vašem budžetu i vremenskom okviru. Ako trebate gotovu stranicu brzo i povoljno, koristimo provjerene predloške. Ako želite jedinstveno rješenje i potpunu kontrolu – razvijamo stranicu potpuno od nule, prilagođenu baš vama.
+                Svaki projekt ima različite ciljeve, pa radimo na različite načine. Ponekad je najbolje krenuti od provjerenih predložaka, a ponekad stranicu razvijamo potpuno od nule kako bismo imali punu kontrolu nad svakim detaljem.
               </p>
             </div>
           </motion.div>

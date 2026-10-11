@@ -88,7 +88,7 @@ const GrafickiDizajnPage: React.FC = () => {
                 Fleksibilnost i kreativnost
               </h2>
               <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-right">
-                Svaki projekt je drugačiji. Zato nudimo dizajn rješenja za letke, kataloge, bannere, društvene mreže, majice, pakiranja i još puno više. Možemo napraviti jednostavnija i brza rješenja ili potpuno unikatne dizajne od nule – sve ovisi o vašim ciljevima i potrebama.
+                Svaki projekt je drugačiji. Zato dizajniramo letke, kataloge, bannere, objave za društvene mreže, majice, pakiranja i još puno više – nekad jednostavna i brza rješenja, a nekad potpuno unikatne dizajne od nule.
               </p>
             </div>
           </motion.div>

@@ -12,10 +12,10 @@ type Card = {
 };
 
 const cards: Card[] = [
-  { title: 'Vidljivost koja prodaje', description: 'Pomažemo malim biznisima da ih kupci lako pronađu i zapamte kroz strategijski dizajn.', image: '/cards/prodaja.png', rotate: '0' },
-  { title: 'WEB od povjerenja', description: 'Svaka stranica koju napravimo pokazuje da ste ozbiljni i da vrijedi vjerovati u vaš brend kroz profesionalni pristup.', image: '/cards/web.png', rotate: '-4.35deg' },
-  { title: 'Dizajn koji uvjerava', description: 'Posjetitelje pretvaramo u kupce kroz pametna rješenja i intuitivno korisničko iskustvo.', image: '/cards/dizajn.png', rotate: '10.53deg' },
-  { title: 'Pouzdani partner', description: 'Vaš uspjeh je i naš uspjeh, zato smo uvijek uz vas u svakom koraku poslovnog rasta.', image: '/cards/partneri.png', rotate: '3.98deg' },
+  { title: 'Vidljivost koja se pamti', description: 'Istražujemo kako strategijski dizajn pomaže da se brend lako pronađe i zapamti.', image: '/cards/prodaja.png', rotate: '0' },
+  { title: 'WEB od povjerenja', description: 'Svaka stranica koju napravimo uči nas kako graditi povjerenje kroz jasan i promišljen dizajn.', image: '/cards/web.png', rotate: '-4.35deg' },
+  { title: 'Dizajn koji uvjerava', description: 'Eksperimentiramo s pametnim rješenjima i intuitivnim korisničkim iskustvom.', image: '/GrafickiDizajn/GrafickiDizajn2.png', rotate: '10.53deg' },
+  { title: 'Iz ljubavi prema dizajnu', description: 'Kavo je osobni projekt – mjesto gdje učimo, istražujemo i dijelimo svoj rad.', image: '/cards/partneri.png', rotate: '3.98deg' },
 ];
 
 // Memoizirana kartica za bolje performanse

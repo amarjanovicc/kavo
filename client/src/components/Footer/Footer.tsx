@@ -32,7 +32,7 @@ const Footer = () => {
                   />
                 </h3>
                 <p className="text-gray-300 text-sm leading-relaxed max-w-xs" itemProp="description">
-                  Stvaramo digitalna iskustva koja ostavljaju dojam. Vaša vizija, naša stručnost.
+                  Osobni projekt i portfolio – dizajn i web development iz čiste ljubavi prema poslu.
                 </p>
               </motion.div>
 
@@ -131,9 +131,14 @@ const Footer = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-16 pt-8 border-t border-gray-700/30 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
             >
-              <p className="text-gray-400 text-xs uppercase tracking-wider">
-                <span itemProp="copyrightYear">2025</span> © <span itemProp="copyrightHolder" itemScope itemType="https://schema.org/Organization"><span itemProp="name">Kavo Studio</span></span>
-              </p>
+              <div className="space-y-2 text-center md:text-left">
+                <p className="text-gray-400 text-xs uppercase tracking-wider">
+                  <span itemProp="copyrightYear">2025</span> © <span itemProp="copyrightHolder" itemScope itemType="https://schema.org/Organization"><span itemProp="name">Kavo Studio</span></span>
+                </p>
+                <p className="text-gray-500 text-xs max-w-md">
+                  Kavo je osobni, nekomercijalni projekt. Nije registrirana tvrtka i ne prodaje proizvode ni usluge.
+                </p>
+              </div>
               
               <Link 
                 href="/privacy-policy" 
