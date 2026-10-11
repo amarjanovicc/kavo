@@ -15,7 +15,7 @@ import { cn } from '@/lib/cn';
 const stats = [
   { value: team.length, label: 'kreativca u timu' },
   { value: projects.length, label: 'projekata u portfoliju' },
-  { value: site.since, from: 2000, label: 'godina početka' },
+  { value: site.since, from: 2000, label: 'krenuli smo' },
 ];
 
 export function About() {

@@ -69,9 +69,9 @@ export function CookieConsent() {
           >
             <p className="display text-2xl">🍪 Kolačići?</p>
             <p className="mt-2 text-sm text-paper/70">
-              Koristimo ih samo za anonimnu analitiku posjeta.{' '}
+              Koristimo ih samo za analitiku posjeta, i to tek ako dopustiš.{' '}
               <Link href="/privacy-policy" className="text-brand underline underline-offset-4">
-                Više
+                Pravila privatnosti
               </Link>
             </p>
             <div className="mt-5 flex gap-2">
@@ -80,7 +80,7 @@ export function CookieConsent() {
                 onClick={() => choose(true)}
                 className="flex-1 rounded-full bg-brand px-4 py-2.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
               >
-                Prihvaćam
+                Dopusti
               </button>
               <button
                 type="button"

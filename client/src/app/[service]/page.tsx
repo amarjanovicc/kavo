@@ -42,7 +42,7 @@ export default async function ServicePage({ params }: Props) {
     },
     generateBreadcrumbSchema([
       { name: 'Početna', url: site.url },
-      { name: 'Usluge', url: `${site.url}/#services` },
+      { name: 'Što radimo', url: `${site.url}/#services` },
       { name: service.title, url },
     ]),
   ];

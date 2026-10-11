@@ -64,7 +64,7 @@ export function Projects() {
             </h2>
           </div>
           <Reveal className="max-w-sm text-paper/60">
-            Izbor projekata na kojima smo radili – od brandinga i ambalaže do web stranica i aplikacija. Klikni za veći prikaz.
+            Izbor projekata na kojima smo radili – od brandinga i ambalaže do web stranica i aplikacija. Klikni na rad za veći prikaz.
           </Reveal>
         </div>
 

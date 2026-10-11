@@ -23,33 +23,33 @@ export const services: Service[] = [
     title: 'Branding',
     short: 'Identiteti, logotipi i vizualne strategije.',
     intro:
-      'Branding je više od logotipa – to je osjećaj koji ostavljate na ljude. Priča, vrijednosti i dojam koji brend gradi. Dobro postavljen branding stvara povjerenje, prepoznatljivost i lojalnost.',
+      'Logotip je samo početak. Branding je priča, vrijednosti i dojam koji ljudi ponesu sa sobom – i razlog zašto se vrate.',
     cover: '/branding/Branding1.png',
     sections: [
       {
         title: 'Prepoznatljivost i identitet',
-        body: 'Jak brend znači da se proizvod ili ideja ističe u masi. Pazimo da priča i vizualni identitet budu jasni, konzistentni i lako prepoznatljivi – to gradi povjerenje i lojalnost.',
+        body: 'Jak brend izdvaja proizvod iz mase. Zato pazimo da priča i vizualni identitet govore isto, na svakom mjestu gdje ih netko vidi.',
         image: '/branding/Branding1.png',
       },
       {
         title: 'Strategija i fleksibilnost',
-        body: 'Svaki brend ima svoju priču i ciljeve. Zato se u radu bavimo svime, od manjih dorada i osvježavanja vizualnog identiteta do kompletne strategije i izgradnje brenda od nule – ponekad kroz brzu nadogradnju, a ponekad kroz potpuno custom rješenje.',
+        body: 'Nekom brendu treba samo osvježenje, nekom sve od nule. Radimo oboje – od manjih dorada vizualnog identiteta do cijele strategije.',
         image: '/branding/Branding2.png',
       },
       {
         title: 'Što nam je važno razumjeti',
-        body: 'Da bi brend stvarno predstavljao ono što jest, trebamo razumjeti:',
+        body: 'Prije prve skice želimo znati:',
         list: [
-          'Kakav osjećaj vizualni identitet treba ostaviti',
-          'Koju priču brend prenosi',
-          'Kome se obraća i koji su ciljevi',
+          'Kakav dojam brend treba ostaviti',
+          'Koju priču priča',
+          'Kome se obraća i što želi postići',
         ],
-        outro: 'Što više znamo, to je brend autentičniji i snažniji.',
+        outro: 'Što više znamo na početku, to je rezultat uvjerljiviji.',
         image: '/branding/Branding3.png',
       },
       {
-        title: 'Implementacija',
-        body: 'Kada je brend spreman, pokazujemo kako samostalno održavati njegovu dosljednost – da brend može rasti i nakon što je projekt gotov.',
+        title: 'Primjena',
+        body: 'Uz gotov identitet dolaze i pravila korištenja – da brend ostane dosljedan i kad mi više nismo u priči.',
         image: '/branding/Branding4.png',
       },
     ],
@@ -60,33 +60,33 @@ export const services: Service[] = [
     title: 'Grafički dizajn',
     short: 'Tiskani materijali, promotivni vizuali i ilustracije.',
     intro:
-      'Grafički dizajn pretvara ideje u vizualnu priču. Daje oblik brendu kroz letke, bannere, kataloge, digitalne i print materijale. Dobar dizajn ne samo da izgleda lijepo – on jasno prenosi poruku.',
+      'Grafički dizajn pretvara ideju u nešto što se vidi i pamti – letak, katalog, banner ili objavu. Lijep je tek kad je poruka jasna.',
     cover: '/GrafickiDizajn/GrafickiDizajn1.png',
     sections: [
       {
         title: 'Vizualna privlačnost',
-        body: 'Dobar dizajn odmah privlači pogled i ostavlja dojam. Pazimo da svaka grafika bude moderna, čista i prilagođena publici kojoj se obraća – više pažnje, bolja komunikacija.',
+        body: 'Dobra grafika uhvati pogled u prvoj sekundi. Zato je radimo čistu, suvremenu i prilagođenu ljudima kojima je namijenjena.',
         image: '/GrafickiDizajn/GrafickiDizajn1.png',
       },
       {
         title: 'Fleksibilnost i kreativnost',
-        body: 'Svaki projekt je drugačiji. Zato dizajniramo letke, kataloge, bannere, objave za društvene mreže, majice, pakiranja i još puno više – nekad jednostavna i brza rješenja, a nekad potpuno unikatne dizajne od nule.',
+        body: 'Letci, katalozi, banneri, objave za društvene mreže, majice, pakiranja – nekad treba brzo i jednostavno, a nekad nešto potpuno novo od nule.',
         image: '/GrafickiDizajn/GrafickiDizajn2.png',
       },
       {
         title: 'Što nam je važno razumjeti',
-        body: 'Da bi dizajn bio što učinkovitiji, trebamo znati:',
+        body: 'Prije prve skice želimo znati:',
         list: [
-          'Što postojeći vizualni identitet trenutno komunicira',
-          'Treba li dizajn naglasiti brend, proizvod ili neku treću vrijednost',
+          'Što postojeći vizualni identitet trenutno govori',
+          'Što treba biti u prvom planu – brend, proizvod ili nešto treće',
           'Gdje će se dizajn koristiti – digital, print ili oboje',
         ],
-        outro: 'Što jasniji kontekst, to bolje pogađamo pravu poruku.',
+        outro: 'Što je kontekst jasniji, to lakše pogodimo pravu poruku.',
         image: '/GrafickiDizajn/GrafickiDizajn3.png',
       },
       {
         title: 'Isporuka',
-        body: 'Gotove dizajne pripremamo u svim formatima koji su potrebni, od digitalnih do printa – spremno za korištenje na svim kanalima bez dodatnih prilagodbi.',
+        body: 'Gotove dizajne pripremamo u svim potrebnim formatima, za ekran i za tisak – spremno za korištenje bez dodatnih prilagodbi.',
         image: '/GrafickiDizajn/GrafickiDizajn4.png',
       },
     ],
@@ -97,27 +97,27 @@ export const services: Service[] = [
     title: 'Web dizajn',
     short: 'UX/UI dizajn i prototipovi optimizirani za korisnike.',
     intro:
-      'Web dizajn nije samo lijep izgled – to je način da se ispriča priča i ostavi dobar prvi dojam kod posjetitelja.',
+      'Posjetitelj odluči hoće li ostati u nekoliko sekundi. Web dizajn je način da te sekunde iskoristiš – jasnom pričom i dobrim prvim dojmom.',
     cover: '/WebDizajn/WebDizajn1.png',
     sections: [
       {
         title: 'Jednostavno i ugodno',
-        body: 'Cilj je da stranica bude jednostavna za korištenje i ugodna za pregledavanje. Biramo boje, tipografiju i vizualne elemente koji najbolje predstavljaju sadržaj, ali uvijek razmišljamo i o tome kako će se posjetitelji kretati kroz stranicu – sve treba biti jasno, logično i lako dostupno.',
+        body: 'Boje, tipografiju i slike biramo prema sadržaju. Ali prvo slažemo put kroz stranicu – posjetitelj uvijek treba znati gdje je i kamo dalje.',
         image: '/WebDizajn/WebDizajn1.png',
       },
       {
         title: 'Responsivnost',
-        body: 'Većina ljudi danas pretražuje internet mobitelom, pa stranica mora izgledati odlično na svakom ekranu. Responsive dizajn se automatski prilagođava mobitelu, tabletu i računalu – najbolje iskustvo, bez obzira odakle posjetitelj dolazi.',
+        body: 'Većina ljudi stranicu prvi put otvori na mobitelu. Zato dizajniramo za svaki ekran – mobitel, tablet i računalo – a ne samo za onaj na kojem radimo.',
         image: '/WebDizajn/WebDizajn2.png',
       },
       {
         title: 'Za ljude i tražilice',
-        body: 'Dobar dizajn nije samo za ljude – voli ga i Google. Pregledna, brza i jednostavna stranica pomaže i boljem rangiranju na tražilicama. Zato pazimo da bude lijepa, funkcionalna i optimizirana.',
+        body: 'Pregledna i brza stranica draga je i ljudima i Googleu. Jasna struktura i čist sadržaj pomažu da te ljudi uopće pronađu.',
         image: '/WebDizajn/WebDizajn3.png',
       },
       {
         title: 'Dizajn s razlogom',
-        body: 'Na kraju, web dizajn za nas nije samo stvar vizualnog dojma. Svaki dizajn ima zadatak – predstaviti ideju, projekt ili brend na najbolji način. Želimo da radi, a ne samo lijepo izgleda.',
+        body: 'Svaka stranica ima zadatak – predstaviti ideju, projekt ili brend. Dizajn je uspio kad ga posjetitelj ni ne primijeti, nego samo nađe što traži.',
       },
     ],
   },
@@ -127,27 +127,27 @@ export const services: Service[] = [
     title: 'Web development',
     short: 'Frontend i backend rješenja, CMS i e-commerce.',
     intro:
-      'Nakon dizajna prelazimo na kod. Pretvaramo vizual u stranicu koja savršeno radi na svim uređajima i preglednicima.',
+      'Kad je dizajn gotov, prelazimo na kod. Od nacrta radimo stranicu koja jednako dobro radi na svakom uređaju i pregledniku.',
     cover: '/development/development1.png',
     sections: [
       {
         title: 'Brzina i sigurnost',
-        body: 'Brza stranica znači zadovoljnog posjetitelja, a sigurna stranica mirnog vlasnika. Pazimo da se stranica učitava u sekundi i da je zaštićena najboljim praksama.',
+        body: 'Brza stranica znači zadovoljnog posjetitelja, a sigurna mirnog vlasnika. Pazimo na oboje od prvog retka koda.',
         image: '/development/development1.png',
       },
       {
         title: 'Fleksibilnost',
-        body: 'Svaki projekt ima različite ciljeve, pa radimo na različite načine. Ponekad je najbolje krenuti od provjerenih predložaka, a ponekad stranicu razvijamo potpuno od nule kako bismo imali punu kontrolu nad svakim detaljem.',
+        body: 'Nekad je najbolje krenuti od provjerenog predloška, a nekad pisati sve od nule i imati kontrolu nad svakim detaljem. Biramo prema projektu.',
         image: '/development/development2.png',
       },
       {
         title: 'Testiranje',
-        body: 'Nakon programiranja detaljno testiramo radi li sve ispravno na različitim uređajima i preglednicima. Posebnu pažnju posvećujemo brzini učitavanja i SEO optimizaciji.',
+        body: 'Prije objave provjeravamo stranicu na različitim uređajima i preglednicima, s posebnim fokusom na brzinu učitavanja i SEO.',
         image: '/development/development3.png',
       },
       {
         title: 'Pokretanje',
-        body: 'Kada je stranica spremna, slijedi postavljanje na hosting i povezivanje s domenom – i upute kako samostalno upravljati sadržajem.',
+        body: 'Na kraju stranicu postavljamo na hosting, spajamo s domenom i pokazujemo kako samostalno mijenjati sadržaj.',
         image: '/development/development4.png',
       },
     ],

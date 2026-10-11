@@ -30,12 +30,12 @@ export function Services() {
         <div className="mb-16 grid items-end gap-8 md:mb-24 md:grid-cols-12">
           <div className="md:col-span-8">
             <p className="eyebrow mb-8 text-paper/50">
-              <span className="text-brand">(04)</span> Što radimo
+              <span className="text-brand">(04)</span> Područja
             </p>
             <SplitText as="h2" text="Što radimo" className="display text-giant text-brand" bouncy />
           </div>
           <Reveal className="text-lead text-paper/60 md:col-span-4">
-            Vjerujemo da dobar dizajn ne treba samo postojati – treba ostaviti dojam.
+            Četiri stvari kojima se najviše bavimo. Otvori bilo koju i vidi kako radimo.
           </Reveal>
         </div>
 

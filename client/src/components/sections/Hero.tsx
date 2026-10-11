@@ -15,8 +15,8 @@ import { useLiteMotion } from '@/lib/useMediaQuery';
 
 const lines = [
   { text: 'Dizajniramo.', className: '' },
-  { text: 'Razvijamo.', className: 'text-outline md:pl-[14vw]' },
-  { text: 'Inspiriramo.', className: 'md:text-right' },
+  { text: 'Kodiramo.', className: 'text-outline md:pl-[14vw]' },
+  { text: 'Učimo.', className: 'md:text-right' },
 ];
 
 export function Hero() {
@@ -87,8 +87,7 @@ export function Hero() {
 
         <div className="mt-12 grid items-end gap-10 md:grid-cols-12">
           <motion.p {...fade(0.7)} className="text-lead text-paper/70 md:col-span-5">
-            Od elegantnog dizajna do funkcionalnih web stranica – naš osobni prostor za eksperimente u brandingu, dizajnu i
-            kodu.
+            Troje ljudi, jedan portfolio. Ovdje radimo branding, grafiku i web – i pokazujemo što smo usput naučili.
           </motion.p>
           <motion.div {...fade(0.85)} className="flex flex-wrap items-center gap-3 md:col-span-4">
             <Button href="/#portfolio" variant="brand" size="lg">

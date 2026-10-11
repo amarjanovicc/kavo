@@ -1,44 +1,44 @@
 export const values = [
   {
-    title: 'Vidljivost koja se pamti',
-    description: 'Istražujemo kako strategijski dizajn pomaže da se brend lako pronađe i zapamti.',
+    title: 'Brend koji se pamti',
+    description: 'Tražimo jednu jasnu ideju i gradimo cijeli identitet oko nje – da te ljudi prepoznaju već nakon jednog pogleda.',
     image: '/cards/prodaja.png',
   },
   {
-    title: 'Web od povjerenja',
-    description: 'Svaka stranica koju napravimo uči nas kako graditi povjerenje kroz jasan i promišljen dizajn.',
+    title: 'Web kojem se vjeruje',
+    description: 'Jasna struktura, čitljiv tekst i stranica koja se brzo otvara. Posjetitelj odmah zna gdje je i što može napraviti.',
     image: '/cards/web.png',
   },
   {
-    title: 'Dizajn koji uvjerava',
-    description: 'Eksperimentiramo s pametnim rješenjima i intuitivnim korisničkim iskustvom.',
+    title: 'Dizajn s razlogom',
+    description: 'Svaki element na ekranu ima posao. Ako ne pomaže da se nešto shvati ili klikne, izbacujemo ga.',
     image: '/GrafickiDizajn/GrafickiDizajn2.png',
   },
   {
     title: 'Iz ljubavi prema dizajnu',
-    description: 'Kavo je osobni projekt – mjesto gdje učimo, istražujemo i dijelimo svoj rad.',
+    description: 'Kavo nije tvrtka – ovo radimo jer volimo. Zato smijemo isprobavati, griješiti i učiti na svakom projektu.',
     image: '/development/development5.png',
   },
 ];
 
 export const team = [
   {
-    label: 'O nama',
-    text: 'Osobni projekt troje mladih kreativaca, vizionara i radoholičara. Kavo nije registrirana tvrtka i ne prodaje usluge – ovo je naš portfolio i prostor za učenje, gdje dizajniramo i razvijamo web stranice iz ljubavi prema poslu.',
+    label: 'Tko smo',
+    text: 'Troje ljudi, jedan portfolio. Kavo nije registrirana tvrtka i ne prodaje usluge – ovdje dizajniramo i razvijamo web jer to volimo raditi.',
     name: 'Adam',
     role: 'Web developer',
     image: '/avatars/Adam.png',
   },
   {
-    label: 'Naša misija',
-    text: 'Stalno učiti, eksperimentirati i pokazati što znamo kroz vlastite projekte.',
+    label: 'Što želimo',
+    text: 'Učiti na pravim projektima, isprobavati nove stvari i pokazati što znamo kroz ono što napravimo.',
     name: 'Nina',
     role: 'Dizajnerica',
     image: '/avatars/Nina.png',
   },
   {
-    label: 'Naš pristup',
-    text: 'Usuđujemo se biti drugačiji. Dok svijet često slijedi gotove obrasce, mi tražimo ono što ideju čini posebnom i pretvaramo to u digitalno iskustvo koje ljudi pamte.',
+    label: 'Kako radimo',
+    text: 'Ne krećemo od gotovih predložaka. Prvo tražimo ono što ideju čini drugačijom, a onda to pretvaramo u dizajn i kod.',
     name: 'Nino',
     role: 'Marketing',
     image: '/avatars/Nino.png',
