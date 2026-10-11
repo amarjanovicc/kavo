@@ -56,7 +56,7 @@ export function ContactView() {
 
   return (
     <section className="relative min-h-svh overflow-hidden bg-ink pb-24 pt-36 text-paper md:pt-44">
-      <div aria-hidden className="pointer-events-none absolute -right-[20vw] -top-[20vw] size-[60vw] rounded-full bg-brand/15 blur-[140px]" />
+      <div aria-hidden className="pointer-events-none absolute -right-[20vw] -top-[20vw] size-[80vw] rounded-full bg-[radial-gradient(circle,rgb(255_189_0/0.14)_0%,transparent_60%)]" />
 
       <div className="shell relative grid gap-16 lg:grid-cols-12">
         <div className="lg:sticky lg:top-32 lg:col-span-5 lg:self-start">
@@ -93,7 +93,7 @@ export function ContactView() {
         </div>
 
         <motion.div {...fade(0.3)} className="lg:col-span-7">
-          <div className="relative overflow-hidden rounded-[2rem] border border-paper/10 bg-ink-2/80 p-6 backdrop-blur md:p-10">
+          <div className="relative overflow-hidden rounded-[2rem] border border-paper/10 bg-ink-2 p-6 md:p-10">
             <AnimatePresence mode="wait" initial={false}>
               {status === 'sent' ? (
                 <Success key="sent" onReset={() => setStatus('idle')} />
@@ -101,7 +101,7 @@ export function ContactView() {
                 <motion.form
                   key="form"
                   onSubmit={onSubmit}
-                  exit={{ opacity: 0, y: -20, filter: 'blur(8px)' }}
+                  exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.5, ease: ease.out }}
                   className="space-y-10"
                 >

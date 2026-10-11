@@ -65,7 +65,7 @@ export function Navbar() {
           <nav
             aria-label="Glavna navigacija"
             className={cn(
-              'flex items-center justify-between rounded-full border border-paper/10 bg-ink/90 py-2 pl-3 pr-2 backdrop-blur-xl transition-shadow duration-500',
+              'flex items-center justify-between rounded-full border border-paper/10 bg-ink/95 py-2 pl-3 pr-2 transition-shadow duration-500',
               (scrolled || menuOpen) && 'shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)]'
             )}
           >
