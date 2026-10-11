@@ -3,6 +3,7 @@
 import {
   motion,
   useAnimationFrame,
+  useInView,
   useMotionValue,
   useReducedMotion,
   useScroll,
@@ -42,9 +43,12 @@ export function Marquee({
   const factor = useTransform(smoothVelocity, [0, 1000], [0, 5], { clamp: false });
   const x = useTransform(baseX, (v) => `${wrap(-100 / copies, 0, v)}%`);
   const direction = useRef(1);
+  const ref = useRef<HTMLDivElement>(null);
+  // Izvan ekrana traka miruje – ne troši frameove
+  const inView = useInView(ref, { margin: '200px' });
 
   useAnimationFrame((_, delta) => {
-    if (reduce) return;
+    if (reduce || !inView) return;
     let move = direction.current * baseVelocity * (delta / 1000);
     const f = factor.get();
     if (f < 0) direction.current = -1;
@@ -54,7 +58,7 @@ export function Marquee({
   });
 
   return (
-    <div className={cn('flex overflow-hidden whitespace-nowrap', className)} aria-hidden={ariaHidden}>
+    <div ref={ref} className={cn('flex overflow-hidden whitespace-nowrap', className)} aria-hidden={ariaHidden}>
       <motion.div className="flex flex-nowrap whitespace-nowrap will-change-transform" style={{ x }}>
         {Array.from({ length: copies }).map((_, i) => (
           <div key={i} className="flex shrink-0 items-center" aria-hidden={i > 0 || undefined}>

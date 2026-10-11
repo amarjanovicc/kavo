@@ -82,7 +82,7 @@ export function ServicePageView({ service }: { service: Service }) {
               transition={{ type: 'spring', stiffness: 110, damping: 14, delay: 0.4 }}
             >
               <motion.div style={{ rotate: coverRotate }} className="relative mx-auto aspect-square w-full max-w-sm">
-                <div aria-hidden className="absolute inset-[12%] rounded-full bg-paper/50 blur-2xl" />
+                <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgb(235_236_231/0.6)_0%,transparent_60%)]" />
                 <Image src={service.cover} alt="" fill priority sizes="(max-width: 768px) 80vw, 30vw" className="animate-float object-contain" />
               </motion.div>
             </motion.div>

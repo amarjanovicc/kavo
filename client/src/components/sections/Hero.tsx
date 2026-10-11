@@ -29,14 +29,15 @@ export function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
 
   // Žuti sjaj prati miš
-  const mx = useMotionValue(0.7);
-  const my = useMotionValue(0.35);
-  const gx = useTransform(useSpring(mx, { stiffness: 60, damping: 20 }), (v) => `${v * 100}%`);
-  const gy = useTransform(useSpring(my, { stiffness: 60, damping: 20 }), (v) => `${v * 100}%`);
+  // Pozicija sjaja u pikselima (početno: desno gore)
+  const mx = useMotionValue(1000);
+  const my = useMotionValue(300);
+  const gx = useSpring(mx, { stiffness: 60, damping: 20 });
+  const gy = useSpring(my, { stiffness: 60, damping: 20 });
   const onMove = (e: PointerEvent<HTMLElement>) => {
     const r = e.currentTarget.getBoundingClientRect();
-    mx.set((e.clientX - r.left) / r.width);
-    my.set((e.clientY - r.top) / r.height);
+    mx.set(e.clientX - r.left);
+    my.set(e.clientY - r.top);
   };
 
   const fade = (delay: number) => ({
@@ -49,8 +50,8 @@ export function Hero() {
     <section ref={ref} onPointerMove={onMove} className="relative flex min-h-svh flex-col overflow-hidden bg-ink text-paper">
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute size-[55vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/25 blur-[120px]"
-        style={{ left: gx, top: gy }}
+        className="pointer-events-none absolute left-0 top-0 size-[90vmax] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgb(255_189_0/0.28)_0%,rgb(255_189_0/0.08)_35%,transparent_65%)] will-change-transform"
+        style={{ x: gx, y: gy }}
       />
       <div
         aria-hidden

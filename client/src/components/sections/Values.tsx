@@ -44,7 +44,7 @@ export function Values() {
             value={v}
             progress={scrollYProgress}
             range={[i / values.length, 1]}
-            targetScale={1 - (values.length - 1 - i) * 0.05}
+            targetDim={(values.length - 1 - i) * 0.1}
           />
         ))}
       </div>
@@ -57,26 +57,28 @@ function Card({
   value,
   progress,
   range,
-  targetScale,
+  targetDim,
 }: {
   index: number;
   value: (typeof values)[number];
   progress: MotionValue<number>;
   range: [number, number];
-  targetScale: number;
+  targetDim: number;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start start'] });
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.6, 1]);
   const imageRotate = useTransform(scrollYProgress, [0, 1], [index % 2 ? 18 : -18, 0]);
-  const scale = useTransform(progress, range, [1, targetScale]);
-  const rotate = index % 2 ? 1.2 : -1.2;
+  // Kartice iza se zatamne umjesto da se skaliraju – skaliranje kartice sa slikom
+  // tjera preglednik da je crta ispočetka u svakom frameu (izmjereno: ~40% sporih frameova)
+  const dim = useTransform(progress, range, [0, targetDim]);
 
   return (
     <div ref={ref} className="sticky top-0 flex h-svh items-center justify-center px-4">
       <motion.article
-        style={{ scale, top: `calc(${index * 22}px - 4vh)`, rotate }}
-        whileHover={{ rotate: 0, y: -8 }}
+        // Bez nagiba: rotirana kartica s overflow-hidden + animiranom slikom crta se ispočetka u svakom frameu
+        style={{ top: `calc(${index * 22}px - 4vh)` }}
+        whileHover={{ y: -8 }}
         transition={bounce}
         className="relative grid min-h-[62svh] w-full max-w-6xl origin-top overflow-hidden rounded-[2rem] bg-paper shadow-[0_40px_80px_-30px_rgba(8,13,16,0.45)] md:grid-cols-2 md:rounded-[3rem]"
       >
@@ -90,11 +92,12 @@ function Card({
           </div>
         </div>
         <div className="relative flex items-center justify-center overflow-hidden bg-ink/[0.04] p-10">
-          <div aria-hidden className="absolute size-[70%] rounded-full bg-brand/60 blur-3xl" />
+          <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgb(255_189_0/0.55)_0%,transparent_60%)]" />
           <motion.div style={{ scale: imageScale, rotate: imageRotate }} className="relative aspect-square w-full max-w-sm">
             <Image src={value.image} alt="" fill sizes="(max-width: 768px) 80vw, 30vw" className="animate-float object-contain" />
           </motion.div>
         </div>
+        <motion.div aria-hidden className="pointer-events-none absolute inset-0 bg-ink" style={{ opacity: dim }} />
       </motion.article>
     </div>
   );

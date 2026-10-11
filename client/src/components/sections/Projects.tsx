@@ -161,7 +161,7 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
             {project.tags.map((t, i) => (
               <span
                 key={t}
-                className="translate-y-[-150%] rounded-full bg-ink/80 px-3 py-1.5 text-xs text-paper opacity-0 backdrop-blur transition-all duration-500 ease-expo group-hover:translate-y-0 group-hover:opacity-100"
+                className="translate-y-[-150%] rounded-full bg-ink/85 px-3 py-1.5 text-xs text-paper opacity-0 transition-all duration-500 ease-expo group-hover:translate-y-0 group-hover:opacity-100"
                 style={{ transitionDelay: `${i * 50}ms` }}
               >
                 {t}
@@ -227,7 +227,7 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
           data-lenis-prevent
         >
           <motion.div
-            className="absolute inset-0 bg-ink/85 backdrop-blur-md"
+            className="absolute inset-0 bg-ink/90"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
