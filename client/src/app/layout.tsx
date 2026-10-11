@@ -1,38 +1,61 @@
+import type { Viewport } from 'next';
+import { Bricolage_Grotesque, Geist, Geist_Mono } from 'next/font/google';
+import type { ReactNode } from 'react';
+import { Footer } from '@/components/layout/Footer';
+import { Navbar } from '@/components/layout/Navbar';
+import { Providers } from '@/components/providers/Providers';
+import { CookieConsent } from '@/components/ui/CookieConsent';
+import { Cursor } from '@/components/ui/Cursor';
+import { Preloader } from '@/components/ui/Preloader';
+import { ScrollProgress } from '@/components/ui/ScrollProgress';
+import { INTRO_KEY } from '@/lib/constants';
+import { jsonLd, organizationSchema } from '@/lib/schema';
 import './globals.css';
-import { ReactNode } from 'react';
-import Navbar from '@/components/Navbar/Navbar';
-import Footer from '@/components/Footer/Footer';
-import { AnimationProvider } from '@/context/AnimationContext';
-import Script from 'next/script';
-import Analytics from '@/components/Analytics';
-import { metadata } from './metadata';
-export { metadata };
 
-export const viewport = {
+export { metadata } from './metadata';
+
+const display = Bricolage_Grotesque({
+  subsets: ['latin', 'latin-ext'],
+  axes: ['opsz', 'wdth'],
+  variable: '--font-bricolage',
+  display: 'swap',
+});
+const sans = Geist({ subsets: ['latin', 'latin-ext'], variable: '--font-geist', display: 'swap' });
+const mono = Geist_Mono({ subsets: ['latin', 'latin-ext'], variable: '--font-geist-mono', display: 'swap' });
+
+export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#FFBD00',
+  themeColor: '#080D10',
 };
+
+// Prije prvog painta: ako je preloader već viđen u sesiji, sakrij ga (bez bljeska)
+const introScript = `try{if(sessionStorage.getItem('${INTRO_KEY}'))document.documentElement.classList.add('intro-seen')}catch(e){}`;
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="hr">
-      <body className="bg-[#080D10] text-white scroll-smooth w-full min-h-screen">
-        <AnimationProvider>
+    <html lang="hr" className={`${display.variable} ${sans.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: introScript }} />
+      </head>
+      <body>
+        <Providers>
+          <a
+            href="#main"
+            className="sr-only z-[200] rounded-full bg-brand px-5 py-3 text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
+          >
+            Preskoči na sadržaj
+          </a>
+          <Preloader />
+          <ScrollProgress />
+          <Cursor />
           <Navbar />
-          <main className="w-full">{children}</main>
+          <main id="main">{children}</main>
           <Footer />
-        </AnimationProvider>
-
-        <Analytics />
-
-        <Script
-          id="organization-schema"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify({}) }}
-          strategy="afterInteractive"
-        />
+          <CookieConsent />
+        </Providers>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(organizationSchema) }} />
       </body>
     </html>
   );

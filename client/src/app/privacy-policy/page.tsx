@@ -1,272 +1,188 @@
-"use client";
+import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
+import { Reveal } from '@/components/motion/Reveal';
+import { SplitText } from '@/components/motion/SplitText';
+import { Button } from '@/components/ui/Button';
+import { site } from '@/content/site';
 
-import React from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
+export const metadata: Metadata = {
+  title: 'Pravila privatnosti',
+  description: 'Kako Kavo Studio prikuplja, koristi i štiti osobne podatke.',
+  alternates: { canonical: '/privacy-policy' },
+};
+
+const List = ({ items }: { items: string[] }) => (
+  <ul className="mt-4 space-y-2">
+    {items.map((item) => (
+      <li key={item} className="flex gap-3">
+        <span className="mt-2.5 size-1.5 shrink-0 rounded-full bg-brand" />
+        {item}
+      </li>
+    ))}
+  </ul>
+);
+
+const sections: { title: string; content: ReactNode }[] = [
+  {
+    title: 'Općenito',
+    content: (
+      <>
+        <p>
+          Ova stranica (u daljnjem tekstu: „Stranica”) je <strong className="text-paper">osobni, nekomercijalni projekt</strong> njezinih
+          autora (u daljnjem tekstu: „mi”, „nas”). Kavo nije registrirana tvrtka ni obrt, ne prodaje proizvode niti usluge i ne izdaje
+          ponude ni račune. Stranica služi isključivo kao osobni portfolio.
+        </p>
+        <p className="mt-4">
+          Poštujemo vašu privatnost i obvezujemo se zaštititi vaše osobne podatke. Ova pravila objašnjavaju kako prikupljamo,
+          koristimo i štitimo vaše informacije kada koristite Stranicu.
+        </p>
+      </>
+    ),
+  },
+  {
+    title: 'Prikupljanje podataka',
+    content: (
+      <>
+        <h3 className="font-semibold text-paper">Osobni podaci</h3>
+        <List items={['Ime i prezime', 'Email adresa', 'Sadržaj poruke koju nam dobrovoljno pošaljete']} />
+        <h3 className="mt-8 font-semibold text-paper">Automatski prikupljeni podaci</h3>
+        <List items={['IP adresa', 'Informacije o pregledniku', 'Informacije o uređaju', 'Podaci o korištenju stranice']} />
+      </>
+    ),
+  },
+  {
+    title: 'Kolačići (cookies)',
+    content: (
+      <>
+        <p>
+          Stranica koristi kolačiće za poboljšanje korisničkog iskustva. Kolačići su male tekstualne datoteke koje se pohranjuju
+          na vašem uređaju.
+        </p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-3">
+          {[
+            ['Potrebni', 'Omogućavaju osnovne funkcionalnosti stranice i ne mogu se onemogućiti.'],
+            ['Analitički', 'Pomažu nam razumjeti kako korisnici koriste stranicu (Google Analytics) – samo uz vašu privolu.'],
+            ['Funkcionalni', 'Omogućavaju poboljšane funkcionalnosti i personalizaciju.'],
+          ].map(([title, text]) => (
+            <div key={title} className="rounded-2xl bg-paper/5 p-5">
+              <h3 className="font-semibold text-brand">{title}</h3>
+              <p className="mt-2 text-sm">{text}</p>
+            </div>
+          ))}
+        </div>
+      </>
+    ),
+  },
+  {
+    title: 'Korištenje podataka',
+    content: (
+      <>
+        <p>Vaše podatke koristimo u sljedeće svrhe:</p>
+        <List items={['Odgovaranje na vaše poruke', 'Poboljšanje naše web stranice', 'Analiza korištenja stranice', 'Ispunjavanje pravnih obveza']} />
+      </>
+    ),
+  },
+  {
+    title: 'Dijeljenje podataka',
+    content: (
+      <>
+        <p>Ne prodajemo, ne mijenjamo niti ne ustupamo vaše osobne podatke trećim stranama, osim u sljedećim slučajevima:</p>
+        <List
+          items={[
+            'Kada date svoj pristanak',
+            'Pružateljima tehničkih usluga potrebnih za rad stranice (npr. hosting, email servisi)',
+            'Kada to zahtijeva zakon',
+            'Za zaštitu naših prava i sigurnosti',
+          ]}
+        />
+      </>
+    ),
+  },
+  {
+    title: 'Vaša prava (GDPR)',
+    content: (
+      <>
+        <p>Prema Općoj uredbi o zaštiti podataka (GDPR) imate sljedeća prava:</p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          {[
+            ['Pravo pristupa', 'Možete zatražiti kopiju svojih podataka'],
+            ['Pravo ispravka', 'Možete zatražiti ispravak netočnih podataka'],
+            ['Pravo brisanja', 'Možete zatražiti brisanje svojih podataka'],
+            ['Pravo prenosivosti', 'Možete zatražiti prijenos podataka'],
+          ].map(([title, text]) => (
+            <div key={title} className="rounded-2xl bg-paper/5 p-5">
+              <h3 className="font-semibold text-brand">{title}</h3>
+              <p className="mt-2 text-sm">{text}</p>
+            </div>
+          ))}
+        </div>
+      </>
+    ),
+  },
+  {
+    title: 'Sigurnost podataka',
+    content: (
+      <>
+        <p>Koristimo odgovarajuće tehničke i organizacijske mjere za zaštitu vaših podataka:</p>
+        <List
+          items={[
+            'SSL enkripcija za sve komunikacije',
+            'Sigurni serveri s redovitim ažuriranjima',
+            'Pristup podacima imaju samo autori projekta',
+            'Redovito sigurnosno kopiranje podataka',
+          ]}
+        />
+      </>
+    ),
+  },
+  {
+    title: 'Kontakt',
+    content: (
+      <p>
+        Za sva pitanja vezana uz privatnost podataka pišite nam na{' '}
+        <a href={`mailto:${site.email}`} className="text-brand underline underline-offset-4">
+          {site.email}
+        </a>
+        .
+      </p>
+    ),
+  },
+];
 
 export default function PrivacyPage() {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: "easeOut" }
-  };
-
-  const staggerContainer = {
-    animate: {
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
   return (
-    <section className="w-full bg-[#080D10] text-white min-h-screen py-24 md:py-32">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 max-w-4xl">
-        
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center space-y-6 mb-16"
-        >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-yellow-400 uppercase leading-tight">
-            Pravila privatnosti
-          </h1>
-          
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="h-px bg-gradient-to-r from-transparent via-yellow-400 to-transparent mx-auto max-w-xs"
-          />
-          
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed">
-            Vaša privatnost je za nas prioritet. Ovdje možete pronaći sve informacije o tome kako upravljamo vašim podacima.
+    <section className="bg-ink pb-32 pt-40 text-paper md:pt-48">
+      <div className="shell max-w-5xl">
+        <p className="eyebrow mb-8 text-paper/50">Pravno</p>
+        <SplitText as="h1" text="Pravila privatnosti" className="display text-giant" bouncy />
+        <Reveal className="mt-8 max-w-2xl text-lead text-paper/70">
+          Vaša privatnost nam je važna. Ovdje su sve informacije o tome kako upravljamo vašim podacima.
+        </Reveal>
+
+        <ol className="mt-20 divide-y divide-paper/10 border-y border-paper/10">
+          {sections.map((s, i) => (
+            <Reveal as="li" key={s.title} className="grid gap-6 py-12 md:grid-cols-12" amount={0.15}>
+              <div className="md:col-span-4">
+                <span className="eyebrow text-brand">{String(i + 1).padStart(2, '0')}</span>
+                <h2 className="display mt-3 text-big">{s.title}</h2>
+              </div>
+              <div className="leading-relaxed text-paper/70 md:col-span-8">{s.content}</div>
+            </Reveal>
+          ))}
+        </ol>
+
+        <Reveal className="mt-12 rounded-[1.75rem] bg-brand/10 p-8 text-paper/80">
+          <p className="font-semibold text-brand">Zadnja izmjena</p>
+          <p className="mt-2">
+            Ova pravila privatnosti zadnji put su ažurirana 11. listopada 2026. Zadržavamo pravo izmjene u bilo koje vrijeme.
           </p>
-        </motion.div>
+        </Reveal>
 
-        {/* Sadržaj */}
-        <motion.div
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
-          className="space-y-12"
-        >
-          
-          {/* Općenito */}
-          <motion.section variants={fadeInUp} className="space-y-4">
-            <h2 className="text-2xl font-bold text-yellow-400 border-l-4 border-yellow-400 pl-4">
-              1. Općenito
-            </h2>
-            <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-gray-600/30">
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Ova stranica (u daljnjem tekstu: &ldquo;Stranica&rdquo;) je <strong>osobni, nekomercijalni projekt</strong>
-                njezinih autora (u daljnjem tekstu: &ldquo;mi&rdquo;, &ldquo;nas&rdquo;). Kavo nije registrirana tvrtka ni obrt, ne prodaje
-                proizvode niti usluge i ne izdaje ponude ni račune. Stranica služi isključivo kao osobni portfolio.
-              </p>
-              <p className="text-gray-300 leading-relaxed">
-                Poštujemo vašu privatnost i obvezujemo se zaštititi vaše osobne podatke. Ova politika privatnosti 
-                objašnjava kako prikupljamo, koristimo i štitimo vaše informacije kada koristite našu web stranicu.
-              </p>
-            </div>
-          </motion.section>
-
-          {/* Prikupljanje podataka */}
-          <motion.section variants={fadeInUp} className="space-y-4">
-            <h2 className="text-2xl font-bold text-yellow-400 border-l-4 border-yellow-400 pl-4">
-              2. Prikupljanje podataka
-            </h2>
-            <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-gray-600/30">
-              <h3 className="text-xl font-semibold text-white mb-3">Osobni podaci</h3>
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Prikupljamo sljedeće osobne podatke:
-              </p>
-              <ul className="list-disc list-inside text-gray-300 space-y-2 mb-6">
-                <li>Ime i prezime</li>
-                <li>Email adresa</li>
-                <li>Sadržaj poruke koju nam dobrovoljno pošaljete</li>
-              </ul>
-              
-              <h3 className="text-xl font-semibold text-white mb-3">Automatski prikupljeni podaci</h3>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>IP adresa</li>
-                <li>Informacije o pregledniku</li>
-                <li>Informacije o uređaju</li>
-                <li>Podaci o korištenju stranice</li>
-              </ul>
-            </div>
-          </motion.section>
-
-          {/* Kolačići */}
-          <motion.section variants={fadeInUp} className="space-y-4">
-            <h2 className="text-2xl font-bold text-yellow-400 border-l-4 border-yellow-400 pl-4">
-              3. Kolačići (Cookies)
-            </h2>
-            <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-gray-600/30">
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Naša stranica koristi kolačiće za poboljšanje korisničkog iskustva. Kolačići su male tekstualne 
-                datoteke koje se pohranjuju na vašem uređaju.
-              </p>
-              
-              <h3 className="text-xl font-semibold text-white mb-3">Vrste kolačića koje koristimo:</h3>
-              <div className="space-y-4">
-                <div className="bg-white/5 rounded p-4">
-                  <h4 className="font-semibold text-yellow-400 mb-2">Potrebni kolačići</h4>
-                  <p className="text-gray-300 text-sm">
-                    Omogućavaju osnovne funkcionalnosti stranice i ne mogu se onemogućiti.
-                  </p>
-                </div>
-                
-                <div className="bg-white/5 rounded p-4">
-                  <h4 className="font-semibold text-yellow-400 mb-2">Analitički kolačići</h4>
-                  <p className="text-gray-300 text-sm">
-                    Pomažu nam razumjeti kako korisnici koriste našu stranicu (Google Analytics).
-                  </p>
-                </div>
-                
-                <div className="bg-white/5 rounded p-4">
-                  <h4 className="font-semibold text-yellow-400 mb-2">Funkcionalni kolačići</h4>
-                  <p className="text-gray-300 text-sm">
-                    Omogućavaju poboljšane funkcionalnosti i personalizaciju.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Korištenje podataka */}
-          <motion.section variants={fadeInUp} className="space-y-4">
-            <h2 className="text-2xl font-bold text-yellow-400 border-l-4 border-yellow-400 pl-4">
-              4. Korištenje podataka
-            </h2>
-            <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-gray-600/30">
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Vaše podatke koristimo u sljedeće svrhe:
-              </p>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>Odgovaranje na vaše poruke</li>
-                <li>Poboljšanje naše web stranice</li>
-                <li>Analiza korištenja stranice</li>
-                <li>Ispunjavanje pravnih obveza</li>
-              </ul>
-            </div>
-          </motion.section>
-
-          {/* Dijeljenje podataka */}
-          <motion.section variants={fadeInUp} className="space-y-4">
-            <h2 className="text-2xl font-bold text-yellow-400 border-l-4 border-yellow-400 pl-4">
-              5. Dijeljenje podataka
-            </h2>
-            <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-gray-600/30">
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Ne prodajemo, ne mijenjamo niti ne ustupujemo vaše osobne podatke trećim stranama, osim u sljedećim slučajevima:
-              </p>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>Kada damo svoj pristanak</li>
-                <li>Pružateljima tehničkih usluga potrebnih za rad stranice (npr. hosting, email servisi)</li>
-                <li>Kada to zahtijeva zakon</li>
-                <li>Za zaštitu naših prava i sigurnosti</li>
-              </ul>
-            </div>
-          </motion.section>
-
-          {/* Vaša prava */}
-          <motion.section variants={fadeInUp} className="space-y-4">
-            <h2 className="text-2xl font-bold text-yellow-400 border-l-4 border-yellow-400 pl-4">
-              6. Vaša prava (GDPR)
-            </h2>
-            <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-gray-600/30">
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Prema Općoj uredbi o zaštiti podataka (GDPR), imate sljedeća prava:
-              </p>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="bg-white/5 rounded p-4">
-                  <h4 className="font-semibold text-yellow-400 mb-2">Pravo pristupa</h4>
-                  <p className="text-gray-300 text-sm">Možete zatražiti kopiju svojih podataka</p>
-                </div>
-                
-                <div className="bg-white/5 rounded p-4">
-                  <h4 className="font-semibold text-yellow-400 mb-2">Pravo ispravka</h4>
-                  <p className="text-gray-300 text-sm">Možete zatražiti ispravak netočnih podataka</p>
-                </div>
-                
-                <div className="bg-white/5 rounded p-4">
-                  <h4 className="font-semibold text-yellow-400 mb-2">Pravo brisanja</h4>
-                  <p className="text-gray-300 text-sm">Možete zatražiti brisanje svojih podataka</p>
-                </div>
-                
-                <div className="bg-white/5 rounded p-4">
-                  <h4 className="font-semibold text-yellow-400 mb-2">Pravo prenosivosti</h4>
-                  <p className="text-gray-300 text-sm">Možete zatražiti prenos podataka</p>
-                </div>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Sigurnost */}
-          <motion.section variants={fadeInUp} className="space-y-4">
-            <h2 className="text-2xl font-bold text-yellow-400 border-l-4 border-yellow-400 pl-4">
-              7. Sigurnost podataka
-            </h2>
-            <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-gray-600/30">
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Koristimo odgovarajuće tehničke i organizacijske mjere za zaštitu vaših podataka:
-              </p>
-              <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>SSL enkripcija za sve komunikacije</li>
-                <li>Sigurni serveri s redovitim ažuriranjima</li>
-                <li>Pristup podacima imaju samo autori projekta</li>
-                <li>Redovito sigurnosno kopiranje podataka</li>
-              </ul>
-            </div>
-          </motion.section>
-
-          {/* Kontakt */}
-          <motion.section variants={fadeInUp} className="space-y-4">
-            <h2 className="text-2xl font-bold text-yellow-400 border-l-4 border-yellow-400 pl-4">
-              8. Kontakt
-            </h2>
-            <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-gray-600/30">
-              <p className="text-gray-300 leading-relaxed mb-4">
-                Za sva pitanja vezana uz privatnost podataka možete nas kontaktirati:
-              </p>
-              <div className="space-y-2 text-gray-300">
-                <p><strong>Email:</strong> hi@kavo.studio</p>
-              </div>
-            </div>
-          </motion.section>
-
-          {/* Zadnja izmjena */}
-          <motion.section variants={fadeInUp} className="space-y-4">
-            <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-6">
-              <p className="text-yellow-400 font-semibold mb-2">Zadnja izmjena</p>
-              <p className="text-gray-300">
-                Ova politika privatnosti zadnji put je ažurirana 11. listopada 2026. 
-                Zadržavamo pravo mijenjanja ove politike u bilo koje vrijeme.
-              </p>
-            </div>
-          </motion.section>
-
-        </motion.div>
-
-        {/* Back to home */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="text-center mt-16 pt-8 border-t border-gray-700/50"
-        >
-          <Link href="/">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#080D10] font-bold rounded-lg shadow-lg shadow-yellow-400/25 hover:shadow-yellow-400/40 transition-all duration-300 uppercase tracking-wide"
-            >
-              ← Povratak na početnu
-            </motion.button>
-          </Link>
-        </motion.div>
+        <div className="mt-16">
+          <Button href="/" variant="outline-light">
+            Povratak na početnu
+          </Button>
+        </div>
       </div>
     </section>
   );
