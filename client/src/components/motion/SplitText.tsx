@@ -32,7 +32,12 @@ const word: Variants = {
  * Pristupačnost: puni tekst je u sr-only spanu, razlomljeni dijelovi su aria-hidden
  * (aria-label se na <p>/<span> ne čita pouzdano).
  */
-export function SplitText({
+/** Promjena teksta (npr. jezika) remounta komponentu pa riječi ponovno izrone */
+export function SplitText(props: Props) {
+  return <SplitTextInner key={props.text} {...props} />;
+}
+
+function SplitTextInner({
   text,
   as = 'span',
   className,

@@ -3,17 +3,17 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { AnchorLink } from '@/components/ui/AnchorLink';
 import { navLinks, site } from '@/content/site';
-import { services } from '@/content/services';
 import { ease } from '@/lib/motion';
 
 const ORIGIN = 'calc(100% - 3rem) 2.5rem';
 
-const items = [...navLinks.map((l) => ({ label: l.label, href: l.href as string })), { label: 'Kontakt', href: '/contact' }];
-
 export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
   const ref = useRef<HTMLDivElement>(null);
+  const { t, services } = useI18n();
+  const items = [...navLinks.map((l) => ({ label: t.nav[l.key], href: l.href as string })), { label: t.nav.contact, href: '/contact' }];
 
   // Disclosure navigacija (ne modal): toggle gumb u headeru ostaje dostupan, fokus ide na prvi link
   useEffect(() => {
@@ -35,7 +35,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           transition={{ duration: 0.8, ease: ease.inOut }}
           data-lenis-prevent
         >
-          <nav aria-label="Izbornik" className="shell flex flex-1 flex-col justify-center pb-10 pt-28">
+          <nav aria-label={t.nav.menu} className="shell flex flex-1 flex-col justify-center pb-10 pt-28">
             <ul className="space-y-1">
               {items.map((item, i) => (
                 <li key={item.href} className="overflow-hidden">

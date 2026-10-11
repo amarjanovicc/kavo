@@ -6,16 +6,15 @@ export const site = {
   since: 2023,
   description:
     'Kavo je osobni, nekomercijalni projekt i portfolio iz Hrvatske – grafički dizajn, branding i web development.',
-  disclaimer:
-    'Kavo je osobni, nekomercijalni projekt. Nije registrirana tvrtka i ne prodaje proizvode ni usluge.',
   socials: [
     { label: 'Instagram', href: 'https://www.instagram.com/kavostudioo/' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/kavo-studio-065538388/' },
   ],
 } as const;
 
+/** Natpisi su u `dictionary.nav[key]` */
 export const navLinks = [
-  { label: 'O nama', href: '/#about' },
-  { label: 'Što radimo', href: '/#services', hasServices: true },
-  { label: 'Radovi', href: '/#portfolio' },
+  { key: 'about', href: '/#about' },
+  { key: 'services', href: '/#services', hasServices: true },
+  { key: 'work', href: '/#portfolio' },
 ] as const;

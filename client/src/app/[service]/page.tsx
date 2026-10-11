@@ -49,7 +49,7 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
-      <ServicePageView service={service} />
+      <ServicePageView slug={service.slug} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(schema) }} />
     </>
   );

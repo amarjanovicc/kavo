@@ -1,3 +1,5 @@
+import type { Locale } from './dictionary';
+
 export type Project = {
   id: string;
   title: string;
@@ -114,3 +116,37 @@ export const projects: Project[] = [
     tags: ['Web dizajn', 'Branding', 'UI/UX'],
   },
 ];
+
+const en: Record<string, Partial<Pick<Project, 'title' | 'description' | 'tags'>>> = {
+  'hotel-heritage': {
+    description: 'Hotel website with simple booking – just as clear on mobile as on desktop.',
+    tags: ['Web design', 'Responsive', 'Hospitality'],
+  },
+  'ronin-gym': { description: 'Logo and visual identity for a fitness centre.', tags: ['Branding', 'Visual identity', 'Logo'] },
+  mara: { description: 'Product catalogue prepared for print.', tags: ['Catalogue', 'Print', 'Graphic design'] },
+  'mapetrol-label': {
+    description: 'Packaging and labels, presented through 3D visualisations.',
+    tags: ['Product design', '3D', 'Labels'],
+  },
+  procake: { description: 'Packaging design and 3D product visualisation.', tags: ['Branding', '3D', 'Packaging'] },
+  'moto-shop': { description: 'Online shop that fits every screen.', tags: ['Web design', 'Responsive', 'E-commerce'] },
+  baltazar: {
+    description: 'UX/UI for an interactive survey that automatically sends an email at the end.',
+    tags: ['UX/UI', 'Survey', 'Email automation'],
+  },
+  'marketing-platform': {
+    title: 'Marketing platform',
+    description: 'One interface for running campaigns, contacts and automations.',
+    tags: ['Web app', 'Digital marketing', 'UI'],
+  },
+  'mapetrol-livery': {
+    description: '3D visualisation of a vehicle with a branded wrap.',
+    tags: ['3D modelling', 'Livery design', 'Visualisation'],
+  },
+  'dv-studio-gogi': { description: 'Website and branding for a music studio.', tags: ['Web design', 'Branding', 'UI/UX'] },
+};
+
+export const projectsByLocale: Record<Locale, Project[]> = {
+  hr: projects,
+  en: projects.map((p) => ({ ...p, ...en[p.id] })),
+};

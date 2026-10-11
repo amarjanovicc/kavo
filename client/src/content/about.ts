@@ -1,3 +1,5 @@
+import type { Locale } from './dictionary';
+
 export const values = [
   {
     title: 'Brend koji se pamti',
@@ -44,3 +46,50 @@ export const team = [
     image: '/avatars/Nino.png',
   },
 ];
+
+const valuesEn = [
+  {
+    title: 'A brand people remember',
+    description: 'We look for one clear idea and build the whole identity around it – so people recognise you at a glance.',
+  },
+  {
+    title: 'A website people trust',
+    description: 'Clear structure, readable text and pages that load fast. Visitors know right away where they are and what to do next.',
+  },
+  {
+    title: 'Design with a reason',
+    description: "Every element on screen has a job. If it doesn't help someone understand or click, it goes.",
+  },
+  {
+    title: 'Made for the love of it',
+    description: "Kavo isn't a company – we do this because we love it. That's why we can experiment, make mistakes and learn on every project.",
+  },
+];
+
+const teamEn = [
+  {
+    label: 'Who we are',
+    text: "Three people, one portfolio. Kavo isn't a registered company and doesn't sell services – we design and build for the web because we love doing it.",
+    role: 'Web developer',
+  },
+  {
+    label: 'What we want',
+    text: 'To learn on real projects, try new things and show what we can do through what we make.',
+    role: 'Designer',
+  },
+  {
+    label: 'How we work',
+    text: "We don't start from templates. First we find what makes an idea different, then we turn it into design and code.",
+    role: 'Marketing',
+  },
+];
+
+export const valuesByLocale: Record<Locale, typeof values> = {
+  hr: values,
+  en: values.map((v, i) => ({ ...v, ...valuesEn[i] })),
+};
+
+export const teamByLocale: Record<Locale, typeof team> = {
+  hr: team,
+  en: team.map((m, i) => ({ ...m, ...teamEn[i] })),
+};

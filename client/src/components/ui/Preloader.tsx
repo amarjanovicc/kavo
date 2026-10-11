@@ -4,6 +4,7 @@ import { AnimatePresence, animate, motion, useMotionValue, useTransform } from '
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useIntro } from '@/components/providers/IntroProvider';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { useScrollLock } from '@/components/providers/useScrollLock';
 import { ease } from '@/lib/motion';
 
@@ -12,6 +13,7 @@ const WORD = 'kavo studio';
 /** Uvodna animacija – samo pri prvom posjetu u sesiji */
 export function Preloader() {
   const { finishIntro } = useIntro();
+  const { t } = useI18n();
   const [show, setShow] = useState(true);
   const progress = useMotionValue(0);
   const counter = useTransform(progress, (v) => String(Math.round(v)).padStart(3, '0'));
@@ -80,7 +82,7 @@ export function Preloader() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
             >
-              Osobni projekt — dizajn &amp; kod
+              {t.preloader}
             </motion.p>
             <motion.span className="display text-[clamp(3rem,8vw,7rem)] leading-none tabular-nums">{counter}</motion.span>
           </div>
