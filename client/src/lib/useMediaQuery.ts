@@ -13,3 +13,7 @@ export function useMediaQuery(query: string) {
   }, [query]);
   return matches;
 }
+
+/** Touch uređaji / uski ekrani: teži scroll efekti se gase (slabiji GPU na mobitelima) */
+export const LITE_MOTION_QUERY = '(pointer: coarse), (max-width: 767px)';
+export const useLiteMotion = () => useMediaQuery(LITE_MOTION_QUERY);

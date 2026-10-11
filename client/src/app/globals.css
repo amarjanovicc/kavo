@@ -154,6 +154,13 @@ html.intro-seen [data-preloader] { display: none; }
   transform: translateY(-100%);
 }
 
+/* Mobitel / touch: bez teksture preko cijelog ekrana i bez beskonačnih animacija – štede GPU */
+@media (pointer: coarse), (max-width: 767px) {
+  body::after { display: none; }
+  .animate-float,
+  .animate-spin-slow { animation: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
