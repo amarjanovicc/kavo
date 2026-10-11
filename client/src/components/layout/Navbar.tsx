@@ -1,23 +1,24 @@
 'use client';
 
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion';
-import { useLenis } from 'lenis/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { RollText } from '@/components/motion/RollText';
+import { useScrollLock } from '@/components/providers/useScrollLock';
 import { AnchorLink } from '@/components/ui/AnchorLink';
 import { Button } from '@/components/ui/Button';
 import { navLinks } from '@/content/site';
 import { services } from '@/content/services';
 import { bounce, ease } from '@/lib/motion';
 import { cn } from '@/lib/cn';
+import { useMediaQuery } from '@/lib/useMediaQuery';
 import { MobileMenu } from './MobileMenu';
 
 export function Navbar() {
   const pathname = usePathname();
-  const lenis = useLenis();
+  const isDesktop = useMediaQuery('(min-width: 768px)');
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -36,11 +37,12 @@ export function Navbar() {
     setServicesOpen(false);
   }, [pathname]);
 
+  useScrollLock(menuOpen);
+
+  // Izbornik je samo za mobitel – zatvori ga ako prozor postane širok (rotacija tableta, resize)
   useEffect(() => {
-    if (!lenis) return;
-    if (menuOpen) lenis.stop();
-    else lenis.start();
-  }, [menuOpen, lenis]);
+    if (isDesktop) setMenuOpen(false);
+  }, [isDesktop]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {

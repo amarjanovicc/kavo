@@ -87,7 +87,7 @@ export function Footer() {
         <div className="mt-24 flex flex-col gap-6 border-t border-paper/10 py-8 text-xs text-paper/50 md:flex-row md:items-center md:justify-between">
           <div className="space-y-1.5">
             <p>
-              © {new Date().getFullYear()} {site.name} · {site.location}
+              © <span suppressHydrationWarning>{new Date().getFullYear()}</span> {site.name} · {site.location}
             </p>
             <p className="max-w-md">{site.disclaimer}</p>
           </div>

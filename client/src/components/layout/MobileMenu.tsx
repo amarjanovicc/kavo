@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 import { AnchorLink } from '@/components/ui/AnchorLink';
 import { navLinks, site } from '@/content/site';
 import { services } from '@/content/services';
@@ -12,14 +13,21 @@ const ORIGIN = 'calc(100% - 3rem) 2.5rem';
 const items = [...navLinks.map((l) => ({ label: l.label, href: l.href as string })), { label: 'Kontakt', href: '/contact' }];
 
 export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Disclosure navigacija (ne modal): toggle gumb u headeru ostaje dostupan, fokus ide na prvi link
+  useEffect(() => {
+    if (!open) return;
+    const frame = requestAnimationFrame(() => ref.current?.querySelector('a')?.focus({ preventScroll: true }));
+    return () => cancelAnimationFrame(frame);
+  }, [open]);
+
   return (
     <AnimatePresence>
       {open && (
         <motion.div
+          ref={ref}
           id="mobile-menu"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Izbornik"
           className="fixed inset-0 z-[75] flex flex-col overflow-y-auto bg-brand text-ink md:hidden"
           initial={{ clipPath: `circle(0% at ${ORIGIN})` }}
           animate={{ clipPath: `circle(150% at ${ORIGIN})` }}
@@ -27,7 +35,7 @@ export function MobileMenu({ open, onClose }: { open: boolean; onClose: () => vo
           transition={{ duration: 0.8, ease: ease.inOut }}
           data-lenis-prevent
         >
-          <nav className="shell flex flex-1 flex-col justify-center pb-10 pt-28">
+          <nav aria-label="Izbornik" className="shell flex flex-1 flex-col justify-center pb-10 pt-28">
             <ul className="space-y-1">
               {items.map((item, i) => (
                 <li key={item.href} className="overflow-hidden">

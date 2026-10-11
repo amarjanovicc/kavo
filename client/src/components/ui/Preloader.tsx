@@ -1,10 +1,10 @@
 'use client';
 
 import { AnimatePresence, animate, motion, useMotionValue, useTransform } from 'framer-motion';
-import { useLenis } from 'lenis/react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useIntro } from '@/components/providers/IntroProvider';
+import { useScrollLock } from '@/components/providers/useScrollLock';
 import { ease } from '@/lib/motion';
 
 const WORD = 'kavo studio';
@@ -12,7 +12,6 @@ const WORD = 'kavo studio';
 /** Uvodna animacija – samo pri prvom posjetu u sesiji */
 export function Preloader() {
   const { finishIntro } = useIntro();
-  const lenis = useLenis();
   const [show, setShow] = useState(true);
   const progress = useMotionValue(0);
   const counter = useTransform(progress, (v) => String(Math.round(v)).padStart(3, '0'));
@@ -37,17 +36,14 @@ export function Preloader() {
     };
   }, [finishIntro, progress]);
 
-  useEffect(() => {
-    if (!lenis) return;
-    if (show) lenis.stop();
-    else lenis.start();
-  }, [lenis, show]);
+  useScrollLock(show);
 
   return (
     <AnimatePresence>
       {show && (
         <motion.div
           data-preloader
+          aria-hidden
           className="fixed inset-0 z-[110] flex flex-col bg-ink text-paper"
           initial={{ clipPath: 'inset(0% 0% 0% 0%)' }}
           exit={{ clipPath: 'inset(0% 0% 100% 0%)' }}
@@ -62,11 +58,10 @@ export function Preloader() {
             >
               <Image src="/logo/kavo-logo.png" alt="" fill sizes="128px" priority />
             </motion.div>
-            <span className="display flex overflow-hidden pb-[0.08em] leading-none text-brand" aria-label={WORD}>
+            <span className="display flex overflow-hidden pb-[0.08em] leading-none text-brand">
               {Array.from(WORD).map((c, i) => (
                 <motion.span
                   key={i}
-                  aria-hidden
                   className="inline-block"
                   initial={{ y: '110%' }}
                   animate={{ y: '0%' }}

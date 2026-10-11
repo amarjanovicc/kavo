@@ -68,10 +68,7 @@ export function Hero() {
           </p>
         </motion.div>
 
-        <h1
-          className="display text-[16.5vw] leading-[0.86] tracking-[-0.045em] md:text-mega"
-          aria-label="Dizajniramo. Razvijamo. Inspiriramo."
-        >
+        <h1 className="display text-[16.5vw] leading-[0.86] tracking-[-0.045em] md:text-mega">
           {lines.map((line, i) => (
             <SplitText
               key={line.text}

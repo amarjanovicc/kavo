@@ -17,7 +17,8 @@ export function ScrollWords({ words, className }: { words: ScrollWord[]; classNa
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 0.85', 'end 0.4'] });
 
   return (
-    <p ref={ref} className={cn('flex flex-wrap', className)} aria-label={words.map((w) => w.text).join(' ')}>
+    <p ref={ref} className={cn('flex flex-wrap', className)}>
+      <span className="sr-only">{words.map((w) => w.text).join(' ')}</span>
       {words.map((w, i) => {
         const start = i / words.length;
         return <Word key={i} word={w} progress={scrollYProgress} range={[start, start + 1 / words.length]} />;

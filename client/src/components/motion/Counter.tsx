@@ -18,8 +18,11 @@ export function Counter({ to, from = 0, duration = 2, className }: { to: number;
   }, [inView, to, duration, value]);
 
   return (
-    <motion.span ref={ref} className={className} aria-label={String(to)}>
-      {rounded}
-    </motion.span>
+    <span className={className}>
+      <span className="sr-only">{to}</span>
+      <motion.span ref={ref} aria-hidden>
+        {rounded}
+      </motion.span>
+    </span>
   );
 }

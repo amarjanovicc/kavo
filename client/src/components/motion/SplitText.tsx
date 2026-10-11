@@ -29,7 +29,8 @@ const word: Variants = {
 
 /**
  * Razbija tekst na riječi koje „izranjaju” ispod maske.
- * Pristupačnost: puni tekst je u aria-label, razlomljeni dijelovi su aria-hidden.
+ * Pristupačnost: puni tekst je u sr-only spanu, razlomljeni dijelovi su aria-hidden
+ * (aria-label se na <p>/<span> ne čita pouzdano).
  */
 export function SplitText({
   text,
@@ -49,13 +50,13 @@ export function SplitText({
   return (
     <Component
       className={className}
-      aria-label={text}
       initial="hidden"
       animate={controlled ? (play ? 'show' : 'hidden') : undefined}
       whileInView={controlled ? undefined : 'show'}
       viewport={{ once, amount: 0.35 }}
       variants={{ show: { transition: { staggerChildren: stagger, delayChildren: delay } } }}
     >
+      <span className="sr-only">{text}</span>
       {words.map((w, i) => (
         <Fragment key={i}>
           <span aria-hidden className="inline-block overflow-hidden whitespace-nowrap pb-[0.1em] -mb-[0.1em] align-bottom">

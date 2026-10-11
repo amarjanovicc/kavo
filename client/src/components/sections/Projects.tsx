@@ -1,10 +1,10 @@
 'use client';
 
 import { AnimatePresence, motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
-import { useLenis } from 'lenis/react';
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react';
 import { Reveal } from '@/components/motion/Reveal';
+import { useScrollLock } from '@/components/providers/useScrollLock';
 import { SplitText } from '@/components/motion/SplitText';
 import { projects, type Project } from '@/content/projects';
 import { ease } from '@/lib/motion';
@@ -183,25 +183,43 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
 }
 
 function ProjectModal({ project, onClose }: { project: Project | null; onClose: () => void }) {
-  const lenis = useLenis();
+  const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  useScrollLock(!!project);
 
   useEffect(() => {
     if (!project) return;
-    lenis?.stop();
+    // Fokus se vraća na karticu koja je otvorila modal
+    const opener = document.activeElement as HTMLElement | null;
     closeRef.current?.focus();
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') return onClose();
+      if (e.key !== 'Tab' || !dialogRef.current) return;
+      // Tab ostaje unutar modala
+      const focusable = dialogRef.current.querySelectorAll<HTMLElement>('button, a[href], [tabindex]:not([tabindex="-1"])');
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last?.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first?.focus();
+      }
+    };
     window.addEventListener('keydown', onKey);
     return () => {
-      lenis?.start();
       window.removeEventListener('keydown', onKey);
+      opener?.focus({ preventScroll: true });
     };
-  }, [project, lenis, onClose]);
+  }, [project, onClose]);
 
   return (
     <AnimatePresence>
       {project && (
         <motion.div
+          ref={dialogRef}
           className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-10"
           role="dialog"
           aria-modal="true"

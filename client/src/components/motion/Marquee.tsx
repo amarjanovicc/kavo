@@ -26,11 +26,13 @@ export function Marquee({
   baseVelocity = -2,
   className,
   copies = 4,
+  'aria-hidden': ariaHidden,
 }: {
   children: ReactNode;
   baseVelocity?: number;
   className?: string;
   copies?: number;
+  'aria-hidden'?: boolean;
 }) {
   const reduce = useReducedMotion();
   const baseX = useMotionValue(0);
@@ -52,7 +54,7 @@ export function Marquee({
   });
 
   return (
-    <div className={cn('flex overflow-hidden whitespace-nowrap', className)}>
+    <div className={cn('flex overflow-hidden whitespace-nowrap', className)} aria-hidden={ariaHidden}>
       <motion.div className="flex flex-nowrap whitespace-nowrap will-change-transform" style={{ x }}>
         {Array.from({ length: copies }).map((_, i) => (
           <div key={i} className="flex shrink-0 items-center" aria-hidden={i > 0 || undefined}>

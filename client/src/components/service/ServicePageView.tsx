@@ -124,7 +124,7 @@ export function ServicePageView({ service }: { service: Service }) {
 
           <div className="space-y-32 md:col-span-8 md:space-y-48">
             {service.sections.map((s, i) => (
-              <Block key={s.title} section={s} index={i} onActive={() => setActive(i)} />
+              <Block key={s.title} section={s} index={i} onActive={setActive} />
             ))}
           </div>
         </div>
@@ -149,13 +149,13 @@ export function ServicePageView({ service }: { service: Service }) {
   );
 }
 
-function Block({ section, index, onActive }: { section: ServiceSection; index: number; onActive: () => void }) {
+function Block({ section, index, onActive }: { section: ServiceSection; index: number; onActive: (index: number) => void }) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { margin: '-45% 0px -45% 0px' });
 
   useEffect(() => {
-    if (inView) onActive();
-  }, [inView, onActive]);
+    if (inView) onActive(index);
+  }, [inView, index, onActive]);
 
   return (
     <article ref={ref} id={`dio-${index + 1}`} className="scroll-mt-32">
