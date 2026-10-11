@@ -28,8 +28,8 @@ const sections: { title: string; content: ReactNode }[] = [
     content: (
       <>
         <p>
-          Ova stranica (u daljnjem tekstu: „Stranica”) je <strong className="text-paper">osobni, nekomercijalni projekt</strong> (u
-          daljnjem tekstu: „mi”, „nas”). Kavo nije registrirana tvrtka ni obrt, ne prodaje proizvode niti usluge i ne izdaje
+          Ova stranica (u daljnjem tekstu: „Stranica”) je <strong className="text-paper">osobni, nekomercijalni projekt</strong> njezinih
+          autora (u daljnjem tekstu: „mi”, „nas”). Kavo nije registrirana tvrtka ni obrt, ne prodaje proizvode niti usluge i ne izdaje
           ponude ni račune. Stranica služi isključivo kao osobni portfolio.
         </p>
         <p className="mt-4">
