@@ -6,6 +6,7 @@ import { useRef } from 'react';
 import { SplitText } from '@/components/motion/SplitText';
 import { values } from '@/content/about';
 import { bounce, ease } from '@/lib/motion';
+import { useLiteMotion } from '@/lib/useMediaQuery';
 
 /** Sticky kartice koje se slažu jedna na drugu dok se scrolla */
 export function Values() {
@@ -67,8 +68,9 @@ function Card({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start start'] });
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1.6, 1]);
-  const imageRotate = useTransform(scrollYProgress, [0, 1], [index % 2 ? 18 : -18, 0]);
+  const lite = useLiteMotion();
+  const imageScale = useTransform(scrollYProgress, [0, 1], [lite ? 1 : 1.6, 1]);
+  const imageRotate = useTransform(scrollYProgress, [0, 1], [lite ? 0 : index % 2 ? 18 : -18, 0]);
   // Kartice iza se zatamne umjesto da se skaliraju – skaliranje kartice sa slikom
   // tjera preglednik da je crta ispočetka u svakom frameu (izmjereno: ~40% sporih frameova)
   const dim = useTransform(progress, range, [0, targetDim]);

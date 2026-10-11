@@ -11,6 +11,7 @@ import { ArrowDown } from '@/components/ui/icons';
 import { site } from '@/content/site';
 import { ease } from '@/lib/motion';
 import { cn } from '@/lib/cn';
+import { useLiteMotion } from '@/lib/useMediaQuery';
 
 const lines = [
   { text: 'Dizajniramo.', className: '' },
@@ -24,9 +25,11 @@ export function Hero() {
 
   // Izlaz iz heroja vezan uz scroll
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.86]);
+  // Skaliranje golemog teksta pri scrollu je preskupo za mobilni GPU – tamo samo fade
+  const lite = useLiteMotion();
+  const scale = useTransform(scrollYProgress, [0, 1], [1, lite ? 1 : 0.86]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '18%']);
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', lite ? '0%' : '18%']);
 
   // Žuti sjaj prati miš
   // Pozicija sjaja u pikselima (početno: desno gore)
