@@ -123,7 +123,7 @@ const WebDizajnPage: React.FC = () => {
                 Za ljude i tražilice
               </h2>
               <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-right">
-                Dobar dizajn nije samo za ljude – voli ga i Google. Kada je stranica pregledna, brza i jednostavna za korištenje, to pomaže i boljem rangiranju na tražilicama. Zato pazimo da vaša stranica bude i lijepa i funkcionalna, ali i optimizirana tako da vas potencijalni klijenti lakše pronađu.
+                Dobar dizajn nije samo za ljude – voli ga i Google. Kada je stranica pregledna, brza i jednostavna za korištenje, to pomaže i boljem rangiranju na tražilicama. Zato pazimo da vaša stranica bude i lijepa i funkcionalna, ali i optimizirana tako da je ljudi lakše pronađu.
               </p>
             </div>
           </motion.div>
@@ -138,10 +138,10 @@ const WebDizajnPage: React.FC = () => {
         >
           <div className="relative p-8 md:p-10 text-[#080D10] bg-white rounded-xl shadow-lg">
             <h2 className="text-[clamp(1.75rem,3.5vw,2.5rem)] font-bold mb-6 text-center">
-              Dizajn koji donosi rezultate
+              Dizajn s razlogom
             </h2>
             <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-center">
-              Na kraju, web dizajn za nas nije samo stvar vizualnog dojma. On ima zadatak pomoći vam da ostvarite svoje ciljeve – bilo da želite privući nove klijente, prodati proizvod ili jednostavno predstaviti svoj brend na najbolji način. Naš zadatak je stvoriti dizajn koji će raditi za vas, a ne samo lijepo izgledati.
+              Na kraju, web dizajn za nas nije samo stvar vizualnog dojma. Svaki dizajn ima zadatak – predstaviti ideju, projekt ili brend na najbolji način. Želimo da radi, a ne samo lijepo izgleda.
             </p>
           </div>
         </motion.footer>

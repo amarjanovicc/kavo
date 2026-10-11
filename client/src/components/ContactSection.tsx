@@ -27,7 +27,7 @@ export default function ContactSection() {
                     pl-0 sm:pl-3 lg:pl-6 border-l-0 sm:border-l-2 lg:border-l-3 border-[#080D10] relative">
           OVO JE ONO ŠTO RADIMO.
           <br />
-          ZAMISLITE ŠTO MOŽEMO NAPRAVITI ZA VAS.
+          ZAMISLITE ŠTO JOŠ MOŽEMO NAPRAVITI.
           
           {/* Horizontalna linija na mobilnim */}
           <motion.span
@@ -113,7 +113,7 @@ export default function ContactSection() {
           animate={{ x: "100%" }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
         />
-        <span className="relative z-10">POSTANIMO PARTNERI</span>
+        <span className="relative z-10">JAVITE SE</span>
       </motion.button>
     </section>
   );

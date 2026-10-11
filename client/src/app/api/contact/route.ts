@@ -44,7 +44,7 @@ export async function POST(req: Request) {
   const mailOptions = {
     from: `"Kontakt forma" <${process.env.EMAIL_USER}>`,
     to: process.env.EMAIL_TO,
-    subject: "🌐 Nova poruka sa web stranice",
+    subject: "🌐 Nova poruka s web stranice",
     html: `
       <p><strong>Ime:</strong> ${name}</p>
       <p><strong>Email:</strong> ${email}</p>

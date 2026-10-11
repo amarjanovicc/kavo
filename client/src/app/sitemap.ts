@@ -8,7 +8,6 @@ const getLastModified = (route: string) => {
     '/graficki-dizajn': new Date('2023-10-15'),
     '/branding': new Date('2023-10-18'),
     '/web-razvoj': new Date('2023-10-12'),
-    '/digitalni-marketing': new Date('2023-10-05'),
     '/o-nama': new Date('2023-09-28'),
     '/portfolio': new Date('2023-10-19'), // Updated often
     '/kontakt': new Date('2023-09-15'),
@@ -38,7 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/graficki-dizajn',
     '/branding',
     '/web-razvoj',
-    '/digitalni-marketing',
     '/o-nama',
     '/portfolio',
     '/kontakt',

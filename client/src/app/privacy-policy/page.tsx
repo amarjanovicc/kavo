@@ -62,7 +62,7 @@ export default function PrivacyPage() {
             <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-gray-600/30">
               <p className="text-gray-300 leading-relaxed mb-4">
                 Ova stranica (u daljnjem tekstu: &ldquo;Stranica&rdquo;) je <strong>osobni, nekomercijalni projekt</strong>
-                (u daljnjem tekstu: &ldquo;mi&rdquo;, &ldquo;nas&rdquo;). Kavo nije registrirana tvrtka ni obrt, ne prodaje
+                njezinih autora (u daljnjem tekstu: &ldquo;mi&rdquo;, &ldquo;nas&rdquo;). Kavo nije registrirana tvrtka ni obrt, ne prodaje
                 proizvode niti usluge i ne izdaje ponude ni račune. Stranica služi isključivo kao osobni portfolio.
               </p>
               <p className="text-gray-300 leading-relaxed">

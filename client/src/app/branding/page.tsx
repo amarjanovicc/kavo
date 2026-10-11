@@ -161,7 +161,7 @@ const BrandingPage: React.FC = () => {
               </h2>
               <p className="text-[clamp(1rem,1.8vw,1.25rem)] leading-relaxed text-[#080D10] text-right">
                 Kada je brend spreman, pokazujemo kako samostalno održavati
-                dosljednost brend. Naš cilj je da vaš brend raste zajedno s vama.
+                dosljednost brenda – da brend može rasti i nakon što je projekt gotov.
               </p>
             </div>
           </motion.div>
