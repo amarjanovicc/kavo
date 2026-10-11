@@ -2,11 +2,12 @@
 
 import { AnimatePresence, motion, useMotionValue, useScroll, useSpring, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import { useCallback, useEffect, useRef, useState, type PointerEvent } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState, type PointerEvent } from 'react';
 import { Reveal } from '@/components/motion/Reveal';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { useScrollLock } from '@/components/providers/useScrollLock';
 import { SplitText } from '@/components/motion/SplitText';
-import { projects, type Project } from '@/content/projects';
+import { projects as allProjects, type Project } from '@/content/projects';
 import { ease } from '@/lib/motion';
 import { useMediaQuery } from '@/lib/useMediaQuery';
 
@@ -38,12 +39,15 @@ function buildLayout(list: Project[]): Block[] {
   return blocks;
 }
 
-const blocks = buildLayout(projects);
-const indexOf = (p: Project) => projects.indexOf(p) + 1;
+const indexOf = (p: Project) => allProjects.findIndex((x) => x.id === p.id) + 1;
 
 export function Projects() {
-  const [open, setOpen] = useState<Project | null>(null);
-  const close = useCallback(() => setOpen(null), []);
+  const { t, projects } = useI18n();
+  const blocks = useMemo(() => buildLayout(projects), [projects]);
+  const [openId, setOpenId] = useState<string | null>(null);
+  const open = projects.find((p) => p.id === openId) ?? null;
+  const setOpen = useCallback((p: Project) => setOpenId(p.id), []);
+  const close = useCallback(() => setOpenId(null), []);
 
   return (
     <section id="portfolio" className="relative bg-ink pb-32 pt-12 text-paper md:pb-44">
@@ -51,12 +55,12 @@ export function Projects() {
         <div className="mb-16 flex flex-wrap items-end justify-between gap-6 md:mb-24">
           <div>
             <p className="eyebrow mb-8 text-paper/50">
-              <span className="text-brand">(05)</span> Portfolio
+              <span className="text-brand">(05)</span> {t.projects.eyebrow}
             </p>
             <h2 className="display text-giant">
-              <SplitText text="Odabrani" className="block" bouncy />
+              <SplitText text={t.projects.heading[0]} className="block" bouncy />
               <span className="flex items-start gap-4">
-                <SplitText text="radovi" className="text-outline" delay={0.1} bouncy />
+                <SplitText text={t.projects.heading[1]} className="text-outline" delay={0.1} bouncy />
                 <Reveal delay={0.5} className="eyebrow mt-[0.6em] rounded-full border border-paper/20 px-3 py-2 text-paper/60">
                   {projects.length}
                 </Reveal>
@@ -64,7 +68,7 @@ export function Projects() {
             </h2>
           </div>
           <Reveal className="max-w-sm text-paper/60">
-            Izbor projekata na kojima smo radili – od brandinga i ambalaže do web stranica i aplikacija. Klikni na rad za veći prikaz.
+            {t.projects.lead}
           </Reveal>
         </div>
 
@@ -122,6 +126,7 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
     mx.set(0);
     my.set(0);
   };
+  const { t } = useI18n();
 
   // whileInView je na vanjskom elementu: Chrome ne prijavljuje presjek za element čiji je vlastiti clip-path 100%
   return (
@@ -136,8 +141,8 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
         onPointerLeave={reset}
         style={{ rotateX, rotateY, transformPerspective: 1200 }}
         className="group block w-full text-left"
-        data-cursor="Pogledaj"
-        aria-label={`Otvori projekt ${project.title}`}
+        data-cursor={t.projects.cursor}
+        aria-label={t.projects.open(project.title)}
       >
         <motion.div
           variants={{
@@ -185,10 +190,14 @@ function ProjectCard({ project, index, onOpen }: { project: Project; index: numb
 function ProjectModal({ project, onClose }: { project: Project | null; onClose: () => void }) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const { t } = useI18n();
   useScrollLock(!!project);
 
+  // Ovisi samo o otvorenosti – promjena jezika daje novi objekt projekta, a fokus ne smije skočiti
+  const isOpen = !!project;
+
   useEffect(() => {
-    if (!project) return;
+    if (!isOpen) return;
     // Fokus se vraća na karticu koja je otvorila modal
     const opener = document.activeElement as HTMLElement | null;
     closeRef.current?.focus();
@@ -213,7 +222,7 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
       window.removeEventListener('keydown', onKey);
       opener?.focus({ preventScroll: true });
     };
-  }, [project, onClose]);
+  }, [isOpen, onClose]);
 
   return (
     <AnimatePresence>
@@ -268,7 +277,7 @@ function ProjectModal({ project, onClose }: { project: Project | null; onClose: 
                 onClick={onClose}
                 className="mt-8 rounded-full bg-brand px-6 py-3 text-sm font-medium text-ink transition-transform hover:scale-105"
               >
-                Zatvori
+                {t.projects.close}
               </button>
             </motion.div>
           </div>

@@ -1,3 +1,5 @@
+import type { Locale } from './dictionary';
+
 export type ServiceSection = {
   title: string;
   body: string;
@@ -37,7 +39,7 @@ export const services: Service[] = [
         image: '/branding/Branding2.png',
       },
       {
-        title: 'Što nam je važno razumjeti',
+        title: 'Što trebamo znati',
         body: 'Prije prve skice želimo znati:',
         list: [
           'Kakav dojam brend treba ostaviti',
@@ -74,7 +76,7 @@ export const services: Service[] = [
         image: '/GrafickiDizajn/GrafickiDizajn2.png',
       },
       {
-        title: 'Što nam je važno razumjeti',
+        title: 'Što trebamo znati',
         body: 'Prije prve skice želimo znati:',
         list: [
           'Što postojeći vizualni identitet trenutno govori',
@@ -153,5 +155,123 @@ export const services: Service[] = [
     ],
   },
 ];
+
+type ServiceText = Pick<Service, 'title' | 'short' | 'intro'> & { sections: Omit<ServiceSection, 'image'>[] };
+
+const en: Record<string, ServiceText> = {
+  branding: {
+    title: 'Branding',
+    short: 'Identities, logos and visual strategy.',
+    intro:
+      'A logo is just the start. Branding is the story, the values and the impression people take with them – and the reason they come back.',
+    sections: [
+      {
+        title: 'Recognition and identity',
+        body: 'A strong brand stands out from the crowd. So we make sure the story and the visual identity say the same thing, everywhere people see them.',
+      },
+      {
+        title: 'Strategy and flexibility',
+        body: 'Some brands need a refresh, others need building from scratch. We do both – from small tweaks to a visual identity to a full strategy.',
+      },
+      {
+        title: 'What we need to know',
+        body: 'Before the first sketch, we want to know:',
+        list: ['What impression the brand should leave', 'What story it tells', 'Who it speaks to and what it wants to achieve'],
+        outro: 'The more we know up front, the more convincing the result.',
+      },
+      {
+        title: 'Rollout',
+        body: "A finished identity comes with usage guidelines, so the brand stays consistent long after we've stepped away.",
+      },
+    ],
+  },
+  'graficki-dizajn': {
+    title: 'Graphic design',
+    short: 'Print, promotional visuals and illustration.',
+    intro:
+      "Graphic design turns an idea into something people see and remember – a flyer, a catalogue, a banner or a post. It's only beautiful once the message is clear.",
+    sections: [
+      {
+        title: 'Visual appeal',
+        body: "Good graphics catch the eye in the first second. That's why we keep them clean, current and made for the people they're meant for.",
+      },
+      {
+        title: 'Flexibility and creativity',
+        body: 'Flyers, catalogues, banners, social posts, T-shirts, packaging – sometimes it needs to be quick and simple, sometimes something completely new from scratch.',
+      },
+      {
+        title: 'What we need to know',
+        body: 'Before the first sketch, we want to know:',
+        list: [
+          'What the current visual identity is saying',
+          'What should come first – the brand, the product or something else',
+          'Where the design will live – on screen, in print or both',
+        ],
+        outro: 'The clearer the context, the easier it is to land the right message.',
+      },
+      {
+        title: 'Delivery',
+        body: 'We prepare finished designs in every format you need, for screen and for print – ready to use without further tweaks.',
+      },
+    ],
+  },
+  'web-dizajn': {
+    title: 'Web design',
+    short: 'UX/UI design and prototypes built around users.',
+    intro:
+      'Visitors decide whether to stay within seconds. Web design is how you make those seconds count – with a clear story and a strong first impression.',
+    sections: [
+      {
+        title: 'Simple and pleasant',
+        body: 'We pick colours, type and imagery to suit the content. But first we map the path through the page – visitors should always know where they are and where to go next.',
+      },
+      {
+        title: 'Responsive',
+        body: "Most people first open a site on their phone. So we design for every screen – phone, tablet and desktop – not just the one we're working on.",
+      },
+      {
+        title: 'For people and search engines',
+        body: 'People and Google both like a clear, fast site. Good structure and clean content help people find you in the first place.',
+      },
+      {
+        title: 'Design with a reason',
+        body: "Every site has a job – to present an idea, a project or a brand. The design has worked when visitors don't notice it and simply find what they came for.",
+      },
+    ],
+  },
+  'web-development': {
+    title: 'Web development',
+    short: 'Frontend and backend, CMS and e-commerce.',
+    intro:
+      'Once the design is done, we move to code. We turn the mockup into a site that works just as well on every device and browser.',
+    sections: [
+      {
+        title: 'Speed and security',
+        body: 'A fast site means happy visitors; a secure one means a calm owner. We take care of both from the first line of code.',
+      },
+      {
+        title: 'Flexibility',
+        body: "Sometimes it's best to start from a proven template, sometimes to write everything from scratch and control every detail. We choose per project.",
+      },
+      {
+        title: 'Testing',
+        body: 'Before launch we check the site on different devices and browsers, with a special focus on load speed and SEO.',
+      },
+      {
+        title: 'Launch',
+        body: 'Finally, we put the site on hosting, connect the domain and show you how to update the content yourself.',
+      },
+    ],
+  },
+};
+
+export const servicesByLocale: Record<Locale, Service[]> = {
+  hr: services,
+  en: services.map((s) => ({
+    ...s,
+    ...en[s.slug],
+    sections: s.sections.map((section, i) => ({ ...section, ...en[s.slug].sections[i] })),
+  })),
+};
 
 export const getService = (slug: string) => services.find((s) => s.slug === slug);

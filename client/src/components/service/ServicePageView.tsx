@@ -9,15 +9,17 @@ import { Parallax } from '@/components/motion/Parallax';
 import { Reveal } from '@/components/motion/Reveal';
 import { SplitText } from '@/components/motion/SplitText';
 import { useIntro } from '@/components/providers/IntroProvider';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { ContactCta } from '@/components/sections/ContactCta';
 import { AnchorLink, SCROLL_OFFSET } from '@/components/ui/AnchorLink';
 import { ArrowUpRight, Sparkle } from '@/components/ui/icons';
-import { services, type Service, type ServiceSection } from '@/content/services';
+import type { ServiceSection } from '@/content/services';
 import { bounce, ease } from '@/lib/motion';
 import { cn } from '@/lib/cn';
 
-export function ServicePageView({ service }: { service: Service }) {
+export function ServicePageView({ slug }: { slug: string }) {
   const { introDone } = useIntro();
+  const { t, services } = useI18n();
   const lenis = useLenis();
   const [active, setActive] = useState(0);
   const heroRef = useRef<HTMLElement>(null);
@@ -25,7 +27,8 @@ export function ServicePageView({ service }: { service: Service }) {
   const numberY = useTransform(scrollYProgress, [0, 1], ['0%', '35%']);
   const coverRotate = useTransform(scrollYProgress, [0, 1], [0, 18]);
 
-  const index = services.findIndex((s) => s.slug === service.slug);
+  const index = services.findIndex((s) => s.slug === slug);
+  const service = services[index];
   const next = services[(index + 1) % services.length];
 
   const goTo = (i: number) => {
@@ -46,18 +49,18 @@ export function ServicePageView({ service }: { service: Service }) {
 
         <div className="shell relative">
           <motion.nav
-            aria-label="Breadcrumb"
+            aria-label={t.service.breadcrumb}
             className="eyebrow mb-10 flex items-center gap-2 text-ink/60"
             initial={{ opacity: 0, y: 10 }}
             animate={introDone ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: ease.out }}
           >
             <Link href="/" className="hover:text-ink">
-              Početna
+              {t.service.home}
             </Link>
             <span>/</span>
             <AnchorLink href="/#services" className="hover:text-ink">
-              Što radimo
+              {t.nav.services}
             </AnchorLink>
             <span>/</span>
             <span className="text-ink">{service.number}</span>
@@ -94,10 +97,10 @@ export function ServicePageView({ service }: { service: Service }) {
         <div className="shell grid gap-16 md:grid-cols-12">
           <aside className="hidden md:col-span-4 md:block">
             <div className="sticky top-32">
-              <p className="eyebrow mb-6 text-ink/50">Sadržaj</p>
+              <p className="eyebrow mb-6 text-ink/50">{t.service.toc}</p>
               <ol className="space-y-1">
                 {service.sections.map((s, i) => (
-                  <li key={s.title}>
+                  <li key={i}>
                     <button
                       type="button"
                       onClick={() => goTo(i)}
@@ -124,16 +127,16 @@ export function ServicePageView({ service }: { service: Service }) {
 
           <div className="space-y-32 md:col-span-8 md:space-y-48">
             {service.sections.map((s, i) => (
-              <Block key={s.title} section={s} index={i} onActive={setActive} />
+              <Block key={i} section={s} index={i} onActive={setActive} />
             ))}
           </div>
         </div>
       </section>
 
-      <Link href={`/${next.slug}`} className="group block overflow-hidden bg-ink py-24 text-paper md:py-36" data-cursor="Dalje">
+      <Link href={`/${next.slug}`} className="group block overflow-hidden bg-ink py-24 text-paper md:py-36" data-cursor={t.service.nextCursor}>
         <div className="shell flex flex-wrap items-end justify-between gap-8">
           <div>
-            <p className="eyebrow mb-6 text-paper/50">Sljedeće — {next.number}</p>
+            <p className="eyebrow mb-6 text-paper/50">{t.service.next} — {next.number}</p>
             <span className="display text-outline block text-giant transition-colors duration-500 group-hover:[color:var(--color-brand)]">
               {next.title}
             </span>
@@ -152,6 +155,7 @@ export function ServicePageView({ service }: { service: Service }) {
 function Block({ section, index, onActive }: { section: ServiceSection; index: number; onActive: (index: number) => void }) {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { margin: '-45% 0px -45% 0px' });
+  const { t } = useI18n();
 
   useEffect(() => {
     if (inView) onActive(index);
@@ -197,7 +201,7 @@ function Block({ section, index, onActive }: { section: ServiceSection; index: n
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 1.4, ease: ease.out }}
             >
-              <Image src={section.image} alt={`${section.title} – ilustracija`} fill sizes="(max-width: 768px) 90vw, 55vw" className="object-contain p-[8%]" />
+              <Image src={section.image} alt={t.service.imageAlt(section.title)} fill sizes="(max-width: 768px) 90vw, 55vw" className="object-contain p-[8%]" />
             </motion.div>
           </motion.div>
         </Parallax>

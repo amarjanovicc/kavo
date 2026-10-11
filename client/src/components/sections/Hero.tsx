@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { useRef, type PointerEvent } from 'react';
 import { SplitText } from '@/components/motion/SplitText';
 import { useIntro } from '@/components/providers/IntroProvider';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { AnchorLink } from '@/components/ui/AnchorLink';
 import { Button } from '@/components/ui/Button';
 import { ArrowDown } from '@/components/ui/icons';
@@ -13,14 +14,11 @@ import { ease } from '@/lib/motion';
 import { cn } from '@/lib/cn';
 import { useLiteMotion } from '@/lib/useMediaQuery';
 
-const lines = [
-  { text: 'Dizajniramo.', className: '' },
-  { text: 'Kodiramo.', className: 'text-outline md:pl-[14vw]' },
-  { text: 'Učimo.', className: 'md:text-right' },
-];
+const lineClasses = ['', 'text-outline md:pl-[14vw]', 'md:text-right'];
 
 export function Hero() {
   const { introDone } = useIntro();
+  const { t } = useI18n();
   const ref = useRef<HTMLElement>(null);
 
   // Izlaz iz heroja vezan uz scroll
@@ -65,19 +63,19 @@ export function Hero() {
         <motion.div {...fade(0)} className="mb-8 flex items-center justify-between">
           <p className="eyebrow flex items-center gap-2.5 text-paper/70">
             <span className="size-2 animate-pulse-dot rounded-full bg-brand" />
-            Osobni projekt
+            {t.hero.eyebrow}
           </p>
           <p className="eyebrow hidden text-paper/40 sm:block">
-            {site.location} — od {site.since}.
+            {site.location} — {t.hero.since(site.since)}
           </p>
         </motion.div>
 
         <h1 className="display text-[16.5vw] leading-[0.86] tracking-[-0.045em] md:text-mega">
-          {lines.map((line, i) => (
+          {t.hero.lines.map((line, i) => (
             <SplitText
-              key={line.text}
-              text={line.text}
-              className={cn('block', line.className)}
+              key={i}
+              text={line}
+              className={cn('block', lineClasses[i])}
               play={introDone}
               delay={0.15 + i * 0.12}
               bouncy
@@ -87,14 +85,14 @@ export function Hero() {
 
         <div className="mt-12 grid items-end gap-10 md:grid-cols-12">
           <motion.p {...fade(0.7)} className="text-lead text-paper/70 md:col-span-5">
-            Troje ljudi, jedan portfolio. Ovdje radimo branding, grafiku i web – i pokazujemo što smo usput naučili.
+            {t.hero.lead}
           </motion.p>
           <motion.div {...fade(0.85)} className="flex flex-wrap items-center gap-3 md:col-span-4">
             <Button href="/#portfolio" variant="brand" size="lg">
-              Pogledaj radove
+              {t.hero.work}
             </Button>
             <Button href="/contact" variant="outline-light" size="lg">
-              Javi se
+              {t.sayHi}
             </Button>
           </motion.div>
           <motion.div
@@ -110,7 +108,7 @@ export function Hero() {
 
       <motion.div {...fade(1.1)} className="relative flex justify-center pb-8">
         <AnchorLink href="/#about" className="eyebrow group flex flex-col items-center gap-3 text-paper/50 hover:text-brand">
-          Scroll
+          {t.hero.scroll}
           <span className="relative flex h-12 w-px overflow-hidden bg-paper/15">
             <motion.span
               className="absolute inset-x-0 top-0 h-1/2 bg-brand"
@@ -126,9 +124,9 @@ export function Hero() {
 }
 
 function RotatingBadge() {
-  const text = 'osobni projekt • kavo studio • dizajn & kod • ';
+  const { t } = useI18n();
   return (
-    <motion.div whileHover={{ scale: 1.12 }} transition={{ type: 'spring', stiffness: 300, damping: 12 }} className="relative size-36" data-cursor="Bok!">
+    <motion.div whileHover={{ scale: 1.12 }} transition={{ type: 'spring', stiffness: 300, damping: 12 }} className="relative size-36" data-cursor={t.hero.badgeCursor}>
       <svg viewBox="0 0 200 200" className="size-full animate-spin-slow" aria-hidden>
         <defs>
           <path id="badge-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
@@ -136,7 +134,7 @@ function RotatingBadge() {
         <text className="fill-paper/80 font-mono text-[13px] uppercase">
           {/* textLength = opseg kružnice (2π·78) → tekst točno zatvara krug */}
           <textPath href="#badge-circle" textLength={488} lengthAdjust="spacing">
-            {text}
+            {t.hero.badge}
           </textPath>
         </text>
       </svg>

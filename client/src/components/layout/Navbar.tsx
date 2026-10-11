@@ -6,11 +6,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { RollText } from '@/components/motion/RollText';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { useScrollLock } from '@/components/providers/useScrollLock';
 import { AnchorLink } from '@/components/ui/AnchorLink';
 import { Button } from '@/components/ui/Button';
+import { LocaleSwitch } from '@/components/ui/LocaleSwitch';
 import { navLinks } from '@/content/site';
-import { services } from '@/content/services';
 import { bounce, ease } from '@/lib/motion';
 import { cn } from '@/lib/cn';
 import { useMediaQuery } from '@/lib/useMediaQuery';
@@ -18,6 +19,7 @@ import { MobileMenu } from './MobileMenu';
 
 export function Navbar() {
   const pathname = usePathname();
+  const { t, services } = useI18n();
   const isDesktop = useMediaQuery('(min-width: 768px)');
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
@@ -63,13 +65,13 @@ export function Navbar() {
       >
         <div className="shell">
           <nav
-            aria-label="Glavna navigacija"
+            aria-label={t.nav.main}
             className={cn(
               'flex items-center justify-between rounded-full border border-paper/10 bg-ink/95 py-2 pl-3 pr-2 transition-shadow duration-500',
               (scrolled || menuOpen) && 'shadow-[0_20px_50px_-20px_rgba(0,0,0,0.6)]'
             )}
           >
-            <Link href="/" className="group flex items-center gap-2.5" aria-label="Kavo Studio – početna">
+            <Link href="/" className="group flex items-center gap-2.5" aria-label={t.nav.home}>
               <motion.span whileHover={{ rotate: -14, scale: 1.12 }} transition={bounce} className="relative size-9 shrink-0">
                 <Image src="/logo/kavo-logo.png" alt="" fill sizes="36px" priority />
               </motion.span>
@@ -106,7 +108,7 @@ export function Navbar() {
                           transition={{ type: 'spring', stiffness: 420, damping: 32 }}
                         />
                       )}
-                      <RollText text={link.label} className="relative" />
+                      <RollText text={t.nav[link.key]} className="relative" />
                       {withServices && (
                         <motion.svg
                           viewBox="0 0 10 6"
@@ -164,9 +166,10 @@ export function Navbar() {
             </ul>
 
             <div className="flex items-center gap-2">
+              <LocaleSwitch />
               <div className="hidden md:block">
                 <Button href="/contact" variant="brand">
-                  Kontakt
+                  {t.nav.contact}
                 </Button>
               </div>
               <button
@@ -174,7 +177,7 @@ export function Navbar() {
                 onClick={() => setMenuOpen((o) => !o)}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-menu"
-                aria-label={menuOpen ? 'Zatvori izbornik' : 'Otvori izbornik'}
+                aria-label={menuOpen ? t.nav.closeMenu : t.nav.openMenu}
                 className="relative flex size-11 items-center justify-center rounded-full bg-brand text-ink md:hidden"
               >
                 <motion.span

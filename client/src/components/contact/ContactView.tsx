@@ -6,21 +6,21 @@ import { useId, useState, type FormEvent, type InputHTMLAttributes, type Textare
 import { RollText } from '@/components/motion/RollText';
 import { SplitText } from '@/components/motion/SplitText';
 import { useIntro } from '@/components/providers/IntroProvider';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { ArrowUpRight } from '@/components/ui/icons';
-import { services } from '@/content/services';
 import { site } from '@/content/site';
 import { trackEvent } from '@/lib/analytics';
 import { bounce, ease } from '@/lib/motion';
 import { cn } from '@/lib/cn';
 
 const FORM_ENDPOINT = 'https://formspree.io/f/mzzjvlbn';
-const sources = ['Preporuka', 'Google', 'Društvene mreže', 'Drugo'];
 const empty = { name: '', email: '', projectDetails: '', foundBy: '', helpWith: [] as string[] };
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
 export function ContactView() {
   const { introDone } = useIntro();
+  const { t, services } = useI18n();
   const [form, setForm] = useState(empty);
   const [status, setStatus] = useState<Status>('idle');
 
@@ -61,23 +61,22 @@ export function ContactView() {
       <div className="shell relative grid gap-16 lg:grid-cols-12">
         <div className="lg:sticky lg:top-32 lg:col-span-5 lg:self-start">
           <motion.p {...fade(0)} className="eyebrow mb-8 flex items-center gap-2.5 text-paper/60">
-            <span className="size-2 animate-pulse-dot rounded-full bg-brand" /> Kontakt
+            <span className="size-2 animate-pulse-dot rounded-full bg-brand" /> {t.contact.eyebrow}
           </motion.p>
           <SplitText
             as="h1"
-            text="Razgovarajmo."
+            text={t.contact.heading}
             className="display text-[clamp(2.75rem,7vw,7.5rem)] leading-[0.9] tracking-[-0.04em]"
             play={introDone}
             delay={0.1}
             bouncy
           />
           <motion.p {...fade(0.4)} className="mt-8 max-w-md text-lead text-paper/70">
-            Imaš pitanje, ideju ili samo želiš popričati o dizajnu i webu? Piši nam. Kavo je osobni projekt pa ne radimo
-            ponude ni plaćene projekte – ali rado ćemo odgovoriti.
+            {t.contact.lead}
           </motion.p>
 
           <motion.div {...fade(0.55)} className="mt-12 space-y-6">
-            <a href={`mailto:${site.email}`} className="group inline-flex items-center gap-3 text-big font-medium" data-cursor="Pošalji">
+            <a href={`mailto:${site.email}`} className="group inline-flex items-center gap-3 text-big font-medium" data-cursor={t.mailCursor}>
               <RollText text={site.email} />
               <ArrowUpRight className="size-[0.7em] text-brand transition-transform duration-500 ease-expo group-hover:rotate-45" />
             </a>
@@ -88,7 +87,7 @@ export function ContactView() {
                 </a>
               ))}
             </div>
-            <p className="max-w-md rounded-2xl border border-paper/10 p-5 text-sm text-paper/50">{site.disclaimer}</p>
+            <p className="max-w-md rounded-2xl border border-paper/10 p-5 text-sm text-paper/50">{t.disclaimer}</p>
           </motion.div>
         </div>
 
@@ -107,7 +106,7 @@ export function ContactView() {
                 >
                   <div className="grid gap-4 md:grid-cols-2">
                     <Field
-                      label="Ime *"
+                      label={t.contact.name}
                       name="name"
                       autoComplete="name"
                       required
@@ -115,7 +114,7 @@ export function ContactView() {
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                     />
                     <Field
-                      label="Email *"
+                      label={t.contact.email}
                       name="email"
                       type="email"
                       autoComplete="email"
@@ -126,7 +125,7 @@ export function ContactView() {
                   </div>
 
                   <fieldset>
-                    <legend className="eyebrow mb-4 text-paper/50">O čemu želiš pričati? (možeš odabrati više)</legend>
+                    <legend className="eyebrow mb-4 text-paper/50">{t.contact.interests}</legend>
                     <div className="grid gap-3 sm:grid-cols-2">
                       {services.map((s) => {
                         const on = form.helpWith.includes(s.title);
@@ -155,9 +154,9 @@ export function ContactView() {
                   </fieldset>
 
                   <fieldset>
-                    <legend className="eyebrow mb-4 text-paper/50">Kako smo ti zapeli za oko? (nije obavezno)</legend>
+                    <legend className="eyebrow mb-4 text-paper/50">{t.contact.source}</legend>
                     <div className="flex flex-wrap gap-2">
-                      {sources.map((src) => {
+                      {t.contact.sources.map((src) => {
                         const on = form.foundBy === src;
                         return (
                           <motion.button
@@ -181,7 +180,7 @@ export function ContactView() {
 
                   <Field
                     textarea
-                    label="Poruka"
+                    label={t.contact.message}
                     name="message"
                     rows={5}
                     value={form.projectDetails}
@@ -191,11 +190,11 @@ export function ContactView() {
                   <label className="flex cursor-pointer items-start gap-3 text-sm text-paper/60">
                     <input type="checkbox" required className="mt-0.5 size-4 shrink-0 accent-[var(--color-brand)]" />
                     <span>
-                      Slažem se s{' '}
+                      {t.contact.consent}{' '}
                       <Link href="/privacy-policy" className="text-brand underline underline-offset-4">
-                        pravilima privatnosti
+                        {t.contact.consentLink}
                       </Link>
-                      . Tvoje podatke koristimo samo da ti odgovorimo.
+                      {t.contact.consentAfter}
                     </span>
                   </label>
 
@@ -208,7 +207,7 @@ export function ContactView() {
                         role="alert"
                         className="rounded-2xl bg-red-500/15 p-4 text-sm text-red-300"
                       >
-                        Poruka nije poslana. Provjeri vezu i pokušaj ponovno – ili nam piši izravno na {site.email}.
+                        {t.contact.error(site.email)}
                       </motion.p>
                     )}
                   </AnimatePresence>
@@ -229,11 +228,11 @@ export function ContactView() {
                           animate={{ rotate: 360 }}
                           transition={{ repeat: Infinity, duration: 0.8, ease: 'linear' }}
                         />
-                        <span className="relative">Šalje se…</span>
+                        <span className="relative">{t.contact.sending}</span>
                       </>
                     ) : (
                       <>
-                        <RollText text="Pošalji poruku" className="relative" />
+                        <RollText text={t.contact.submit} className="relative" />
                         <ArrowUpRight className="relative size-5 transition-transform duration-500 ease-expo group-hover:rotate-45" />
                       </>
                     )}
@@ -291,6 +290,7 @@ function Check({ on }: { on: boolean }) {
 }
 
 function Success({ onReset }: { onReset: () => void }) {
+  const { t } = useI18n();
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -323,10 +323,10 @@ function Success({ onReset }: { onReset: () => void }) {
           transition={{ duration: 0.6, delay: 0.3, ease: ease.out }}
         />
       </motion.svg>
-      <h2 className="display mt-8 text-huge">Hvala!</h2>
-      <p className="mt-4 max-w-sm text-paper/70">Poruka je stigla do nas. Odgovorit ćemo ti na mail čim stignemo.</p>
+      <h2 className="display mt-8 text-huge">{t.contact.successTitle}</h2>
+      <p className="mt-4 max-w-sm text-paper/70">{t.contact.successText}</p>
       <button type="button" onClick={onReset} className="group mt-10 inline-flex rounded-full border border-paper/20 px-6 py-3 text-sm hover:border-brand hover:text-brand">
-        <RollText text="Pošalji novu poruku" />
+        <RollText text={t.contact.again} />
       </button>
     </motion.div>
   );

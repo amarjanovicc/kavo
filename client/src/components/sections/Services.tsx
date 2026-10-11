@@ -7,11 +7,12 @@ import { useState, type PointerEvent } from 'react';
 import { Reveal } from '@/components/motion/Reveal';
 import { SplitText } from '@/components/motion/SplitText';
 import { ArrowUpRight } from '@/components/ui/icons';
-import { services } from '@/content/services';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { ease } from '@/lib/motion';
 
 /** Lista usluga – žuti fill odozdo na hover + pregled ilustracije koji prati kursor */
 export function Services() {
+  const { t, services } = useI18n();
   const [active, setActive] = useState<number | null>(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -30,12 +31,12 @@ export function Services() {
         <div className="mb-16 grid items-end gap-8 md:mb-24 md:grid-cols-12">
           <div className="md:col-span-8">
             <p className="eyebrow mb-8 text-paper/50">
-              <span className="text-brand">(04)</span> Područja
+              <span className="text-brand">(04)</span> {t.services.eyebrow}
             </p>
-            <SplitText as="h2" text="Što radimo" className="display text-giant text-brand" bouncy />
+            <SplitText as="h2" text={t.services.heading} className="display text-giant text-brand" bouncy />
           </div>
           <Reveal className="text-lead text-paper/60 md:col-span-4">
-            Četiri stvari kojima se najviše bavimo. Otvori bilo koju i vidi kako radimo.
+            {t.services.lead}
           </Reveal>
         </div>
 
@@ -48,7 +49,7 @@ export function Services() {
                 onFocus={() => setActive(i)}
                 onBlur={() => setActive(null)}
                 className="group relative flex items-center gap-4 overflow-hidden border-t border-paper/15 py-8 transition-colors duration-500 ease-expo hover:text-ink md:gap-10 md:py-10"
-                data-cursor="Otvori"
+                data-cursor={t.services.cursor}
               >
                 <span
                   aria-hidden

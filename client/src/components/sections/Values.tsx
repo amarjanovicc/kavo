@@ -4,12 +4,13 @@ import { motion, useScroll, useTransform, type MotionValue } from 'framer-motion
 import Image from 'next/image';
 import { useRef } from 'react';
 import { SplitText } from '@/components/motion/SplitText';
-import { values } from '@/content/about';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { bounce, ease } from '@/lib/motion';
 import { useLiteMotion } from '@/lib/useMediaQuery';
 
 /** Sticky kartice koje se slažu jedna na drugu dok se scrolla */
 export function Values() {
+  const { t, values } = useI18n();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] });
 
@@ -17,12 +18,12 @@ export function Values() {
     <section id="values" className="relative bg-brand pt-32 text-ink md:pt-44">
       <div className="shell mb-10 md:mb-0">
         <p className="eyebrow mb-8 text-ink/60">
-          <span className="text-ink">(02)</span> Vrijednosti
+          <span className="text-ink">(02)</span> {t.values.eyebrow}
         </p>
         <h2 className="display text-giant">
-          <SplitText text="U čemu smo" className="block" bouncy />
+          <SplitText text={t.values.heading[0]} className="block" bouncy />
           <span className="relative inline-block">
-            <SplitText text="stvarno dobri" className="relative z-10 block" delay={0.15} bouncy />
+            <SplitText text={t.values.heading[1]} className="relative z-10 block" delay={0.15} bouncy />
             <motion.span
               aria-hidden
               className="absolute -bottom-[0.05em] left-0 h-[0.2em] w-full origin-left"
@@ -42,6 +43,7 @@ export function Values() {
           <Card
             key={v.title}
             index={i}
+            total={values.length}
             value={v}
             progress={scrollYProgress}
             range={[i / values.length, 1]}
@@ -56,12 +58,14 @@ export function Values() {
 function Card({
   index,
   value,
+  total,
   progress,
   range,
   targetDim,
 }: {
+  total: number;
   index: number;
-  value: (typeof values)[number];
+  value: { title: string; description: string; image: string };
   progress: MotionValue<number>;
   range: [number, number];
   targetDim: number;
@@ -86,7 +90,7 @@ function Card({
       >
         <div className="flex flex-col justify-between gap-10 p-8 md:p-14">
           <span className="eyebrow text-ink/50">
-            0{index + 1} <span className="text-ink/25">/ 0{values.length}</span>
+            0{index + 1} <span className="text-ink/25">/ 0{total}</span>
           </span>
           <div>
             <h3 className="display text-huge">{value.title}</h3>

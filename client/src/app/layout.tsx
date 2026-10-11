@@ -8,6 +8,7 @@ import { CookieConsent } from '@/components/ui/CookieConsent';
 import { Cursor } from '@/components/ui/Cursor';
 import { Preloader } from '@/components/ui/Preloader';
 import { ScrollProgress } from '@/components/ui/ScrollProgress';
+import { SkipLink } from '@/components/ui/SkipLink';
 import { INTRO_KEY } from '@/lib/constants';
 import { jsonLd, organizationSchema } from '@/lib/schema';
 import './globals.css';
@@ -41,12 +42,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <Providers>
-          <a
-            href="#main"
-            className="sr-only z-[200] rounded-full bg-brand px-5 py-3 text-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
-          >
-            Preskoči na sadržaj
-          </a>
+          <SkipLink />
           <Preloader />
           <ScrollProgress />
           <Cursor />

@@ -6,24 +6,24 @@ import { Counter } from '@/components/motion/Counter';
 import { Parallax } from '@/components/motion/Parallax';
 import { Reveal } from '@/components/motion/Reveal';
 import { SplitText } from '@/components/motion/SplitText';
-import { team } from '@/content/about';
-import { projects } from '@/content/projects';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { site } from '@/content/site';
 import { bounce, ease } from '@/lib/motion';
 import { cn } from '@/lib/cn';
 
-const stats = [
-  { value: team.length, label: 'kreativca u timu' },
-  { value: projects.length, label: 'projekata u portfoliju' },
-  { value: site.since, from: 2000, label: 'krenuli smo' },
-];
-
 export function About() {
+  const { t, team, projects } = useI18n();
+  const stats = [
+    { value: team.length, label: t.about.team },
+    { value: projects.length, label: t.about.projects },
+    { value: site.since, from: 2000, label: t.about.since },
+  ];
+
   return (
     <section id="studio" className="relative overflow-hidden bg-paper py-32 text-ink md:py-44">
       <div className="shell">
         <p className="eyebrow mb-8 text-ink/50">
-          <span className="text-ink">(03)</span> Studio
+          <span className="text-ink">(03)</span> {t.about.eyebrow}
         </p>
         <h2 className="display text-giant">
           <span className="relative inline-block">
@@ -44,7 +44,7 @@ export function About() {
 
         <dl className="mt-16 grid gap-px overflow-hidden rounded-[2rem] bg-ink/10 sm:grid-cols-3">
           {stats.map((s, i) => (
-            <Reveal key={s.label} delay={i * 0.08} className="bg-paper p-8 md:p-10">
+            <Reveal key={i} delay={i * 0.08} className="bg-paper p-8 md:p-10">
               <dt className="sr-only">{s.label}</dt>
               <dd>
                 <Counter to={s.value} from={s.from} className="display block text-huge tabular-nums" />
@@ -56,7 +56,7 @@ export function About() {
 
         <div className="mt-32 space-y-32 md:space-y-44">
           {team.map((member, i) => (
-            <article key={member.name} className="grid items-center gap-12 md:grid-cols-12 md:gap-16">
+            <article key={member.image} className="grid items-center gap-12 md:grid-cols-12 md:gap-16">
               <div className={cn('md:col-span-6', i % 2 ? 'md:order-2 md:col-start-7' : '')}>
                 <Parallax speed={50}>
                   <motion.div
@@ -75,7 +75,7 @@ export function About() {
                     />
                     <Image
                       src={member.image}
-                      alt={`${member.name} – ${member.role}, član Kavo tima`}
+                      alt={t.about.memberAlt(member.name, member.role)}
                       fill
                       sizes="(max-width: 768px) 90vw, 45vw"
                       className="animate-float object-contain p-[8%]"

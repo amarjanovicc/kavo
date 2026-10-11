@@ -7,11 +7,13 @@ import { useRef } from 'react';
 import { Magnetic } from '@/components/motion/Magnetic';
 import { Marquee } from '@/components/motion/Marquee';
 import { SplitText } from '@/components/motion/SplitText';
+import { useI18n } from '@/components/providers/LocaleProvider';
 import { ArrowUpRight, Sparkle } from '@/components/ui/icons';
 import { ease } from '@/lib/motion';
 
 export function ContactCta({ id = 'contact' }: { id?: string }) {
   const ref = useRef<HTMLElement>(null);
+  const { t } = useI18n();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end end'] });
   const rotate = useTransform(scrollYProgress, [0, 1], [-25, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
@@ -28,13 +30,13 @@ export function ContactCta({ id = 'contact' }: { id?: string }) {
 
       <div className="shell grid items-center gap-16 md:grid-cols-12">
         <div className="md:col-span-8">
-          <p className="eyebrow mb-8 text-ink/60">Imaš pitanje, ideju ili samo želiš popričati?</p>
+          <p className="eyebrow mb-8 text-ink/60">{t.cta.eyebrow}</p>
           <h2 className="display text-giant">
-            <SplitText text="Popričajmo" className="block" bouncy />
+            <SplitText text={t.cta.heading[0]} className="block" bouncy />
             <span className="block">
-              <SplitText text="o" delay={0.1} bouncy />{' '}
+              <SplitText text={t.cta.heading[1]} delay={0.1} bouncy />{' '}
               <span className="relative inline-block">
-                <SplitText text="dizajnu" className="relative z-10" delay={0.2} bouncy />
+                <SplitText text={t.cta.heading[2]} className="relative z-10" delay={0.2} bouncy />
                 <motion.span
                   aria-hidden
                   className="absolute -bottom-[0.06em] -left-[5%] h-[0.28em] w-[110%] origin-left"
@@ -55,7 +57,7 @@ export function ContactCta({ id = 'contact' }: { id?: string }) {
             <Link
               href="/contact"
               className="group relative flex size-44 items-center justify-center overflow-hidden rounded-full bg-ink text-paper md:size-56"
-              data-cursor="Javi se"
+              data-cursor={t.sayHi}
             >
               <span
                 aria-hidden
@@ -63,7 +65,7 @@ export function ContactCta({ id = 'contact' }: { id?: string }) {
               />
               <span className="relative flex flex-col items-center gap-2 transition-colors duration-500 group-hover:text-ink">
                 <ArrowUpRight className="size-8 transition-transform duration-500 ease-expo group-hover:rotate-45" />
-                <span className="display text-2xl md:text-3xl">Javi se</span>
+                <span className="display text-2xl md:text-3xl">{t.sayHi}</span>
               </span>
             </Link>
           </Magnetic>
