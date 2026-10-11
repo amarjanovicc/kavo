@@ -5,8 +5,27 @@ import { useEffect, useState } from 'react';
 
 const INTERACTIVE = 'a, button, [role="button"], input, textarea, select, label';
 
+// Invertirana bijela točka na žutoj (#FFBD00) daje plavu sa slabim kontrastom –
+// na žutoj podlozi kursor je zato tamna točka sa svijetlim rubom.
+const bgCache = new WeakMap<Element, boolean>();
+function isOnYellow(start: Element | null): boolean {
+  for (let el = start; el; el = el.parentElement) {
+    const cached = bgCache.get(el);
+    if (cached !== undefined) return cached;
+    const m = getComputedStyle(el).backgroundColor.match(/[\d.]+/g);
+    if (m && (m[3] === undefined || Number(m[3]) > 0.5)) {
+      const [r, g, b] = m.map(Number);
+      const yellow = r > 230 && g > 160 && g < 215 && b < 60;
+      bgCache.set(el, yellow);
+      return yellow;
+    }
+  }
+  return false;
+}
+
 /**
- * Custom cursor (samo za miš). Elementi s `data-cursor="Tekst"` pretvaraju ga u žutu oznaku.
+ * Custom cursor (samo za miš). Elementi s `data-cursor="Tekst"` pretvaraju ga u oznaku s tekstom
+ * (žutu, a na žutoj podlozi tamnu).
  * Sistemski kursor ostaje vidljiv zbog pristupačnosti.
  */
 export function Cursor() {
@@ -14,6 +33,7 @@ export function Cursor() {
   const [visible, setVisible] = useState(false);
   const [label, setLabel] = useState<string | null>(null);
   const [hovering, setHovering] = useState(false);
+  const [onYellow, setOnYellow] = useState(false);
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
   const sx = useSpring(x, { stiffness: 600, damping: 40, mass: 0.35 });
@@ -34,6 +54,7 @@ export function Cursor() {
       const el = e.target instanceof Element ? e.target : null;
       setLabel(el?.closest('[data-cursor]')?.getAttribute('data-cursor') ?? null);
       setHovering(!!el?.closest(INTERACTIVE));
+      setOnYellow(isOnYellow(el));
     };
     const hide = () => setVisible(false);
 
@@ -56,7 +77,7 @@ export function Cursor() {
     <motion.div
       aria-hidden
       className="pointer-events-none fixed left-0 top-0 z-[100]"
-      style={{ x: sx, y: sy, mixBlendMode: label ? 'normal' : 'difference' }}
+      style={{ x: sx, y: sy, mixBlendMode: label || onYellow ? 'normal' : 'difference' }}
     >
       <motion.div
         className="flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full"
@@ -64,7 +85,8 @@ export function Cursor() {
           width: size,
           height: size,
           opacity: visible ? 1 : 0,
-          backgroundColor: label ? '#FFBD00' : '#FFFFFF',
+          backgroundColor: onYellow ? '#080D10' : label ? '#FFBD00' : '#FFFFFF',
+          boxShadow: onYellow && !label ? '0 0 0 2px #EBECE7' : '0 0 0 0px rgba(235,236,231,0)',
         }}
         transition={{ type: 'spring', stiffness: 380, damping: 26 }}
       >
@@ -75,7 +97,7 @@ export function Cursor() {
               initial={{ opacity: 0, scale: 0.4 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.4 }}
-              className="eyebrow text-[10px] font-semibold text-ink"
+              className={`eyebrow text-[10px] font-semibold ${onYellow ? 'text-brand' : 'text-ink'}`}
             >
               {label}
             </motion.span>

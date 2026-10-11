@@ -3,7 +3,7 @@ import { ContactView } from '@/components/contact/ContactView';
 
 export const metadata: Metadata = {
   title: 'Kontakt',
-  description: 'Imate pitanje ili komentar? Javite se – Kavo je osobni projekt, rado ćemo popričati.',
+  description: 'Imaš pitanje, ideju ili komentar? Piši nam – Kavo je osobni projekt i rado ćemo popričati.',
   alternates: { canonical: '/contact' },
 };
 

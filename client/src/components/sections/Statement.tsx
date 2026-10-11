@@ -25,8 +25,8 @@ export function Statement() {
         <ScrollWords words={words} className="display max-w-[16ch] text-giant" />
         <div className="mt-20 grid gap-8 md:grid-cols-12">
           <Reveal className="text-lead text-ink/70 md:col-span-5 md:col-start-7">
-            Kavo je osobni projekt troje kreativaca. Ovdje dijelimo radove, eksperimente i sve što učimo o brandingu, dizajnu i
-            webu.
+            Kavo je osobni projekt dizajnerice, developera i marketingaša. Ovdje skupljamo radove, eksperimente i sve što učimo
+            o brandingu, dizajnu i webu.
           </Reveal>
           <Reveal delay={0.1} className="md:col-span-5 md:col-start-7">
             <Button href="/#studio" variant="outline-dark">

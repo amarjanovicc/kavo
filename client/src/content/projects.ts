@@ -15,7 +15,7 @@ export const projects: Project[] = [
   {
     id: 'hotel-heritage',
     title: 'Hotel Heritage',
-    description: 'Web dizajn s fokusom na responsive korisničko iskustvo i jednostavnost rezervacija.',
+    description: 'Web stranica hotela s jednostavnom rezervacijom – jednako preglednom na mobitelu i računalu.',
     image: '/projects/1.png',
     width: 1149,
     height: 1027,
@@ -25,7 +25,7 @@ export const projects: Project[] = [
   {
     id: 'ronin-gym',
     title: 'Ronin Gym',
-    description: 'Branding i vizualni identitet za fitness centar.',
+    description: 'Logotip i vizualni identitet za fitness centar.',
     image: '/projects/2.png',
     width: 888,
     height: 619,
@@ -35,7 +35,7 @@ export const projects: Project[] = [
   {
     id: 'mara',
     title: 'MARA',
-    description: 'Dizajn kataloga – tiskani materijali visokog standarda.',
+    description: 'Katalog proizvoda pripremljen za tisak.',
     image: '/projects/3.png',
     width: 968,
     height: 1027,
@@ -45,7 +45,7 @@ export const projects: Project[] = [
   {
     id: 'mapetrol-label',
     title: 'Mapetrol',
-    description: 'Dizajn ambalaže i etiketa s 3D vizualizacijama.',
+    description: 'Ambalaža i etikete, prikazane kroz 3D vizualizacije.',
     image: '/projects/4.png',
     width: 1149,
     height: 1045,
@@ -55,7 +55,7 @@ export const projects: Project[] = [
   {
     id: 'procake',
     title: 'Procake',
-    description: '3D vizualizacija i dizajn ambalaže.',
+    description: 'Dizajn ambalaže i 3D vizualizacija proizvoda.',
     image: '/projects/5.png',
     width: 888,
     height: 1451,
@@ -65,7 +65,7 @@ export const projects: Project[] = [
   {
     id: 'moto-shop',
     title: 'Moto Shop',
-    description: 'Web shop s responsive dizajnom.',
+    description: 'Web shop prilagođen svakom ekranu.',
     image: '/projects/6.png',
     width: 968,
     height: 1027,
@@ -75,7 +75,7 @@ export const projects: Project[] = [
   {
     id: 'baltazar',
     title: 'Baltazar',
-    description: 'UX/UI dizajn za interaktivnu anketu s automatskim slanjem maila.',
+    description: 'UX/UI za interaktivnu anketu koja na kraju automatski šalje mail.',
     image: '/projects/7.png',
     width: 3180,
     height: 1045,
@@ -86,7 +86,7 @@ export const projects: Project[] = [
   {
     id: 'marketing-platform',
     title: 'Marketing platforma',
-    description: 'Platforma za upravljanje kampanjama, kontaktima i automatizacijom.',
+    description: 'Sučelje za vođenje kampanja, kontakata i automatizacija na jednom mjestu.',
     image: '/projects/8.png',
     width: 712,
     height: 1029,
@@ -96,7 +96,7 @@ export const projects: Project[] = [
   {
     id: 'mapetrol-livery',
     title: 'Mapetrol Livery',
-    description: '3D vizualizacija vozila s brendiranim omotom.',
+    description: '3D vizualizacija vozila s brendiranom folijom.',
     image: '/projects/9.png',
     width: 1149,
     height: 1027,

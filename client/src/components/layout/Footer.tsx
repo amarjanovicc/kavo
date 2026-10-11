@@ -28,7 +28,7 @@ export function Footer() {
         <div className="grid gap-16 md:grid-cols-12">
           <div className="md:col-span-7">
             <p className="eyebrow mb-6 flex items-center gap-2 text-brand">
-              <span className="size-2 animate-pulse-dot rounded-full bg-brand" /> Imaš ideju?
+              <span className="size-2 animate-pulse-dot rounded-full bg-brand" /> Pitanje, ideja, komentar?
             </p>
             <SplitText as="h2" text="Javi se, rado ćemo popričati." className="display text-huge" />
             <a
@@ -58,7 +58,7 @@ export function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className={heading}>Usluge</h3>
+              <h3 className={heading}>Što radimo</h3>
               <ul className="space-y-3">
                 {services.map((s) => (
                   <li key={s.slug}>

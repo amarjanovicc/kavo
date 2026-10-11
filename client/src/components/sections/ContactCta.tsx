@@ -28,13 +28,13 @@ export function ContactCta({ id = 'contact' }: { id?: string }) {
 
       <div className="shell grid items-center gap-16 md:grid-cols-12">
         <div className="md:col-span-8">
-          <p className="eyebrow mb-8 text-ink/60">Ovo je ono što radimo. Zamisli što još možemo napraviti.</p>
+          <p className="eyebrow mb-8 text-ink/60">Imaš pitanje, ideju ili samo želiš popričati?</p>
           <h2 className="display text-giant">
-            <SplitText text="Stvorimo" className="block" bouncy />
+            <SplitText text="Popričajmo" className="block" bouncy />
             <span className="block">
-              <SplitText text="nešto" delay={0.1} bouncy />{' '}
+              <SplitText text="o" delay={0.1} bouncy />{' '}
               <span className="relative inline-block">
-                <SplitText text="posebno" className="relative z-10" delay={0.2} bouncy />
+                <SplitText text="dizajnu" className="relative z-10" delay={0.2} bouncy />
                 <motion.span
                   aria-hidden
                   className="absolute -bottom-[0.06em] -left-[5%] h-[0.28em] w-[110%] origin-left"

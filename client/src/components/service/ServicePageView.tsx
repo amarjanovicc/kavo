@@ -57,7 +57,7 @@ export function ServicePageView({ service }: { service: Service }) {
             </Link>
             <span>/</span>
             <AnchorLink href="/#services" className="hover:text-ink">
-              Usluge
+              Što radimo
             </AnchorLink>
             <span>/</span>
             <span className="text-ink">{service.number}</span>
@@ -133,7 +133,7 @@ export function ServicePageView({ service }: { service: Service }) {
       <Link href={`/${next.slug}`} className="group block overflow-hidden bg-ink py-24 text-paper md:py-36" data-cursor="Dalje">
         <div className="shell flex flex-wrap items-end justify-between gap-8">
           <div>
-            <p className="eyebrow mb-6 text-paper/50">Sljedeća usluga — {next.number}</p>
+            <p className="eyebrow mb-6 text-paper/50">Sljedeće — {next.number}</p>
             <span className="display text-outline block text-giant transition-colors duration-500 group-hover:[color:var(--color-brand)]">
               {next.title}
             </span>

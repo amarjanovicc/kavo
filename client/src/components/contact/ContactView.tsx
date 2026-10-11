@@ -72,8 +72,8 @@ export function ContactView() {
             bouncy
           />
           <motion.p {...fade(0.4)} className="mt-8 max-w-md text-lead text-paper/70">
-            Imate pitanje, komentar ili samo želite porazgovarati o dizajnu i webu? Javite se! Kavo je osobni projekt, pa ovdje
-            ne nudimo plaćene usluge ni ponude – samo razgovor.
+            Imaš pitanje, ideju ili samo želiš popričati o dizajnu i webu? Piši nam. Kavo je osobni projekt pa ne radimo
+            ponude ni plaćene projekte – ali rado ćemo odgovoriti.
           </motion.p>
 
           <motion.div {...fade(0.55)} className="mt-12 space-y-6">
@@ -126,7 +126,7 @@ export function ContactView() {
                   </div>
 
                   <fieldset>
-                    <legend className="eyebrow mb-4 text-paper/50">Što vas zanima? (više odgovora)</legend>
+                    <legend className="eyebrow mb-4 text-paper/50">O čemu želiš pričati? (možeš odabrati više)</legend>
                     <div className="grid gap-3 sm:grid-cols-2">
                       {services.map((s) => {
                         const on = form.helpWith.includes(s.title);
@@ -155,7 +155,7 @@ export function ContactView() {
                   </fieldset>
 
                   <fieldset>
-                    <legend className="eyebrow mb-4 text-paper/50">Kako ste saznali za nas?</legend>
+                    <legend className="eyebrow mb-4 text-paper/50">Kako smo ti zapeli za oko? (nije obavezno)</legend>
                     <div className="flex flex-wrap gap-2">
                       {sources.map((src) => {
                         const on = form.foundBy === src;
@@ -181,7 +181,7 @@ export function ContactView() {
 
                   <Field
                     textarea
-                    label="Vaša poruka"
+                    label="Poruka"
                     name="message"
                     rows={5}
                     value={form.projectDetails}
@@ -191,11 +191,11 @@ export function ContactView() {
                   <label className="flex cursor-pointer items-start gap-3 text-sm text-paper/60">
                     <input type="checkbox" required className="mt-0.5 size-4 shrink-0 accent-[var(--color-brand)]" />
                     <span>
-                      Slanjem obrasca pristajete na naša{' '}
+                      Slažem se s{' '}
                       <Link href="/privacy-policy" className="text-brand underline underline-offset-4">
-                        pravila privatnosti
+                        pravilima privatnosti
                       </Link>
-                      . Podaci se koriste isključivo za odgovor na vašu poruku.
+                      . Tvoje podatke koristimo samo da ti odgovorimo.
                     </span>
                   </label>
 
@@ -208,7 +208,7 @@ export function ContactView() {
                         role="alert"
                         className="rounded-2xl bg-red-500/15 p-4 text-sm text-red-300"
                       >
-                        Došlo je do greške. Pokušajte ponovo ili pišite na {site.email}.
+                        Poruka nije poslana. Provjeri vezu i pokušaj ponovno – ili nam piši izravno na {site.email}.
                       </motion.p>
                     )}
                   </AnimatePresence>
@@ -324,7 +324,7 @@ function Success({ onReset }: { onReset: () => void }) {
         />
       </motion.svg>
       <h2 className="display mt-8 text-huge">Hvala!</h2>
-      <p className="mt-4 max-w-sm text-paper/70">Vaša poruka je poslana. Javit ćemo se čim stignemo.</p>
+      <p className="mt-4 max-w-sm text-paper/70">Poruka je stigla do nas. Odgovorit ćemo ti na mail čim stignemo.</p>
       <button type="button" onClick={onReset} className="group mt-10 inline-flex rounded-full border border-paper/20 px-6 py-3 text-sm hover:border-brand hover:text-brand">
         <RollText text="Pošalji novu poruku" />
       </button>
