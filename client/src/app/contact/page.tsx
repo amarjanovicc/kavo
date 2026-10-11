@@ -37,12 +37,10 @@ function Typewriter({ text, speed = 25 }: { text: string; speed?: number }) {
 export default function ContactPage() {
   const [form, setForm] = useState({
     name: "",
-    company: "",
     email: "",
     projectDetails: "",
     foundBy: "",
     helpWith: [] as string[],
-    budget: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -71,15 +69,13 @@ export default function ContactPage() {
       });
       
       if (response.ok) {
-        setSubmitMessage("Hvala vam! Vaša poruka je poslana. Javit ćemo vam se uskoro.");
+        setSubmitMessage("Hvala vam! Vaša poruka je poslana.");
         setForm({
           name: "",
-          company: "",
           email: "",
           projectDetails: "",
           foundBy: "",
           helpWith: [],
-          budget: "",
         });
       } else {
         setSubmitMessage("Došlo je do greške. Molimo pokušajte ponovo.");
@@ -95,22 +91,22 @@ export default function ContactPage() {
     {
       id: "branding",
       title: "Branding",
-      description: "Izgradnja identiteta vašeg brenda - logo, boje, slogani i kompletna vizualna strategija"
+      description: "Logo, boje, tipografija i vizualni identitet"
     },
     {
       id: "graphic-design",
       title: "Grafički dizajn",
-      description: "Letci, plakati, katalogi, društvene mreže i svi print/digitalni materijali"
+      description: "Plakati, letci, društvene mreže i ostali print/digitalni materijali"
     },
     {
       id: "web-design",
       title: "Web dizajn",
-      description: "Dizajn modernih i funkcionalnih web stranica koje privlače i zadržavaju posjetitelje"
+      description: "Izgled i korisničko iskustvo web stranica"
     },
     {
       id: "web-development",
       title: "Web development",
-      description: "Izrada web stranice - od jednostavnih do kompleksnih aplikacija"
+      description: "Tehnička izrada web stranica i aplikacija"
     }
   ];
 
@@ -149,7 +145,7 @@ export default function ContactPage() {
             <div className="absolute -left-4 top-0 w-1 h-full bg-yellow-400 hidden md:block" />
             <p className="text-yellow-400/90 text-base md:text-lg leading-relaxed font-light">
               <Typewriter
-                text="Bilo da tek skicirate ideju za svoj novi projekt ili jednostavno želite porazgovarati o digitalnim mogućnostima – sjajno! Tu smo da pretvorimo vaše misli u stvarnu, funkcionalnu i modernu web stranicu."
+                text="Imate pitanje, komentar ili samo želite porazgovarati o dizajnu i webu? Javite se! Kavo je osobni projekt, pa ovdje ne nudimo plaćene usluge ni ponude – samo razgovor."
                 speed={14}
               />
             </p>
@@ -179,7 +175,7 @@ export default function ContactPage() {
           onSubmit={handleSubmit}
           className="space-y-10 md:space-y-12"
         >
-          {/* Ime i tvrtka - premium design */}
+          {/* Ime i email - premium design */}
           <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 md:gap-8">
             <motion.div
               whileHover={{ scale: 1.02 }}
@@ -204,38 +200,19 @@ export default function ContactPage() {
               className="group"
             >
               <label className="block text-sm font-medium text-yellow-400/80 mb-2 uppercase tracking-wide">
-                Naziv tvrtke *
+                Email adresa *
               </label>
               <input
-                type="text"
-                name="company"
-                placeholder="Unesite naziv vaše tvrtke"
+                type="email"
+                name="email"
+                placeholder="ime@primjer.hr"
                 className="w-full bg-white/5 border border-gray-600/50 rounded-lg px-4 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm"
-                value={form.company}
-                onChange={(e) => setForm({ ...form, company: e.target.value })}
+                value={form.email}
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
                 required
               />
             </motion.div>
           </div>
-
-          {/* Email - premium design */}
-          <motion.div
-            whileHover={{ scale: 1.01 }}
-            className="group"
-          >
-            <label className="block text-sm font-medium text-yellow-400/80 mb-2 uppercase tracking-wide">
-              Email adresa *
-            </label>
-            <input
-              type="email"
-              name="email"
-              placeholder="ime@vasa-tvrtka.hr"
-              className="w-full bg-white/5 border border-gray-600/50 rounded-lg px-4 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm"
-              value={form.email}
-              onChange={(e) => setForm({ ...form, email: e.target.value })}
-              required
-            />
-          </motion.div>
 
           {/* Kako ste nas našli */}
           <div className="space-y-4">
@@ -265,7 +242,7 @@ export default function ContactPage() {
           {/* Usluge */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-white mb-4">
-              S čime vam možemo pomoći? 
+              Što vas zanima? 
               <span className="text-sm text-gray-400 font-normal ml-2">(Možete odabrati više opcija)</span>
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -295,42 +272,17 @@ export default function ContactPage() {
             <input type="hidden" name="services" value={form.helpWith.join(", ")} />
           </div>
 
-          {/* Budžet */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-white mb-4">Vaš planirani budžet</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-              {["< 1.000 €", "1.000-5.000 €", "5.000-10.000 €", "10.000+ €"].map((opt) => (
-                <motion.button
-                  key={opt}
-                  type="button"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setForm({ ...form, budget: opt })}
-                  className={`px-4 py-3 rounded-lg font-medium border-2 transition-all duration-300 text-sm ${
-                    form.budget === opt
-                      ? "bg-yellow-400 text-[#080D10] border-yellow-400 shadow-lg shadow-yellow-400/25"
-                      : "bg-white/5 border-gray-600/50 text-white hover:border-yellow-400/50 hover:bg-white/10"
-                  }`}
-                >
-                  {opt}
-                </motion.button>
-              ))}
-            </div>
-            {/* Hidden input to store the selected budget */}
-            <input type="hidden" name="budget" value={form.budget} />
-          </div>
-
-          {/* Detalji projekta */}
+          {/* Poruka */}
           <motion.div
             whileHover={{ scale: 1.01 }}
             className="group"
           >
             <label className="block text-sm font-medium text-yellow-400/80 mb-2 uppercase tracking-wide">
-              Opišite svoj projekt
+              Vaša poruka
             </label>
             <textarea
               name="message"
-              placeholder="Opišite svoj projekt, ciljeve, specifične potrebe..."
+              placeholder="Napišite nam pitanje, komentar ili ideju..."
               className="w-full bg-white/5 border border-gray-600/50 rounded-lg px-4 py-4 text-white placeholder:text-gray-400 focus:outline-none focus:border-yellow-400 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm resize-none"
               rows={5}
               value={form.projectDetails}
@@ -353,9 +305,9 @@ export default function ContactPage() {
                   href="/privacy-policy" 
                   className="text-yellow-400 hover:text-yellow-300 underline transition-colors"
                 >
-                  uvjete poslovanja i pravila privatnosti
+                  pravila privatnosti
                 </Link>
-                . Vaši podaci će biti korišteni isključivo za potrebe komunikacije o vašem projektu.
+                . Vaši podaci koriste se isključivo za odgovor na vašu poruku.
               </span>
             </label>
 
@@ -371,7 +323,7 @@ export default function ContactPage() {
                     : "bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#080D10] shadow-yellow-400/25 hover:shadow-yellow-400/40"
                 }`}
               >
-                {isSubmitting ? "Šalje se..." : "Pošaljite upit →"}
+                {isSubmitting ? "Šalje se..." : "Pošaljite poruku →"}
               </motion.button>
             </div>
           </div>

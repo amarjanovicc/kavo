@@ -1,7 +1,7 @@
 'use client';
 
 import Script from 'next/script';
-import { generateBreadcrumbSchema, localBusinessSchema } from '@/lib/schema';
+import { generateBreadcrumbSchema } from '@/lib/schema';
 
 interface ServicePageSchemaProps {
   name: string;
@@ -18,21 +18,18 @@ export default function ServicePageSchema({
   image,
   breadcrumbs
 }: ServicePageSchemaProps) {
-  const serviceSchema = {
+  // WebPage umjesto Service – stranica opisuje područje rada, ne nudi uslugu na prodaju
+  const pageSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Service',
+    '@type': 'WebPage',
     name,
     description,
     url: `https://kavo.studio/${slug}`,
-    provider: {
+    author: {
       '@type': 'Organization',
       name: 'Kavo Studio'
     },
-    image,
-    areaServed: {
-      '@type': 'Country',
-      name: 'Hrvatska'
-    }
+    image
   };
 
   const breadcrumbSchema = generateBreadcrumbSchema(breadcrumbs);
@@ -40,10 +37,10 @@ export default function ServicePageSchema({
   return (
     <>
       <Script
-        id={`${slug}-service-schema`}
+        id={`${slug}-page-schema`}
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(serviceSchema)
+          __html: JSON.stringify(pageSchema)
         }}
       />
       <Script
@@ -53,38 +50,6 @@ export default function ServicePageSchema({
           __html: JSON.stringify(breadcrumbSchema)
         }}
       />
-      <Script
-        id="local-business-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(localBusinessSchema)
-        }}
-      />
     </>
   );
 }
-
-// Example usage in graficki-dizajn/page.tsx:
-//
-// import ServicePageSchema from '@/components/ServicePageSchema';
-//
-// export default function GrafickiDizajnPage() {
-//   return (
-//     <>
-//       <main>
-//         {/* Your existing page content */}
-//       </main>
-//       <ServicePageSchema
-//         name="Grafički dizajn"
-//         description="Profesionalni grafički dizajn za sve vaše potrebe, od vizualnog identiteta do marketinških materijala."
-//         slug="graficki-dizajn"
-//         image="https://kavo.studio/GrafickiDizajn/GrafickiDizajn1.png"
-//         breadcrumbs={[
-//           { name: 'Početna', url: 'https://kavo.studio' },
-//           { name: 'Usluge', url: 'https://kavo.studio/#services' },
-//           { name: 'Grafički dizajn', url: 'https://kavo.studio/graficki-dizajn' }
-//         ]}
-//       />
-//     </>
-//   );
-// }

@@ -12,19 +12,17 @@ export async function POST(req: Request) {
 
   const {
     name,
-    company,
     email,
     projectDetails = "",
     foundBy = "",
     helpWith = [],
-    budget = "",
   } = body;
 
-  if (!name || !company || !email) {
+  if (!name || !email) {
     return NextResponse.json({ message: "Obavezna polja nedostaju" }, { status: 400 });
   }
 
-  console.log("Podaci forme:", { name, company, email, foundBy, helpWith, budget });
+  console.log("Podaci forme:", { name, email, foundBy, helpWith });
 
   // Stvaranje transporter-a
   let transporter;
@@ -46,15 +44,13 @@ export async function POST(req: Request) {
   const mailOptions = {
     from: `"Kontakt forma" <${process.env.EMAIL_USER}>`,
     to: process.env.EMAIL_TO,
-    subject: "🌐 Novi upit sa web strane",
+    subject: "🌐 Nova poruka sa web stranice",
     html: `
       <p><strong>Ime:</strong> ${name}</p>
-      <p><strong>Tvrtka:</strong> ${company}</p>
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Kako su nas našli:</strong> ${foundBy}</p>
-      <p><strong>Usluge:</strong> ${helpWith.join(", ")}</p>
-      <p><strong>Budžet:</strong> ${budget}</p>
-      <p><strong>Detalji:</strong><br>${projectDetails}</p>
+      <p><strong>Interes:</strong> ${helpWith.join(", ")}</p>
+      <p><strong>Poruka:</strong><br>${projectDetails}</p>
     `,
   };
 

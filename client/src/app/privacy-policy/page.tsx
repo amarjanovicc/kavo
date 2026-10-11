@@ -61,8 +61,9 @@ export default function PrivacyPage() {
             </h2>
             <div className="bg-white/5 rounded-lg p-6 backdrop-blur-sm border border-gray-600/30">
               <p className="text-gray-300 leading-relaxed mb-4">
-                Ova stranica (u daljnjem tekstu: &ldquo;Stranica&rdquo;) u vlasništvu je tvrtke <strong>KAVO d.o.o.</strong> 
-                (u daljnjem tekstu: &ldquo;mi&rdquo;, &ldquo;nas&rdquo;, &ldquo;naša tvrtka&rdquo;).
+                Ova stranica (u daljnjem tekstu: &ldquo;Stranica&rdquo;) je <strong>osobni, nekomercijalni projekt</strong>
+                (u daljnjem tekstu: &ldquo;mi&rdquo;, &ldquo;nas&rdquo;). Kavo nije registrirana tvrtka ni obrt, ne prodaje
+                proizvode niti usluge i ne izdaje ponude ni račune. Stranica služi isključivo kao osobni portfolio.
               </p>
               <p className="text-gray-300 leading-relaxed">
                 Poštujemo vašu privatnost i obvezujemo se zaštititi vaše osobne podatke. Ova politika privatnosti 
@@ -84,8 +85,7 @@ export default function PrivacyPage() {
               <ul className="list-disc list-inside text-gray-300 space-y-2 mb-6">
                 <li>Ime i prezime</li>
                 <li>Email adresa</li>
-                <li>Naziv tvrtke</li>
-                <li>Informacije o projektu koje nam dobrovoljno pošaljete</li>
+                <li>Sadržaj poruke koju nam dobrovoljno pošaljete</li>
               </ul>
               
               <h3 className="text-xl font-semibold text-white mb-3">Automatski prikupljeni podaci</h3>
@@ -145,10 +145,8 @@ export default function PrivacyPage() {
                 Vaše podatke koristimo u sljedeće svrhe:
               </p>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
-                <li>Odgovaranje na vaše upite i zahtjeve</li>
-                <li>Pružanje naših usluga</li>
+                <li>Odgovaranje na vaše poruke</li>
                 <li>Poboljšanje naše web stranice</li>
-                <li>Komunikacija vezana uz projekte</li>
                 <li>Analiza korištenja stranice</li>
                 <li>Ispunjavanje pravnih obveza</li>
               </ul>
@@ -166,7 +164,7 @@ export default function PrivacyPage() {
               </p>
               <ul className="list-disc list-inside text-gray-300 space-y-2">
                 <li>Kada damo svoj pristanak</li>
-                <li>Pružateljima usluga koji nam pomažu u poslovanju (npr. hosting, email servisi)</li>
+                <li>Pružateljima tehničkih usluga potrebnih za rad stranice (npr. hosting, email servisi)</li>
                 <li>Kada to zahtijeva zakon</li>
                 <li>Za zaštitu naših prava i sigurnosti</li>
               </ul>
@@ -218,7 +216,7 @@ export default function PrivacyPage() {
               <ul className="list-disc list-inside text-gray-300 space-y-2">
                 <li>SSL enkripcija za sve komunikacije</li>
                 <li>Sigurni serveri s redovitim ažuriranjima</li>
-                <li>Ograničen pristup podacima samo ovlaštenom osoblju</li>
+                <li>Pristup podacima imaju samo autori projekta</li>
                 <li>Redovito sigurnosno kopiranje podataka</li>
               </ul>
             </div>
@@ -234,9 +232,7 @@ export default function PrivacyPage() {
                 Za sva pitanja vezana uz privatnost podataka možete nas kontaktirati:
               </p>
               <div className="space-y-2 text-gray-300">
-                <p><strong>Email:</strong> info@kavo.hr</p>
-                <p><strong>Telefon:</strong> +385 1 234 5678</p>
-                <p><strong>Adresa:</strong> Ulica 123, 10000 Zagreb, Hrvatska</p>
+                <p><strong>Email:</strong> hi@kavo.studio</p>
               </div>
             </div>
           </motion.section>
@@ -246,7 +242,7 @@ export default function PrivacyPage() {
             <div className="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-6">
               <p className="text-yellow-400 font-semibold mb-2">Zadnja izmjena</p>
               <p className="text-gray-300">
-                Ova politika privatnosti zadnji put je ažurirana 21. rujna 2025. 
+                Ova politika privatnosti zadnji put je ažurirana 11. listopada 2026. 
                 Zadržavamo pravo mijenjanja ove politike u bilo koje vrijeme.
               </p>
             </div>
