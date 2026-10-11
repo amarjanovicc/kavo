@@ -52,16 +52,19 @@ export function Cursor() {
   const size = label ? 96 : hovering ? 48 : 12;
 
   return (
-    // Bez mix-blend-mode: blend na fiksnom sloju tjera preglednik da u svakom frameu ponovno slaže cijelu stranicu.
-    // Žuta ispuna + tamni rub su vidljivi i na tamnoj i na žutoj podlozi.
-    <motion.div aria-hidden className="pointer-events-none fixed left-0 top-0 z-[100]" style={{ x: sx, y: sy }}>
+    // Blend mora biti na vanjskom (fixed) sloju – on stvara stacking context koji se stapa sa stranicom
+    <motion.div
+      aria-hidden
+      className="pointer-events-none fixed left-0 top-0 z-[100]"
+      style={{ x: sx, y: sy, mixBlendMode: label ? 'normal' : 'difference' }}
+    >
       <motion.div
-        className="flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full shadow-[0_0_0_1.5px_#080D10]"
+        className="flex -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full"
         animate={{
           width: size,
           height: size,
           opacity: visible ? 1 : 0,
-          backgroundColor: label ? 'rgba(255,189,0,1)' : hovering ? 'rgba(255,189,0,0.3)' : 'rgba(255,189,0,1)',
+          backgroundColor: label ? '#FFBD00' : '#FFFFFF',
         }}
         transition={{ type: 'spring', stiffness: 380, damping: 26 }}
       >
